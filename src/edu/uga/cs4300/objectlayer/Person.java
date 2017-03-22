@@ -1,5 +1,6 @@
 package edu.uga.cs4300.objectlayer;
 
+import java.util.ArrayList;
 public class Person {
 	
 	private int id;
@@ -12,32 +13,59 @@ public class Person {
 	private double balancePayable;
 	private double balanceReceivable;
 	private double balance;
+	
+	ArrayList < Task > tasksGivenOpen = new ArrayList < Task > ();
+	ArrayList < Task > tasksGivenClosed = new ArrayList < Task > ();
+	ArrayList < Task > tasksTakenOpen= new ArrayList < Task > ();
+	ArrayList < Task > tasksTakenClosed = new ArrayList < Task > ();
 
 	public Person ()
 	{
 		
 	}
 	
-	public Person (int id, String firstName, String lastName, String email,  String password, boolean isAdmin, double rating, double balancePayable, double balanceRecievable, double balance)
-	{
-		
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.password =  password;
-		this.isAdmin = isAdmin;
-		this.rating = rating;
-		this.balancePayable = balancePayable;
-		this.balanceReceivable = balanceRecievable;
-		this.balance = balance;
-
-		
-	}
+//	public Person (int id, String firstName, String lastName, String email,  String password, boolean isAdmin, double rating, double balancePayable, double balanceRecievable, double balance)
+//	{
+//		
+//		this.id = id;
+//		this.firstName = firstName;
+//		this.lastName = lastName;
+//		this.email = email;
+//		this.password =  password;
+//		this.isAdmin = isAdmin;
+//		this.rating = rating;
+//		this.balancePayable = balancePayable;
+//		this.balanceReceivable = balanceRecievable;
+//		this.balance = balance;
+//
+//		
+//	}
+	
+	
 
 	public int getId() {
 		return id;
 	}
+
+	public Person(int id, String firstName, String lastName, String email, String password, boolean isAdmin, double rating,
+		double balancePayable, double balanceReceivable, double balance, ArrayList<Task> tasksGivenOpen,
+		ArrayList<Task> tasksGivenClosed, ArrayList<Task> tasksTakenOpen, ArrayList<Task> tasksTakenClosed) {
+	super();
+	this.id = id;
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.email = email;
+	this.password = password;
+	this.isAdmin = isAdmin;
+	this.rating = rating;
+	this.balancePayable = balancePayable;
+	this.balanceReceivable = balanceReceivable;
+	this.balance = balance;
+	this.tasksGivenOpen = tasksGivenOpen;
+	this.tasksGivenClosed = tasksGivenClosed;
+	this.tasksTakenOpen = tasksTakenOpen;
+	this.tasksTakenClosed = tasksTakenClosed;
+}
 
 	public void setId(int id) {
 		this.id = id;
@@ -115,6 +143,36 @@ public class Person {
 		this.balance = balance;
 	}
 	
-	
+	public ArrayList<Task> getTasksGivenOpen() {
+		return tasksGivenOpen;
+	}
+
+	public void setTasksGivenOpen(ArrayList<Task> tasksGivenOpen) {
+		this.tasksGivenOpen = tasksGivenOpen;
+	}
+
+	public ArrayList<Task> getTasksGivenClosed() {
+		return tasksGivenClosed;
+	}
+
+	public void setTasksGivenClosed(ArrayList<Task> tasksGivenClosed) {
+		this.tasksGivenClosed = tasksGivenClosed;
+	}
+
+	public ArrayList<Task> getTasksTakenOpen() {
+		return tasksTakenOpen;
+	}
+
+	public void setTasksTakenOpen(ArrayList<Task> tasksTakenOpen) {
+		this.tasksTakenOpen = tasksTakenOpen;
+	}
+
+	public ArrayList<Task> getTasksTakenClosed() {
+		return tasksTakenClosed;
+	}
+
+	public void setTasksTakenClosed(ArrayList<Task> tasksTakenClosed) {
+		this.tasksTakenClosed = tasksTakenClosed;
+	}
 	
 }
