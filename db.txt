@@ -1,26 +1,28 @@
+DROP DATABASE freelancer;
+
 CREATE DATABASE freelancer;
 
-use freelancer;
+USE freelancer;
 
 CREATE TABLE users (
 	id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	firstName VARCHAR(255) NOT NULL,
-    lastName VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    isAdmin int NOT NULL,
-    rating DOUBLE NOT NULL
+	lastName VARCHAR(255) NOT NULL,
+	email VARCHAR(255) NOT NULL,
+	password VARCHAR(255) NOT NULL,
+	isAdmin int NOT NULL,
+	rating DOUBLE NOT NULL
 );
 
 CREATE TABLE tasks (
 	id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	description VARCHAR(255) NOT NULL,
-    time VARCHAR(255) NOT NULL,
-    price double NOT NULL,
+	time VARCHAR(255) NOT NULL,
+	price double NOT NULL,
 	difficulty INT NOT NULL,
-    user_id INT NOT NULL,
-    location VARCHAR(255) NOT NULL,
-     FOREIGN KEY (user_id) REFERENCES users(id)
+	user_id INT NOT NULL,
+	location VARCHAR(255) NOT NULL,
+     	FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 
@@ -30,15 +32,22 @@ CREATE TABLE transactions (
 	amount double NOT NULL,
 	creator_id int NOT NULL,
 	performer_id INT NOT NULL,
-     FOREIGN KEY (creator_id) REFERENCES users(id),
-     FOREIGN KEY (performer_id) REFERENCES users(id)
+     	FOREIGN KEY (creator_id) REFERENCES users(id),
+     	FOREIGN KEY (performer_id) REFERENCES users(id)
 );
 
 
 CREATE TABLE completedTasks (
 	id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	task_id int NOT NULL,
-    FOREIGN KEY (task_id) REFERENCES tasks(id)
+    	FOREIGN KEY (task_id) REFERENCES tasks(id)
+);
+
+CREATE TABLE accountBalance (
+	id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	user_id int NOT NULL,
+	balance double NOT NULL,
+    	FOREIGN KEY (user_Id) REFERENCES users(id)
 );
 
 
@@ -46,6 +55,20 @@ CREATE TABLE assignee (
 	id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	task_id int NOT NULL,
 	performer_id int NOT NULL,
-     FOREIGN KEY (task_id) REFERENCES tasks(id),
-    FOREIGN KEY (performer_id) REFERENCES users(id)
+     	FOREIGN KEY (task_id) REFERENCES tasks(id),
+    	FOREIGN KEY (performer_id) REFERENCES users(id)
+);
+
+
+CREATE TABLE userRatings (
+	id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	user_id int NOT NULL,
+	rating double NOT NULL,
+     	FOREIGN KEY (user_id) REFERENCES users(id)
+);
+CREATE TABLE userSkills (
+	id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	user_id int NOT NULL,
+	skill varchar(255) NOT NULL,
+     	FOREIGN KEY (user_id) REFERENCES users(id)
 );
