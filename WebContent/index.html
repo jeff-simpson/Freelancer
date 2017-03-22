@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Home Page</title>
+      <link rel="stylesheet" href="css/main.css">
+   </head>
+   <div id = "header">
+      <h3 class="alignleft"> IMDB2 </h3>
+      <div style="clear: both;"></div>
+   </div>
+   <body>
+      <H1> Search for Information / Reviews</H1>
+      <form action="IMDBBoundary" method="POST">
+         <label for="movieName">Movie Name</label>
+         <input type="text" name="movieName" required  />
+         <input type="submit" value="Submit" class="button" />
+      </form>
+      <p> If you would like to edit / create a movie, please search first to see if exists. </p>
+      <p> You will add / edit your reviews by searching for the movie first </p>
+      <H1> List Movies by Genre</H1>
+      <form action="IMDBBoundary" method="POST">
+         <select name = "movieGenre" required>
+            <option value="" selected></option>
+            <option value="Action">Action</option>
+            <option value="Animation">Animation</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Crime">Crime</option>
+            <option value="Drama">Drama</option>
+            <option value="Family">Family</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Horror">Horror</option>
+            <option value="Music">Music</option>
+            <option value="Musical">Musical</option>
+            <option value="Romance">Romance</option>
+            <option value="Sci-Fi">Sci-Fi</option>
+            <option value="Thriller">Thriller</option>
+            <option value="War">War</option>
+         </select>
+         <input name="genre" value ="genre" type ="hidden">
+         <input type="submit" value="Submit" class="button" />
+      </form>
+   </body>
+</html>
