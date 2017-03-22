@@ -5,60 +5,116 @@ public class Person {
 	private int id;
 	private String firstName;
 	private String lastName;
-	private int year;
-	private double rank;
-	
-	public Movie ()
+	private String email;
+	private String password;
+	private boolean isAdmin;
+	private double rating;
+	private double balancePayable;
+	private double balanceReceivable;
+	private double balance;
+
+	public Person ()
 	{
 		
 	}
 	
-	
-	public Movie(int id, String name, int year, double rank)
+	public Person (int id, String firstName, String lastName, String email,  String password, boolean isAdmin, double rating, double balancePayable, double balanceRecievable, double balance)
 	{
+		
 		this.id = id;
-		this.name = name;
-		this.year = year;
-		this.rank = rank;
-	}
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password =  password;
+		this.isAdmin = isAdmin;
+		this.rating = rating;
+		this.balancePayable = balancePayable;
+		this.balanceReceivable = balanceRecievable;
+		this.balance = balance;
 
+		
+	}
 
 	public int getId() {
 		return id;
 	}
 
-
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
-	public int getYear() {
-		return year;
+	public String getFirstName() {
+		return firstName;
 	}
 
-
-	public void setYear(int year) {
-		this.year = year;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-
-	public double getRank() {
-		return rank;
+	public String getLastName() {
+		return lastName;
 	}
 
-
-	public void setRank(double rank) {
-		this.rank = rank;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
-
-	public String getName() {
-		return name;
+	public String getEmail() {
+		return email;
 	}
 
-
-	public void setName(String name) {
-		this.name = name;
+	public void setEmail(String email) {
+		this.email = email;
 	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
+	public double getRating() {
+		return rating;
+	}
+
+	public void setRating(double rating) {
+		this.rating = rating;
+	}
+
+	public double getBalancePayable() {
+		return balancePayable;
+	}
+
+	public void setBalancePayable(double balancePayable) {
+		this.balancePayable = balancePayable;
+	}
+
+	public double getBalanceReceivable() {
+		return balanceReceivable;
+	}
+
+	public void setBalanceReceivable(double balanceReceivable) {
+		this.balanceReceivable = balanceReceivable;
+	}
+
+	public double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+	
+	
+	
 }
