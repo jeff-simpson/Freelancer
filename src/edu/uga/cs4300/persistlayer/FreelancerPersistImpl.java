@@ -4,9 +4,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import edu.uga.cs4300.objectlayer.Task;
+import edu.uga.cs4300.objectlayer.User;
 
 public class FreelancerPersistImpl {
 	
+	// Tasks
 	
 	public int addTask(Task task) throws SQLException
 	{
@@ -48,9 +50,59 @@ public class FreelancerPersistImpl {
 					
 		
 		return DbAccessInterface.delete(query);
+	
+	}
+	
+	//// User 
+	
+	public int addUser(User user) throws SQLException
+	{
 		
+		String query ="INSERT INTO users" +
+					"(firstName, lastName, email, password, isAdmin, rating) VALUES" +
+					"('"+ user.getFirstName() + "','"+ user.getLastName() + "','" + user.getEmail()
+					+"','" + user.getPassword() + "'," + user.isAdmin() + ",'"+ user.getRating()
+					+"');";
+				
+				
+		return DbAccessInterface.create(query);	
+	}
+	
+
+	public static int updateUser(User user) throws SQLException
+	{
+		
+		String query ="UPDATE users " +
+					"SET firstName = '" + user.getFirstName()  + 
+					 "', lastName = " + user.getLastName() + 
+					 ", email = " + user.getEmail() +
+					 ", password = " + user.getPassword() +
+					 ", isAdmin = " + user.isAdmin() +
+					 ", rating = " + user.getRating() +
+					" WHERE id = "+ user.getId()+";";
+					
+								
+		return DbAccessInterface.create(query);
 		
 	}
+	
+	
+	public static int deleteUser(User user) throws SQLException
+	{
+		
+		String query ="DELETE FROM users " +
+					  "WHERE id = "+ user.getId() +";";
+					
+		
+		return DbAccessInterface.delete(query);
+	
+	}
+	
+	
+	
+	
+	
+	///
 	
 	
 	public static int updateGenre(Movie movie, String genre) throws SQLException

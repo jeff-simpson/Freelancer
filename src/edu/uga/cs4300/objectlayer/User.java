@@ -24,24 +24,6 @@ public class User {
 		
 	}
 	
-//	public Person (int id, String firstName, String lastName, String email,  String password, boolean isAdmin, double rating, double balancePayable, double balanceRecievable, double balance)
-//	{
-//		
-//		this.id = id;
-//		this.firstName = firstName;
-//		this.lastName = lastName;
-//		this.email = email;
-//		this.password =  password;
-//		this.isAdmin = isAdmin;
-//		this.rating = rating;
-//		this.balancePayable = balancePayable;
-//		this.balanceReceivable = balanceRecievable;
-//		this.balance = balance;
-//
-//		
-//	}
-	
-	
 
 	public int getId() {
 		return id;
