@@ -30,7 +30,7 @@ import freemarker.template.TemplateExceptionHandler;
 
 
 @WebServlet("/IMDBBoundary")
-public class IMDBBoundary extends HttpServlet
+public class FreelancerBoundary extends HttpServlet
 {
     private static final long serialVersionUID = 1L;
 
@@ -39,7 +39,7 @@ public class IMDBBoundary extends HttpServlet
 
     private String templateDir = "/WEB-INF/templates";
 
-    public IMDBBoundary()
+    public FreelancerBoundary()
     {
         super();
     }

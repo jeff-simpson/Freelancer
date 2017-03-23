@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import edu.uga.cs4300.objectlayer.Movie;
 import edu.uga.cs4300.objectlayer.Review;
 
-public class MoviePersistImpl {
+public class FreelancerPersistImpl {
 	
 	public int addMovie(Movie movie) throws SQLException
 	{

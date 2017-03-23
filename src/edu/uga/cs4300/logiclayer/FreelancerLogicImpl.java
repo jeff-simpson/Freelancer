@@ -8,7 +8,7 @@ import edu.uga.cs4300.objectlayer.Movie;
 import edu.uga.cs4300.objectlayer.Review;
 import edu.uga.cs4300.persistlayer.MoviePersistImpl;
 
-public class MovieLogicImpl {
+public class FreelancerLogicImpl {
 
 
 	
