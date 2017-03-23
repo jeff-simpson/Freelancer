@@ -3,33 +3,52 @@ package edu.uga.cs4300.persistlayer;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import edu.uga.cs4300.objectlayer.Movie;
-import edu.uga.cs4300.objectlayer.Review;
+import edu.uga.cs4300.objectlayer.Task;
 
 public class FreelancerPersistImpl {
 	
-	public int addMovie(Movie movie) throws SQLException
+	
+	public int addTask(Task task) throws SQLException
 	{
 		
-		String query ="INSERT INTO movies" +
-					"(name, year, rank) VALUES" +
-					"("+ movie.getName() + ","+ movie.getYear() + "," + movie.getRank() +");";
+		String query ="INSERT INTO tasks" +
+					"(description, time, price, difficulty, user_id, location) VALUES" +
+					"('"+ task.getDescription() + "','"+ task.getTime() + "'," + task.getPrice()
+					+"," + task.getDifficulty() + "," + task.getUserID() + ",'"+ task.getLocation()
+					+"');";
 				
 				
+		return DbAccessInterface.create(query);	
+	}
+	
+	
+	public static int updateTask(Task task) throws SQLException
+	{
+		
+		String query ="UPDATE tasks " +
+					"SET description = '" +task.getDescription()  + 
+					 "', time = " + task.getTime() + 
+					 ", price = " + task.getPrice() +
+					 ", difficulty = " + task.getDifficulty() +
+					 ", user_id = " + task.getUserID() +
+					 ", location = " + task.getLocation() +
+					" WHERE id = "+ task.getId()+";";
+					
+								
 		return DbAccessInterface.create(query);
 		
 	}
 	
-
-	public static int updateMovie(Movie movie) throws SQLException
+	
+	public static int deleteTask(Task task) throws SQLException
 	{
 		
-		String query ="UPDATE movies " +
-					"SET name = '" + movie.getName()  + "', rank = " + movie.getRank() + ", year = " + movie.getYear() +
-					" WHERE id = "+ movie.getId()+";";
+		String query ="DELETE FROM tasks " +
+					  "WHERE id = "+ task.getId() +";";
 					
-								
-		return DbAccessInterface.create(query);
+		
+		return DbAccessInterface.delete(query);
+		
 		
 	}
 	

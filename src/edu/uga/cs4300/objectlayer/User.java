@@ -1,7 +1,7 @@
 package edu.uga.cs4300.objectlayer;
 
 import java.util.ArrayList;
-public class Person {
+public class User {
 	
 	private int id;
 	private String firstName;
@@ -19,7 +19,7 @@ public class Person {
 	ArrayList < Task > tasksTakenOpen= new ArrayList < Task > ();
 	ArrayList < Task > tasksTakenClosed = new ArrayList < Task > ();
 
-	public Person ()
+	public User ()
 	{
 		
 	}
@@ -47,7 +47,7 @@ public class Person {
 		return id;
 	}
 
-	public Person(int id, String firstName, String lastName, String email, String password, boolean isAdmin, double rating,
+	public User(int id, String firstName, String lastName, String email, String password, boolean isAdmin, double rating,
 		double balancePayable, double balanceReceivable, double balance, ArrayList<Task> tasksGivenOpen,
 		ArrayList<Task> tasksGivenClosed, ArrayList<Task> tasksTakenOpen, ArrayList<Task> tasksTakenClosed) {
 	super();
