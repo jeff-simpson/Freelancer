@@ -8,6 +8,7 @@ public class Task {
 	private String price;
 	private int difficulty;
 	private String location;
+	private int userID;
 
 	public Task ()
 	{
@@ -16,7 +17,7 @@ public class Task {
 	
 	
 
-	public Task(int id, String description, String time, String price, int difficulty, String location) {
+	public Task(int id, String description, String time, String price, int difficulty, String location, int userID) {
 		super();
 		this.id = id;
 		this.description = description;
@@ -24,6 +25,7 @@ public class Task {
 		this.price = price;
 		this.difficulty = difficulty;
 		this.location = location;
+		this.userID = userID;
 	}
 
 
@@ -35,6 +37,18 @@ public class Task {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	public int getUserID() {
+		return userID;
+	}
+
+
+
+	public void setUserID(int userID) {
+		this.userID = userID;
+	}
+
+
 
 	public String getDescription() {
 		return description;
