@@ -30,10 +30,12 @@ CREATE TABLE tasks (
 CREATE TABLE transactions (
 	id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	amount double NOT NULL,
+	task_id int NOT NULL,
 	creator_id int NOT NULL,
 	performer_id INT NOT NULL,
-     	FOREIGN KEY (creator_id) REFERENCES users(id),
-     	FOREIGN KEY (performer_id) REFERENCES users(id)
+	FOREIGN KEY (task_id) REFERENCES tasks(id),
+    FOREIGN KEY (creator_id) REFERENCES users(id),
+    FOREIGN KEY (performer_id) REFERENCES users(id)
 );
 
 

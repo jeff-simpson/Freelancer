@@ -102,8 +102,73 @@ public class FreelancerPersistImpl {
 	
 	
 	
-	///
+	/// Ratings
 	
+	
+	public int addRating(User user, double rating) throws SQLException
+	{
+		
+		String query ="INSERT INTO userRatings" +
+					"(user_id, rating) VALUES" +
+					"("+ user.getId() + ","+ rating+");";
+				
+				
+		return DbAccessInterface.create(query);	
+	}
+	
+	// Skills
+	
+	public int addSkills(User user, String skill) throws SQLException
+	{
+		
+		String query ="INSERT INTO userSkills" +
+					"(user_id, skill) VALUES" +
+					"("+ user.getId() + ",'"+ skill+"');";
+				
+				
+		return DbAccessInterface.create(query);	
+	}
+	
+	
+	// Assign Task
+	
+	public int assignTask(User user, Task task) throws SQLException
+	{
+		
+		String query ="INSERT INTO asignee" +
+					"(task_id, performer_id) VALUES" +
+					"("+ task.getId() + ","+ user.getId()+");";
+				
+				
+		return DbAccessInterface.create(query);	
+	}
+	
+	
+	// Complete Task
+	
+	public int completeTask(Task task) throws SQLException
+	{
+		
+		String query ="INSERT INTO completedTasks" +
+					"(task_id) VALUES" +
+					"("+ task.getId()+");";
+				
+				
+		return DbAccessInterface.create(query);	
+	}
+	
+	//Transactions
+	
+	public int addTransaction(User creater, User performer, Task task, double Amount) throws SQLException
+	{
+		
+		String query ="INSERT INTO asignee" +
+					"(task_id, performer_id) VALUES" +
+					"("+ task.getId() + ","+ user.getId()+");";
+				
+				
+		return DbAccessInterface.create(query);	
+	}
 	
 	public static int updateGenre(Movie movie, String genre) throws SQLException
 	{
