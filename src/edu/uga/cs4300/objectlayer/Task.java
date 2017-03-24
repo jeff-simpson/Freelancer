@@ -5,7 +5,7 @@ public class Task {
 	private int id;
 	private String description;
 	private String time;
-	private String price;
+	private double price;
 	private int difficulty;
 	private String location;
 	private int userID;
@@ -17,7 +17,7 @@ public class Task {
 	
 	
 
-	public Task(int id, String description, String time, String price, int difficulty, String location, int userID) {
+	public Task(int id, String description, String time, double price, int difficulty, String location, int userID) {
 		super();
 		this.id = id;
 		this.description = description;
@@ -66,11 +66,11 @@ public class Task {
 		this.time = time;
 	}
 
-	public String getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 

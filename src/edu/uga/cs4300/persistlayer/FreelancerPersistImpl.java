@@ -10,7 +10,7 @@ public class FreelancerPersistImpl {
 	
 	// Tasks
 	
-	public int addTask(Task task) throws SQLException
+	public static int addTask(Task task) throws SQLException
 	{
 		
 		String query ="INSERT INTO tasks" +
@@ -53,9 +53,25 @@ public class FreelancerPersistImpl {
 	
 	}
 	
+	
+
+	public static ResultSet returnTaskByID(int task_id) throws SQLException
+	{
+		
+		
+		String query = "SELECT * FROM tasks "+
+						"WHERE id ="+ task_id +";";
+		
+		ResultSet rs = DbAccessInterface.retrieve(query);
+		
+		return rs;
+		
+	}
+	
+	
 	//// User 
 	
-	public int addUser(User user) throws SQLException
+	public static int addUser(User user) throws SQLException
 	{
 		
 		String query ="INSERT INTO users" +
@@ -98,14 +114,25 @@ public class FreelancerPersistImpl {
 	
 	}
 	
-	
+	public static ResultSet returnUserByID(int user_id) throws SQLException
+	{
+		
+		
+		String query = "SELECT * FROM users "+
+						"WHERE id ="+ user_id +";";
+		
+		ResultSet rs = DbAccessInterface.retrieve(query);
+		
+		return rs;
+		
+	}
 	
 	
 	
 	/// Ratings
 	
 	
-	public int addRating(User user, double rating) throws SQLException
+	public static int addRating(User user, double rating) throws SQLException
 	{
 		
 		String query ="INSERT INTO userRatings" +
@@ -116,9 +143,23 @@ public class FreelancerPersistImpl {
 		return DbAccessInterface.create(query);	
 	}
 	
+	public static ResultSet returnAllRatings(User user) throws SQLException
+	{
+		
+		
+		String query = "SELECT * FROM userRatings "+
+						"WHERE user_id ="+ user.getId() +";";
+		
+		ResultSet rs = DbAccessInterface.retrieve(query);
+		
+		return rs;
+		
+	}
+	
+	
 	// Skills
 	
-	public int addSkills(User user, String skill) throws SQLException
+	public static int addSkills(User user, String skill) throws SQLException
 	{
 		
 		String query ="INSERT INTO userSkills" +
