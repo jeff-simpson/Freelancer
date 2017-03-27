@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import edu.uga.cs4300.objectlayer.Task;
 import edu.uga.cs4300.objectlayer.User;
-import edu.uga.cs4300.persistlayer.DbAccessInterface;
 import edu.uga.cs4300.persistlayer.FreelancerPersistImpl;
 
 
