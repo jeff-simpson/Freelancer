@@ -127,6 +127,19 @@ public class FreelancerPersistImpl {
 		
 	}
 	
+	public static ResultSet returnUser(User user) throws SQLException
+	{
+		
+		
+		String query = "SELECT * FROM users "+
+						"WHERE id ="+ user.getId() +";";
+		
+		ResultSet rs = DbAccessInterface.retrieve(query);
+		
+		return rs;
+		
+	}
+	
 	
 	
 	/// Ratings
@@ -170,6 +183,19 @@ public class FreelancerPersistImpl {
 		return DbAccessInterface.create(query);	
 	}
 	
+	public static ResultSet returnAllSkills(User user) throws SQLException
+	{
+		
+		
+		String query = "SELECT * FROM userSkills "+
+						"WHERE user_id ="+ user.getId() +";";
+		
+		ResultSet rs = DbAccessInterface.retrieve(query);
+		
+		return rs;
+		
+	}
+	
 	
 	// Assign Task
 	
@@ -182,6 +208,31 @@ public class FreelancerPersistImpl {
 				
 				
 		return DbAccessInterface.create(query);	
+	}
+	
+	public static ResultSet returnAllTasksViaUser(User user) throws SQLException
+	{
+		
+		
+		String query = "SELECT * FROM asignee "+
+						"WHERE performer_id ="+ user.getId() +";";
+		
+		ResultSet rs = DbAccessInterface.retrieve(query);
+		
+		return rs;
+		
+	}
+	public static ResultSet returnTaskPerformer(Task task) throws SQLException
+	{
+		
+		
+		String query = "SELECT * FROM asignee "+
+						"WHERE task_id ="+ task.getId() +";";
+		
+		ResultSet rs = DbAccessInterface.retrieve(query);
+		
+		return rs;
+		
 	}
 	
 	
