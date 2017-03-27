@@ -1,19 +1,18 @@
 Current Methods:
 
-// Tasks
-	
+	// Tasks
 	 public static void addTask(Task task)
 	 public static void updateTask(Task task)
 	 public static void deleteTask(Task task)
 	 public static Task returnTaskByID(int task_id)
+
 	//Users
-	 
 	 public static void addUser(User user)
 	 public static void updateUser(User user)
 	 public static void deleteUser(User user)
 	 public static User returnUserByID(int user_id)
-	 // Ratings
 	 
+	// Ratings 
 	 public static void addRating(User user, double rating)
 	 public static ArrayList<Double> returnAllRatings(User user) 
 	 public static double returnAverageRating(User user)
