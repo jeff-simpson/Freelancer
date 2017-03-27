@@ -139,8 +139,7 @@ public class FreelancerPersistImpl {
 		return rs;
 		
 	}
-	
-	
+		
 	
 	/// Ratings
 	
@@ -303,6 +302,5 @@ public class FreelancerPersistImpl {
 		
 	}
 	
-
 
 }
