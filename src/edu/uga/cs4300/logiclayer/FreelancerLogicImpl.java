@@ -1,20 +1,44 @@
 package edu.uga.cs4300.logiclayer;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import edu.uga.cs4300.objectlayer.Task;
 import edu.uga.cs4300.objectlayer.User;
 import edu.uga.cs4300.persistlayer.FreelancerPersistImpl;
+import freemarker.template.TemplateException;
 
 
 public class FreelancerLogicImpl {
 
 	
-	 public static void addTask(Task task) throws SQLException
+	 public static void addTask(HttpServletRequest request, HttpServletResponse response) throws SQLException
 	 {
-		 FreelancerPersistImpl.addTask(task);
+		 String description = request.getParameter("description");
+		 String time = request.getParameter("time");
+		 String location = request.getParameter("location");
+		 double price;
+		 int difficulty;
+		 int userID;
+		 try {
+			 price = Double.parseDouble(request.getParameter("price"));
+			 difficulty = Integer.parseInt(request.getParameter("difficulty"));
+			 User user = returnUserByUsername(request.getParameter("username"));
+			 userID = user.getId();
+			 Task task = new Task(description, time, price, difficulty, location, userID);
+			 FreelancerPersistImpl.addTask(task); 
+		 }
+		 catch (NumberFormatException nfe) {
+			nfe.printStackTrace();
+		 }
+		 catch (SQLException e) {
+		 	e.printStackTrace();
+		 }
 	 }
 	 
 	 public static void updateTask(Task task)throws SQLException
@@ -84,7 +108,48 @@ public class FreelancerLogicImpl {
 	 }
 
 	
-	 
+	 public static User returnUserByUsername(String username) throws SQLException
+	 {
+		 	ResultSet rs = FreelancerPersistImpl.returnUserByUsername(username);
+	        User user = new User();
+
+	        try
+	        {
+	            while (rs.next())
+	            {
+	            	int id = rs.getInt("id");
+	                String firstName = rs.getString("firstName");
+	                String lastName = rs.getString("lastName");
+	                String email = rs.getString("email");
+	                String password = rs.getString("password");
+	                int isAdmin = rs.getInt("isAdmin");
+	                double rating = rs.getDouble("rating");
+
+	                boolean admin = false;
+	                if(isAdmin == 1)
+	                {
+	                	admin = true;
+	                }
+	                
+	                
+	                user.setId(id);
+	                user.setFirstName(firstName);
+	                user.setLastName(lastName);
+	                user.setEmail(email);
+	                user.setPassword(password);
+	                user.setAdmin(admin);
+	                user.setRating(rating);
+	
+	                
+	              
+	            }
+	        }
+	        catch (SQLException e)
+	        {
+	            e.printStackTrace();
+	        }
+	        return user;
+	 }
 	 public static User returnUserByID(int user_id) throws SQLException
 	    {
 	       
@@ -188,40 +253,5 @@ public class FreelancerLogicImpl {
 	 {
 		 FreelancerPersistImpl.addSkills(user, skill);
 	 }
-	
-	
 	 
-	 
-	/** 
-	 * Returns all movies via a requested genre
-	 */
-//	 public static ArrayList < Movie > returnMovieViaGenre(String genre) throws SQLException
-//	    {
-//	        
-//	        ArrayList < Movie > movies = new ArrayList < Movie > ();
-//	        ResultSet rs = MoviePersistImpl.returnMovieViaGenre(genre);
-//
-//	        try
-//	        {
-//	            while (rs.next())
-//	            {
-//	                String name = rs.getString("name");
-//	                int year = rs.getInt("year");
-//	                double rank = rs.getDouble("rank");
-//	                int id = rs.getInt("id");
-//	                Movie movie = new Movie(id,name, year, rank);
-//	                movies.add(movie);
-//	            }
-//	        }
-//	        catch (SQLException e)
-//	        {
-//	            e.printStackTrace();
-//	        }
-//	        return movies;
-//
-//	    }
-	 
-
-
-	
 }

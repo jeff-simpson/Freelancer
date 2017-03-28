@@ -27,6 +27,16 @@ public class Task {
 		this.location = location;
 		this.userID = userID;
 	}
+	
+	public Task(String description, String time, double price, int difficulty, String location, int userID) {
+		super();
+		this.description = description;
+		this.time = time;
+		this.price = price;
+		this.difficulty = difficulty;
+		this.location = location;
+		this.userID = userID;
+	}
 
 
 
