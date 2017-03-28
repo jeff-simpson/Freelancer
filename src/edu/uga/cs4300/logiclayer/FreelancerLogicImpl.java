@@ -28,7 +28,7 @@ public class FreelancerLogicImpl {
 		 try {
 			 price = Double.parseDouble(request.getParameter("price"));
 			 difficulty = Integer.parseInt(request.getParameter("difficulty"));
-			 User user = returnUserByUsername(request.getParameter("username"));
+			 User user = returnUserByEmail(request.getParameter("username"));
 			 userID = user.getId();
 			 Task task = new Task(description, time, price, difficulty, location, userID);
 			 FreelancerPersistImpl.addTask(task); 
