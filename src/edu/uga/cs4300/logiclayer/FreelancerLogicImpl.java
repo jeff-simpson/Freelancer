@@ -108,9 +108,9 @@ public class FreelancerLogicImpl {
 	 }
 
 	
-	 public static User returnUserByUsername(String username) throws SQLException
+	 public static User returnUserByEmail(String email1) throws SQLException
 	 {
-		 	ResultSet rs = FreelancerPersistImpl.returnUserByUsername(username);
+		 	ResultSet rs = FreelancerPersistImpl.returnUserByEmail(email1);
 	        User user = new User();
 
 	        try

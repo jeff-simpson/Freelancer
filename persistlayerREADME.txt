@@ -12,6 +12,7 @@ Current Methods:
 	public static int updateUser(User user)
 	public static int deleteUser(User user)
 	public static ResultSet returnUserByID(int user_id)
+	public static ResultSet returnUserByEmail(String email)
 	public static ResultSet returnUser(User user)
 		
 	
@@ -43,5 +44,5 @@ Current Methods:
 
 	
 Needed Methods:
-	public static ResultSet returnUserByUsername(String username)
+	
 

@@ -126,6 +126,18 @@ public class FreelancerPersistImpl {
 		return rs;
 		
 	}
+	public static ResultSet returnUserByEmail(String email) throws SQLException
+	{
+		
+		
+		String query = "SELECT * FROM users "+
+						"WHERE email ="+ email +";";
+		
+		ResultSet rs = DbAccessInterface.retrieve(query);
+		
+		return rs;
+		
+	}
 	
 	public static ResultSet returnUser(User user) throws SQLException
 	{
