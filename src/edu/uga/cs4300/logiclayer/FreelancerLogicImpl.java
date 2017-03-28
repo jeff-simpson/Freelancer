@@ -17,28 +17,9 @@ import freemarker.template.TemplateException;
 public class FreelancerLogicImpl {
 
 	
-	 public static void addTask(HttpServletRequest request, HttpServletResponse response) throws SQLException
+	 public static void addTask(Task task) throws SQLException
 	 {
-		 String description = request.getParameter("description");
-		 String time = request.getParameter("time");
-		 String location = request.getParameter("location");
-		 double price;
-		 int difficulty;
-		 int userID;
-		 try {
-			 price = Double.parseDouble(request.getParameter("price"));
-			 difficulty = Integer.parseInt(request.getParameter("difficulty"));
-			 User user = returnUserByEmail(request.getParameter("email"));
-			 userID = user.getId();
-			 Task task = new Task(description, time, price, difficulty, location, userID);
-			 FreelancerPersistImpl.addTask(task); 
-		 }
-		 catch (NumberFormatException nfe) {
-			nfe.printStackTrace();
-		 }
-		 catch (SQLException e) {
-		 	e.printStackTrace();
-		 }
+		FreelancerPersistImpl.addTask(task);
 	 }
 	 
 	 public static void updateTask(Task task)throws SQLException
