@@ -1,25 +1,24 @@
 Current Methods:
 
 	// Tasks
-	 public static void addTask(HttpServletRequest request, HttpServletResponse response)
-	 public static void updateTask(HttpServletRequest request, HttpServletResponse response)
-	 public static void deleteTask(HttpServletRequest request, HttpServletResponse response)
-	 public static Task returnTaskByID(HttpServletRequest request, HttpServletResponse response)
+	 public static void addTask(Task task)
+	 public static void updateTask(Task task)
+	 public static void deleteTask(Task task)
+	 public static Task returnTaskByID(int task_id)
 
 	//Users
-	 public static void addUser(HttpServletRequest request, HttpServletResponse response)
-	 public static void updateUser(HttpServletRequest request, HttpServletResponse response)
-	 public static void deleteUser(HttpServletRequest request, HttpServletResponse response)
-	 public static User returnUserByID(HttpServletRequest request, HttpServletResponse response)
-	 public static User returnUserByUsername(HttpServletRequest request, HttpServletResponse response)
+	 public static void addUser(User user)
+	 public static void updateUser(User user)
+	 public static void deleteUser(User user)
+	 public static User returnUserByID(int user_id)
 	 
 	// Ratings 
-	 public static void addRating(HttpServletRequest request, HttpServletResponse response)
-	 public static ArrayList<Double> returnAllRatings(HttpServletRequest request, HttpServletResponse response) 
-	 public static double returnAverageRating(HttpServletRequest request, HttpServletResponse response)
+	 public static void addRating(User user, double rating)
+	 public static ArrayList<Double> returnAllRatings(User user) 
+	 public static double returnAverageRating(User user)
 	 
 	//Skills
-	 public static void addSkills(HttpServletRequest request, HttpServletResponse response)
+	 public static void addSkills(User user, String skill)
 	
 	
 
@@ -65,6 +64,3 @@ Methods Needed:
 	public static int updateAccountBalance(User user, double balance) 
 
 	
-
-
-
