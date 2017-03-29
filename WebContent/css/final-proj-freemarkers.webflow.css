@@ -1,0 +1,273 @@
+.section {
+  height: 68px;
+  box-shadow: 1px 1px 3px 0 #000;
+}
+
+.heading {
+  position: relative;
+  left: 0px;
+  top: 0px;
+  display: block;
+  margin-right: -42px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  padding-right: 842px;
+  padding-left: 20px;
+  float: left;
+  clear: both;
+  opacity: 0.67;
+  -webkit-perspective: 1204px;
+  perspective: 1204px;
+  -webkit-perspective-origin: 100% 100%;
+  perspective-origin: 100% 100%;
+  -webkit-transition: opacity 457ms ease;
+  transition: opacity 457ms ease;
+  direction: ltr;
+  font-family: 'Varela Round', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: capitalize;
+  text-shadow: -1px -1px 0 #000, 0 0 15px hsla(0, 0%, 100%, .25);
+}
+
+.submit-button {
+  position: static;
+  top: -51px;
+  right: -1100px;
+  bottom: 0px;
+  overflow: visible;
+  margin-top: -48px;
+  margin-right: 6px;
+  padding-left: 15px;
+  float: right;
+  border-radius: 70px;
+  box-shadow: 1px 1px 3px 0 #000;
+}
+
+.body {
+  height: 1900px;
+  margin-top: -20px;
+  border: 5px none #000;
+  border-radius: 10px;
+  box-shadow: 0 0 6px 0 #fff, inset 3px 1px 14px -3px #020101;
+  -webkit-transition: opacity 390ms ease;
+  transition: opacity 390ms ease;
+}
+
+.form {
+  padding-left: 0px;
+}
+
+.container {
+  position: static;
+}
+
+.text-span {
+  overflow: visible;
+  margin-top: 0px;
+  padding-top: 0px;
+  font-size: 20px;
+}
+
+.div-block {
+  position: relative;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  height: 20px;
+  margin-top: 0px;
+}
+
+.text-block {
+  width: 150px;
+  padding-right: 0px;
+  font-family: Exo, sans-serif;
+  font-size: 20px;
+}
+
+.important-text {
+  margin-left: 6px;
+  float: left;
+  clear: none;
+}
+
+.text-block-2 {
+  float: right;
+  font-family: Exo, sans-serif;
+  font-size: 20px;
+}
+
+.important-text-2 {
+  margin-top: 6px;
+  margin-right: 30px;
+  float: right;
+  clear: left;
+}
+
+.unordered-list {
+  width: 50%;
+  margin-top: 27px;
+  margin-right: 16px;
+  box-shadow: 2px 2px 3px 0 #5f5681;
+}
+
+.unordered-list-2 {
+  width: 50%;
+  margin-top: 27px;
+  margin-right: -146px;
+  float: right;
+  box-shadow: 2px 2px 3px 0 #5f5681;
+}
+
+.list-item {
+  height: 200px;
+  border: 2px solid #470bda;
+}
+
+.list-item-2 {
+  height: 200px;
+  border: 2px solid #470bda;
+}
+
+.list-item-3 {
+  height: 200px;
+  border: 2px solid #470bda;
+}
+
+.list-item-4 {
+  height: 200px;
+  border: 2px solid #470bda;
+}
+
+.list-item-5 {
+  height: 200px;
+  border: 2px solid #470bda;
+}
+
+.list-item-6 {
+  height: 200px;
+  border: 2px solid #470bda;
+}
+
+.text-block-3 {
+  margin-top: 8px;
+  margin-left: 20px;
+  float: left;
+  clear: none;
+  font-family: Exo, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.unordered-list-3 {
+  margin-top: 40px;
+  margin-right: 12px;
+  float: none;
+}
+
+.filter-by {
+  overflow: hidden;
+  height: 35px;
+  margin-top: -4px;
+}
+
+.form-2 {
+  height: 30px;
+  margin-top: 6px;
+  margin-right: 15px;
+  margin-left: 22px;
+  padding-top: 0px;
+  float: left;
+}
+
+.list-item-7 {
+  height: 200px;
+  border: 2px solid #470bda;
+  box-shadow: 2px 2px 3px 0 #470bda;
+}
+
+.list-item-8 {
+  height: 200px;
+  border: 2px solid #470bda;
+  box-shadow: 2px 2px 3px 0 #470bda;
+}
+
+.list-item-9 {
+  height: 200px;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 3px 0 #470bda;
+}
+
+.submit-button-2 {
+  overflow: visible;
+  margin: -48px 104px 0px -2px;
+  padding: 9px 15px;
+  float: right;
+  border-radius: 70px;
+  box-shadow: 1px 1px 3px 0 #000;
+}
+
+.div-block-2 {
+  height: 300px;
+  margin-top: 0px;
+}
+
+.heading-2 {
+  margin-left: 3px;
+  float: none;
+  clear: none;
+  box-shadow: 1px 1px 3px 0 #000;
+  font-family: Exo, sans-serif;
+}
+
+.submit-button-3 {
+  border-radius: 70px;
+}
+
+.text-field {
+  padding-right: 0px;
+  padding-left: 19px;
+  float: left;
+  clear: left;
+  text-align: center;
+  text-transform: none;
+}
+
+.text-field-2 {
+  padding-left: 19px;
+  float: left;
+  clear: left;
+  text-align: center;
+}
+
+.text-block-4 {
+  font-family: Exo, sans-serif;
+}
+
+.important-text-3 {
+  letter-spacing: 0.5px;
+}
+
+.form-3 {
+  height: 300px;
+}
+
+.submit-button-4 {
+  width: 100%;
+  margin-top: 9px;
+  margin-left: 0px;
+  float: left;
+  border-radius: 50px;
+  box-shadow: 0 0 6px 0 #071af8;
+  text-align: center;
+}
+
+.textarea {
+  height: 100px;
+}
+
+@media (max-width: 479px) {
+  .form {
+    overflow: visible;
+  }
+}
