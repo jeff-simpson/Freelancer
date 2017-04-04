@@ -2,6 +2,7 @@ package edu.uga.cs4300.boundary;
 
 
 
+import java.awt.List;
 import java.io.IOException;
 import java.io.Writer;
 import java.sql.SQLException;
@@ -11,9 +12,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.mysql.jdbc.Connection;
 
+import edu.uga.cs4300.logiclayer.FreelancerLogicImpl;
+import edu.uga.cs4300.objectlayer.Task;
+import edu.uga.cs4300.objectlayer.User;
 import edu.uga.cs4300.persistlayer.DatabaseAccess;
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapperBuilder;
@@ -32,7 +37,8 @@ public class FreelancerBoundary extends HttpServlet
     static Connection con = (Connection) DatabaseAccess.connect();
 
     private String templateDir = "/WEB-INF/templates";
-
+    DefaultObjectWrapperBuilder df = new DefaultObjectWrapperBuilder(Configuration.VERSION_2_3_25);
+    SimpleHash root = new SimpleHash(df.build());
     public FreelancerBoundary()
     {
         super();
@@ -43,15 +49,15 @@ public class FreelancerBoundary extends HttpServlet
         cfg = new Configuration(Configuration.VERSION_2_3_25);
         cfg.setServletContextForTemplateLoading(getServletContext(), templateDir);
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.HTML_DEBUG_HANDLER);
-
+        FreelancerLogicImpl logic = new FreelancerLogicImpl(); 
+        
     }
 
     public void runTemplate(HttpServletRequest request, HttpServletResponse response, String name) throws SQLException
     {
         // You can use this structure for all of your objects to be sent to browser
         Template template = null;
-        DefaultObjectWrapperBuilder df = new DefaultObjectWrapperBuilder(Configuration.VERSION_2_3_25);
-        SimpleHash root = new SimpleHash(df.build());
+       
         String templateName = name + ".ftl";
         
         try
@@ -79,7 +85,7 @@ public class FreelancerBoundary extends HttpServlet
     	String button = request.getParameter("button");
         if(button.equals("Login!")){
 			try {
-				runWelcome(request,response);
+				runLogin(request,response);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -87,48 +93,138 @@ public class FreelancerBoundary extends HttpServlet
 		
 		}
         else if(button.equals("Sign Up!")){ 
-        	signUp(request,response); 
+        	try {
+				signUp(request,response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
         }
         
         else if(button.equals("My Profile")){ 
-        	myProfile(request,response);
+        	try {
+				myProfile(request,response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         }
         else if(button.equals("Sign Out")){
-        	signOut(request,response); 
+        	try {
+				signOut(request,response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
         }
         else if(button.equals("Submit Task")){ 
-        	submitTask(request,response); 
+        	try {
+				submitTask(request,response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
         }
     }
 
-    private void submitTask(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+    private void runLogin(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+		String username = request.getParameter("username"); 
+		String password = request.getParameter("password");
+		boolean verified = FreelancerLogicImpl.verifyUser(username, password);
+		HttpSession session = request.getSession(); 
+		if(verified){
+		User u = FreelancerLogicImpl.returnUserByEmail(username);
+		session.setAttribute("user",u );
+		runWelcome(request,response); 
+		}
+		else{
+			runTemplate(request,response,"login");
+		}
+	}
+
+	private void submitTask(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+		User u = (User) request.getSession().getAttribute("user"); 
+		Task t = new Task(); 
+		
+		String description = request.getParameter("description");
+		t.setDescription(description);
+		
+		String time = request.getParameter("time");
+		t.setTime(time);
+		
+		String price = request.getParameter("price");
+		t.setPrice(Double.parseDouble(price));
+		
+		String difficulty=  request.getParameter("difficulty");
+		t.setDifficulty(Integer.parseInt(difficulty));
+	   
+		String location = request.getParameter("location"); 
+	    t.setLocation(location);
+		
+	    int userID = u.getId(); 
+		t.setUserID(userID);
+		
+		FreelancerLogicImpl.addTask(t);
+		root.put("task", t);
+		root.put("user", u);
+		viewTask(request,response); 
+
+	}
+	private void viewTask(HttpServletRequest request, HttpServletResponse response) throws SQLException{ 
+		runTemplate(request,response,"task");
+	}
+	private void myProfile(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+		Object u =request.getSession().getAttribute("user");
+		List tasks_available = new List(); 
+		List tasks_taken = new List(); 
+		List tasks_given = new List(); 
+		
+		root.put("tasks_available", tasks_available);
+		root.put("tasks_taken", tasks_taken);
+		root.put("tasks_given", tasks_given);
+		root.put("user", u);
+		runTemplate(request,response,"myprofile"); 
 		
 	}
 
-	private void myProfile(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	private void signOut(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+		request.changeSessionId(); 
+		/////FIGURE OUT HOW TO RUN INDEX.HTML
+		runTemplate(request,response,"welcome"); 
 		
 	}
 
-	private void signOut(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void signUp(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	private void signUp(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+		 String username = request.getParameter("username");
+		 String displayName = request.getParameter("displayName"); 
+		 String email = request.getParameter("email");
+		 String password = request.getParameter("password"); 
+		 User u = new User();
+		 u.setEmail(email);
+		 u.setPassword(password);
+		 u.setUsername(username); 
+		 u.setName(displayName);
+		 FreelancerLogicImpl.addUser(u);
+		 runWelcome(request,response) ; 
 		
 	}
 
 	private void runWelcome(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-		
+		String username = request.getParameter("username"); 
+		List tasks_available = new List(); 
+		List tasks_taken = new List(); 
+		List tasks_given = new List(); 
+		User user = FreelancerLogicImpl.returnUserByEmail(username);
+		root.put("User",user); 
+		root.put("tasks_available", tasks_available);
+		root.put("tasks_taken", tasks_taken);
+		root.put("tasks_given", tasks_given);
     	runTemplate(request, response,"welcome");
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+		System.out.println("POSTPOST"); 
         doGet(request, response);
     }
 

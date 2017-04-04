@@ -13,6 +13,10 @@ public class User {
 	private double balancePayable;
 	private double balanceReceivable;
 	private double balance;
+	private String username; 
+	
+
+	private String displayName; 
 	
 	ArrayList < Task > tasksGivenOpen = new ArrayList < Task > ();
 	ArrayList < Task > tasksGivenClosed = new ArrayList < Task > ();
@@ -157,4 +161,22 @@ public class User {
 		this.tasksTakenClosed = tasksTakenClosed;
 	}
 	
+	public String getUsername() {
+		return username;
+	}
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+
+	public String getDisplayName() {
+		return displayName;
+	}
+
+
+	public void setName(String displayName) {
+		this.displayName = displayName;
+	}
 }

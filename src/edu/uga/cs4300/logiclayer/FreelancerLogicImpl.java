@@ -131,6 +131,7 @@ public class FreelancerLogicImpl {
 	        }
 	        return user;
 	 }
+	 
 	 public static User returnUserByID(int user_id) throws SQLException
 	    {
 	       
@@ -235,4 +236,9 @@ public class FreelancerLogicImpl {
 		 FreelancerPersistImpl.addSkills(user, skill);
 	 }
 	 
+	 //IVANO ADDED THESE TO BE FILLED OUT <3
+	 public static boolean verifyUser(String username, String password){ 
+		 //check if the password is good or not
+		 return true;
+	 }
 }
