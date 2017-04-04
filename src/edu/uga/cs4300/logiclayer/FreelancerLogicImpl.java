@@ -1,5 +1,6 @@
 package edu.uga.cs4300.logiclayer;
 
+import java.awt.List;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -241,4 +242,19 @@ public class FreelancerLogicImpl {
 		 //check if the password is good or not
 		 return true;
 	 }
+
+	public static List getTasksTaken(User u) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static List getTasksAvailable(User u) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static List getTasksGiven(User u) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

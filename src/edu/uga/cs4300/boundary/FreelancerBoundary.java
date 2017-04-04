@@ -174,10 +174,10 @@ public class FreelancerBoundary extends HttpServlet
 		runTemplate(request,response,"task");
 	}
 	private void myProfile(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-		Object u =request.getSession().getAttribute("user");
-		List tasks_available = new List(); 
-		List tasks_taken = new List(); 
-		List tasks_given = new List(); 
+		User u = (User) request.getSession().getAttribute("user");
+		List tasks_available = FreelancerLogicImpl.getTasksAvailable(u); 
+		List tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
+		List tasks_given = FreelancerLogicImpl.getTasksGiven(u); 
 		
 		root.put("tasks_available", tasks_available);
 		root.put("tasks_taken", tasks_taken);
