@@ -83,6 +83,7 @@ public class FreelancerBoundary extends HttpServlet
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
     	String button = request.getParameter("button");
+    	System.out.println(button);
         if(button.equals("Login!")){
 			try {
 				runLogin(request,response);
@@ -92,8 +93,9 @@ public class FreelancerBoundary extends HttpServlet
 			} 
 		
 		}
-        else if(button.equals("Sign Up!")){ 
+        else if(button.equals("Create Account")){ 
         	try {
+        		
 				signUp(request,response);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -189,8 +191,10 @@ public class FreelancerBoundary extends HttpServlet
 
 	private void signOut(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		request.changeSessionId(); 
-		/////FIGURE OUT HOW TO RUN INDEX.HTML
-		runTemplate(request,response,"welcome"); 
+		
+		try { response.sendRedirect("index.html"); }
+		catch (IOException e) { e.printStackTrace(); }
+		      
 		
 	}
 
