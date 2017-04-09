@@ -2070,7 +2070,11 @@
  * Webflow: Interactions: Init
  */
 Webflow.require('ix').init([
-  {"slug":"new-interaction","name":"New Interaction","value":{"style":{"x":"0px","y":"0px","z":"0px","scaleX":0.01,"scaleY":0.01,"scaleZ":1},"triggers":[{"type":"load","stepsA":[{"transition":"transform 200 ease 0","scaleX":1.37,"scaleY":1.37,"scaleZ":1}],"stepsB":[]}]}},
   {"slug":"new-interaction-2","name":"New Interaction 2","value":{"style":{"x":"-1450px","y":"0px","z":"0px"},"triggers":[{"type":"load","stepsA":[{"transition":"transform 1s ease 0","x":"0px","y":"0px","z":"0px"}],"stepsB":[]}]}},
-  {"slug":"new-interaction-3","name":"New Interaction 3","value":{"style":{"x":"-1450px","y":"0px","z":"0px"},"triggers":[{"type":"load","stepsA":[{"transition":"transform 1.5s ease 0","x":"0px","y":"0px","z":"0px"}],"stepsB":[]}]}}
+  {"slug":"new-interaction-3","name":"New Interaction 3","value":{"style":{"x":"-1450px","y":"0px","z":"0px"},"triggers":[{"type":"load","stepsA":[{"transition":"transform 1.5s ease 0","x":"0px","y":"0px","z":"0px"}],"stepsB":[]}]}},
+  {"slug":"new-interaction-4","name":"New Interaction 4","value":{"style":{"x":"-1450px","y":"0px","z":"0px"},"triggers":[{"type":"load","stepsA":[{"transition":"transform 1.8s ease 0","x":"0px","y":"0px","z":"0px"}],"stepsB":[]}]}},
+  {"slug":"new-interaction-6","name":"New Interaction 6","value":{"style":{"x":"-1450px","y":"0px","z":"0px"},"triggers":[{"type":"load","stepsA":[{"transition":"transform 2s ease 0","x":"0px","y":"0px","z":"0px"}],"stepsB":[]}]}},
+  {"slug":"new-interaction-5","name":"New Interaction 5","value":{"style":{"display":"inline-block","scaleX":0.01,"scaleY":0.01,"scaleZ":1},"triggers":[{"type":"load","preload":true,"stepsA":[{"display":"inline-block","transition":"transform 1.3s ease 0","scaleX":1,"scaleY":1,"scaleZ":1}],"stepsB":[]}]}},
+  {"slug":"new-interaction-7","name":"New Interaction 7","value":{"style":{},"triggers":[{"type":"load","preload":true,"preserve3d":true,"stepsA":[{"transition":"transform 2s ease 0","rotateX":"0deg","rotateY":"180deg","rotateZ":"0deg"}],"stepsB":[]}]}},
+  {"slug":"new-interaction-8","name":"New Interaction 8","value":{"style":{},"triggers":[{"type":"hover","selector":".heading-3","preserve3d":true,"stepsA":[{"transition":"transform 2s ease 0","rotateX":"0deg","rotateY":"-180deg","rotateZ":"0deg"}],"stepsB":[{"transition":"transform 2s ease 0","rotateX":"0deg","rotateY":"0deg","rotateZ":"0deg"}]}]}}
 ]);
