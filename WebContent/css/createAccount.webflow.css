@@ -1,7 +1,6 @@
 .body {
   height: 800px;
-  background-image: -webkit-linear-gradient(270deg, rgba(17, 143, 228, .5), rgba(17, 143, 228, .5));
-  background-image: linear-gradient(180deg, rgba(17, 143, 228, .5), rgba(17, 143, 228, .5));
+  background-color: rgba(85, 130, 224, .5);
 }
 
 .div-block {
@@ -47,11 +46,17 @@
 
 .important-text-5 {
   overflow: hidden;
-  margin-top: 0px;
-  padding-top: 0px;
-  box-shadow: 0 0 6px 0 #fff;
+  height: 100px;
+  margin-top: -38px;
+  margin-bottom: -10px;
+  margin-left: 66px;
+  padding-top: 26px;
+  padding-bottom: 0px;
+  float: left;
+  font-family: Exo, sans-serif;
   color: #2663ce;
   font-size: 80px;
+  font-style: italic;
 }
 
 .text-field {
@@ -69,6 +74,54 @@
 
 .text-field-4 {
   border: 3px solid #1f6adb;
+}
+
+.heading-3 {
+  margin-top: -74px;
+  margin-bottom: 8px;
+  margin-left: 378px;
+  float: left;
+  clear: none;
+  color: #0e3bad;
+  font-size: 80px;
+}
+
+.button {
+  margin-top: -70px;
+  margin-right: 100px;
+  margin-bottom: 4px;
+  float: right;
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px 0 #000;
+  -webkit-transition: -webkit-transform 1000ms ease;
+  transition: -webkit-transform 1000ms ease;
+  transition: transform 1000ms ease;
+  transition: transform 1000ms ease, -webkit-transform 1000ms ease;
+}
+
+.button:hover {
+  background-image: -webkit-linear-gradient(270deg, rgba(30, 52, 212, .5), rgba(30, 52, 212, .5));
+  background-image: linear-gradient(180deg, rgba(30, 52, 212, .5), rgba(30, 52, 212, .5));
+  -webkit-transform: scale(1.13);
+  -ms-transform: scale(1.13);
+  transform: scale(1.13);
+}
+
+.submit-button {
+  box-shadow: 1px 1px 3px 0 #000;
+  -webkit-transition: background-color 1000ms ease, -webkit-transform 1000ms ease;
+  transition: background-color 1000ms ease, -webkit-transform 1000ms ease;
+  transition: transform 1000ms ease, background-color 1000ms ease;
+  transition: transform 1000ms ease, background-color 1000ms ease, -webkit-transform 1000ms ease;
+}
+
+.submit-button:hover {
+  background-image: -webkit-linear-gradient(270deg, rgba(30, 52, 212, .5), rgba(30, 52, 212, .5));
+  background-image: linear-gradient(180deg, rgba(30, 52, 212, .5), rgba(30, 52, 212, .5));
+  box-shadow: 2px 2px 3px 0 #000;
+  -webkit-transform: scale(1.15);
+  -ms-transform: scale(1.15);
+  transform: scale(1.15);
 }
 
 html.w-mod-js *[data-ix="new-interaction-2"] {
