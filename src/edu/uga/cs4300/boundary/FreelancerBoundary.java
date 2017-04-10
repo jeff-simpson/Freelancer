@@ -6,6 +6,7 @@ import java.awt.List;
 import java.io.IOException;
 import java.io.Writer;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -83,6 +84,7 @@ public class FreelancerBoundary extends HttpServlet
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
     	String button = request.getParameter("button");
+    
     	System.out.println(button);
         if(button.equals("Login!")){
 			try {
@@ -93,6 +95,18 @@ public class FreelancerBoundary extends HttpServlet
 			} 
 		
 		}
+        
+        else if(button.equals("Sign Up!")){ 
+        	try {
+        		
+				signUp(request,response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+        }
+     
+        
         else if(button.equals("Create Account")){ 
         	try {
         		
@@ -199,26 +213,28 @@ public class FreelancerBoundary extends HttpServlet
 	}
 
 	private void signUp(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-		 String username = request.getParameter("username");
-		 String displayName = request.getParameter("displayName"); 
+		 String firstName = request.getParameter("Firstname");
+		 String lastName = request.getParameter("Lastname"); 
 		 String email = request.getParameter("email");
 		 String password = request.getParameter("password"); 
 		 User u = new User();
 		 u.setEmail(email);
 		 u.setPassword(password);
-		 u.setUsername(username); 
-		 u.setName(displayName);
+		 u.setFirstName(firstName);
+		 u.setLastName(lastName);
 		 FreelancerLogicImpl.addUser(u);
-		 runWelcome(request,response) ; 
+		 request.getSession().setAttribute("user", u);
+		 runWelcome(request,response); 
 		
 	}
 
 	private void runWelcome(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-		String username = request.getParameter("username"); 
-		List tasks_available = new List(); 
-		List tasks_taken = new List(); 
-		List tasks_given = new List(); 
-		User user = FreelancerLogicImpl.returnUserByEmail(username);
+		User u = (User) request.getSession().getAttribute("user") ;
+		ArrayList tasks_available = new ArrayList(); 
+		ArrayList tasks_taken = new ArrayList(); 
+		ArrayList tasks_given = new ArrayList(); 
+		User user = FreelancerLogicImpl.returnUserByEmail(u.getEmail());
+		request.getSession().setAttribute("user", user);
 		root.put("User",user); 
 		root.put("tasks_available", tasks_available);
 		root.put("tasks_taken", tasks_taken);

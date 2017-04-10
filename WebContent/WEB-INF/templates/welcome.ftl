@@ -27,8 +27,8 @@
     
     <div class="w-form">
       <form class="form w-clearfix" data-name="Email Form" id="email-form" name="email-form">
-        <input class="submit-button-2 w-button" data-wait="Please wait..." type="submit" value="My Profile">
-        <input class="submit-button w-button" data-wait="Please wait..." type="submit" value="Sign Out">
+        <input class="submit-button-2 w-button" data-wait="Please wait..." type="submit" value="My Profile" name = "button">
+        <input class="submit-button w-button" data-wait="Please wait..." type="submit" value="Sign Out" name = "button">
       </form>
       
       <div class="w-form-done">

@@ -211,9 +211,7 @@ public class FreelancerLogicImpl {
 		 	        return ratings;
 		 
 		 	    }
-		
-		
-	 
+		 
 	public static double returnAverageRating(User user) throws SQLException
 	{
 		double rating = 0;

@@ -80,7 +80,7 @@ public class FreelancerPersistImpl {
 					+"','" + user.getPassword() + "'," + user.isAdmin() + ",'"+ user.getRating()
 					+"');";
 				
-				
+		System.out.println(query);
 		return DbAccessInterface.create(query);	
 	}
 	
@@ -131,8 +131,8 @@ public class FreelancerPersistImpl {
 		
 		
 		String query = "SELECT * FROM users "+
-						"WHERE email ="+ email +";";
-		
+						"WHERE email = '"+ email +"';";
+		System.out.println(query);
 		ResultSet rs = DbAccessInterface.retrieve(query);
 		
 		return rs;
