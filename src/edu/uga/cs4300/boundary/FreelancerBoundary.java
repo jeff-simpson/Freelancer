@@ -6,6 +6,7 @@ import java.awt.List;
 import java.io.IOException;
 import java.io.Writer;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -40,6 +41,7 @@ public class FreelancerBoundary extends HttpServlet
     private String templateDir = "/WEB-INF/templates";
     DefaultObjectWrapperBuilder df = new DefaultObjectWrapperBuilder(Configuration.VERSION_2_3_25);
     SimpleHash root = new SimpleHash(df.build());
+    
     public FreelancerBoundary()
     {
         super();
@@ -95,7 +97,16 @@ public class FreelancerBoundary extends HttpServlet
 			} 
 		
 		}
-        
+        else if(button.equals("Sign In!")){ 
+        	try {
+        		
+				runLogin(request,response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+        }
+     
         else if(button.equals("Sign Up!")){ 
         	try {
         		
@@ -133,6 +144,14 @@ public class FreelancerBoundary extends HttpServlet
 				e.printStackTrace();
 			} 
         }
+        else if(button.equals("Create A Task")){
+        	try {
+				runTemplate(request,response,"submittask"); 
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+        }
         else if(button.equals("Submit Task")){ 
         	try {
 				submitTask(request,response);
@@ -151,6 +170,8 @@ public class FreelancerBoundary extends HttpServlet
 		if(verified){
 		User u = FreelancerLogicImpl.returnUserByEmail(username);
 		session.setAttribute("user",u );
+		root.put("user", u);
+		System.out.println("running welcome");
 		runWelcome(request,response); 
 		}
 		else{
@@ -165,7 +186,8 @@ public class FreelancerBoundary extends HttpServlet
 		String description = request.getParameter("description");
 		t.setDescription(description);
 		
-		String time = request.getParameter("time");
+		LocalDateTime dateTime = LocalDateTime.now();
+		String time = dateTime.getHour() +":" + dateTime.getMinute() + " "+ dateTime.getDayOfMonth() + "/" + dateTime.getDayOfMonth() + "/" + dateTime.getYear(); 
 		t.setTime(time);
 		
 		String price = request.getParameter("price");
@@ -180,20 +202,25 @@ public class FreelancerBoundary extends HttpServlet
 	    int userID = u.getId(); 
 		t.setUserID(userID);
 		
-		FreelancerLogicImpl.addTask(t);
-		root.put("task", t);
+		int taskID = FreelancerLogicImpl.addTask(t);
+		Task p = FreelancerLogicImpl.returnTaskByID(taskID); 
+		root.put("task", p);
 		root.put("user", u);
-		viewTask(request,response); 
+		
+		viewTask(request,response,p.getId()+""); 
 
 	}
-	private void viewTask(HttpServletRequest request, HttpServletResponse response) throws SQLException{ 
+	
+	private void viewTask(HttpServletRequest request, HttpServletResponse response, String taskID) throws SQLException{ 
 		runTemplate(request,response,"task");
 	}
+	
 	private void myProfile(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+		System.out.println("running my profile");
 		User u = (User) request.getSession().getAttribute("user");
-		List tasks_available = FreelancerLogicImpl.getTasksAvailable(u); 
-		List tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
-		List tasks_given = FreelancerLogicImpl.getTasksGiven(u); 
+		ArrayList tasks_available = FreelancerLogicImpl.getTasksAvailable(u); 
+		ArrayList tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
+		ArrayList tasks_given = FreelancerLogicImpl.getTasksGiven(u); 
 		
 		root.put("tasks_available", tasks_available);
 		root.put("tasks_taken", tasks_taken);
@@ -229,11 +256,16 @@ public class FreelancerBoundary extends HttpServlet
 	}
 
 	private void runWelcome(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+		System.out.println("inside welcome!");
 		User u = (User) request.getSession().getAttribute("user") ;
-		ArrayList tasks_available = new ArrayList(); 
-		ArrayList tasks_taken = new ArrayList(); 
-		ArrayList tasks_given = new ArrayList(); 
+		System.out.println("TRYING TO GET TASKS");
+		ArrayList tasks_available = FreelancerLogicImpl.getTasksTaken(u); 
+		ArrayList tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
+		ArrayList tasks_given = FreelancerLogicImpl.getTasksTaken(u);
 		User user = FreelancerLogicImpl.returnUserByEmail(u.getEmail());
+		for(Object e : tasks_available){ 
+			System.out.println(((Task) e).getDescription());
+		}
 		request.getSession().setAttribute("user", user);
 		root.put("User",user); 
 		root.put("tasks_available", tasks_available);

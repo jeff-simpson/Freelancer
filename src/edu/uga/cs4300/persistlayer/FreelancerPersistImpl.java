@@ -46,7 +46,7 @@ public class FreelancerPersistImpl {
 	{
 		
 		String query ="DELETE FROM tasks " +
-					  "WHERE id = "+ task.getId() +";";
+					  "WHERE id = '"+ task.getId() +"';";
 					
 		
 		return DbAccessInterface.delete(query);
@@ -60,7 +60,7 @@ public class FreelancerPersistImpl {
 		
 		
 		String query = "SELECT * FROM tasks "+
-						"WHERE id ="+ task_id +";";
+						"WHERE id ='"+ task_id +"';";
 		
 		ResultSet rs = DbAccessInterface.retrieve(query);
 		
@@ -68,6 +68,30 @@ public class FreelancerPersistImpl {
 		
 	}
 	
+	public static ResultSet returnAllTasks() throws SQLException
+	{
+		
+		
+		String query = "SELECT * FROM tasks"; 
+		System.out.println(query);
+		ResultSet rs = DbAccessInterface.retrieve(query);
+		
+		return rs;
+		
+	}
+
+	public static ResultSet returnTaskByDescription(String description) throws SQLException
+	{
+		
+		
+		String query = "SELECT * FROM tasks "+
+						"WHERE description = '"+ description +"';";
+		
+		ResultSet rs = DbAccessInterface.retrieve(query);
+		
+		return rs;
+		
+	}
 	
 	//// User 
 	
@@ -107,7 +131,7 @@ public class FreelancerPersistImpl {
 	{
 		
 		String query ="DELETE FROM users " +
-					  "WHERE id = "+ user.getId() +";";
+					  "WHERE id = '"+ user.getId() +"';";
 					
 		
 		return DbAccessInterface.delete(query);
@@ -119,7 +143,7 @@ public class FreelancerPersistImpl {
 		
 		
 		String query = "SELECT * FROM users "+
-						"WHERE id ="+ user_id +";";
+						"WHERE id ='"+ user_id +"';";
 		
 		ResultSet rs = DbAccessInterface.retrieve(query);
 		

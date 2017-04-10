@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.uga.cs4300.objectlayer.Task;
 import edu.uga.cs4300.objectlayer.User;
+import edu.uga.cs4300.persistlayer.DbAccessInterface;
 import edu.uga.cs4300.persistlayer.FreelancerPersistImpl;
 import freemarker.template.TemplateException;
 
@@ -18,9 +19,21 @@ import freemarker.template.TemplateException;
 public class FreelancerLogicImpl {
 
 	
-	 public static void addTask(Task task) throws SQLException
+	 public static int addTask(Task task) throws SQLException
 	 {
-		FreelancerPersistImpl.addTask(task);
+		 FreelancerPersistImpl.addTask(task);
+		ResultSet rs = FreelancerPersistImpl.returnTaskByDescription(task.getDescription()); 
+		int id = 0; 
+		  try
+	        {
+	            while (rs.next())
+	            {
+	            	id = rs.getInt("id");
+	              
+	            }
+	        }
+		  finally{}
+		return id; 
 	 }
 	 
 	 public static void updateTask(Task task)throws SQLException
@@ -241,17 +254,48 @@ public class FreelancerLogicImpl {
 		 return true;
 	 }
 
-	public static List getTasksTaken(User u) {
+	public static ArrayList getTasksTaken(User u) throws SQLException {
+		// TODO Auto-generated method stub
+		ResultSet rs = FreelancerPersistImpl.returnAllTasks(); 
+		ArrayList tasks = new ArrayList();
+		 try
+	        {
+	            while (rs.next())
+	            {
+	            	Task task = new Task(); 
+	            	int id = rs.getInt("id");
+	                String description = rs.getString("description");
+	                String time = rs.getString("time");
+	                double price = rs.getDouble("price");
+	                int difficulty = rs.getInt("difficulty");
+	                int user_id = rs.getInt("user_id");
+	                String location = rs.getString("location");
+	                
+	                
+	                task.setId(id);
+	                task.setDescription(description);
+	                task.setTime(time);
+	                task.setPrice(price);
+	                task.setDifficulty(difficulty);
+	                task.setUserID(user_id);
+	                task.setLocation(location);
+	                
+	                tasks.add(task); 
+	            }
+	        }
+	        catch (SQLException e)
+	        {
+	            e.printStackTrace();
+	        }
+		return tasks;
+	}
+
+	public static ArrayList getTasksAvailable(User u) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public static List getTasksAvailable(User u) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public static List getTasksGiven(User u) {
+	public static ArrayList getTasksGiven(User u) {
 		// TODO Auto-generated method stub
 		return null;
 	}

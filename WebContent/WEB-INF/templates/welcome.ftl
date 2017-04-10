@@ -23,12 +23,13 @@
 <body class="body">
 
   <div class="section w-clearfix">
-    <h1 class="heading">Welcome bla bla</h1>
+    <h1 class="heading">Welcome ${user.firstName}</h1>
     
     <div class="w-form">
       <form class="form w-clearfix" data-name="Email Form" id="email-form" name="email-form">
         <input class="submit-button-2 w-button" data-wait="Please wait..." type="submit" value="My Profile" name = "button">
         <input class="submit-button w-button" data-wait="Please wait..." type="submit" value="Sign Out" name = "button">
+        <input class="submit-button w-button" data-wait="Please wait..." type="submit" value="Create A Task" name = "button">
       </form>
       
       <div class="w-form-done">
@@ -50,15 +51,58 @@
   </div>
   
   <ul class="unordered-list-2">
-    <li class="list-item-4">${task-given.get()}</li>
-    <li class="list-item-5">${task-given.get()}</li>
-    <li class="list-item-6">${task-given.get()}</li>
+  <#assign m = tasks_available>
+  <#list m as task>
+  	
+  	<table id ="task available">
+  
+  		<tr> 
+  			<td> description: ${task.description} </td> 
+  		</tr> 
+  		<tr> 
+  			<td> time: ${task.time} </td> 
+  		</tr> 
+  		<tr> 
+  			<td> price: ${task.price} </td> 
+  		</tr> 	
+  		<tr>
+  			<td> difficulty: ${task.difficulty}</td> 
+  		</tr>
+  		<tr>	
+  			<td> location: ${task.location}</td> 
+  		</tr> 
+  		
+  		</table>
+  	  <br>
+  </#list>
   </ul>
   
-  <ul class="unordered-list">
-    <li class="list-item">${task-taken.get()}</li>
-    <li class="list-item-2">${task-taken.get()}</li>
-    <li class="list-item-3">${task-taken.get()}</li>
+  <ul class="unordered-list-3">
+  <#assign m = tasks_taken>
+  <#list m as task>
+  	
+  	<table id ="task available">
+ 		
+ 		<tr> 
+  			<td> description: ${task.description} </td> 
+  		</tr> 
+  		<tr> 
+  			<td> time: ${task.time} </td> 
+  		</tr> 
+  		<tr> 
+  			<td> price: ${task.price} </td> 
+  		</tr> 	
+  		<tr>
+  			<td> difficulty: ${task.difficulty}</td> 
+  		</tr>
+  		<tr>	
+  			<td> location: ${task.location}</td> 
+  		</tr> 
+  		
+  		</table>
+  		<br>
+  	  
+  </#list>
   </ul>
   
   <div class="text-block-3">Tasks Available:</div>
@@ -86,11 +130,6 @@
     
   </div>
   
-  <ul class="unordered-list-3">
-    <li class="list-item-7">${task-available.get()}</li>
-    <li class="list-item-8">${task-available.get()}</li>
-    <li class="list-item-9">${task-available.get()}</li>
-  </ul>
   
   <div class="div-block-2">
     <h1 class="heading-2">&nbsp;Create Task:</h1>
