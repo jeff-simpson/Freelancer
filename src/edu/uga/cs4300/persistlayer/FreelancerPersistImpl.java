@@ -29,12 +29,12 @@ public class FreelancerPersistImpl {
 		
 		String query ="UPDATE tasks " +
 					"SET description = '" +task.getDescription()  + 
-					 "', time = " + task.getTime() + 
-					 ", price = " + task.getPrice() +
-					 ", difficulty = " + task.getDifficulty() +
-					 ", user_id = " + task.getUserID() +
-					 ", location = " + task.getLocation() +
-					" WHERE id = "+ task.getId()+";";
+					 "', time = '" + task.getTime() + 
+					 "', price = '" + task.getPrice() +
+					 "', difficulty = '" + task.getDifficulty() +
+					 "', user_id = '" + task.getUserID() +
+					 "', location = '" + task.getLocation() +
+					" WHERE id = '"+ task.getId()+"';";
 					
 								
 		return DbAccessInterface.create(query);
@@ -101,7 +101,7 @@ public class FreelancerPersistImpl {
 		String query ="INSERT INTO users" +
 					"(firstName, lastName, email, password, isAdmin, rating) VALUES" +
 					"('"+ user.getFirstName() + "','"+ user.getLastName() + "','" + user.getEmail()
-					+"','" + user.getPassword() + "'," + user.isAdmin() + ",'"+ user.getRating()
+					+"','" + user.getPassword() + "','" + user.isAdmin() + "','"+ user.getRating()
 					+"');";
 				
 		System.out.println(query);
@@ -114,12 +114,12 @@ public class FreelancerPersistImpl {
 		
 		String query ="UPDATE users " +
 					"SET firstName = '" + user.getFirstName()  + 
-					 "', lastName = " + user.getLastName() + 
-					 ", email = " + user.getEmail() +
-					 ", password = " + user.getPassword() +
-					 ", isAdmin = " + user.isAdmin() +
-					 ", rating = " + user.getRating() +
-					" WHERE id = "+ user.getId()+";";
+					 "', lastName = '" + user.getLastName() + 
+					 "', email = '" + user.getEmail() +
+					 "', password = '" + user.getPassword() +
+					 "', isAdmin = '" + user.isAdmin() +
+					 "', rating = '" + user.getRating() +
+					" WHERE id = '"+ user.getId()+"';";
 					
 								
 		return DbAccessInterface.create(query);
@@ -168,7 +168,7 @@ public class FreelancerPersistImpl {
 		
 		
 		String query = "SELECT * FROM users "+
-						"WHERE id ="+ user.getId() +";";
+						"WHERE id ='"+ user.getId() +"';";
 		
 		ResultSet rs = DbAccessInterface.retrieve(query);
 		
@@ -185,7 +185,7 @@ public class FreelancerPersistImpl {
 		
 		String query ="INSERT INTO userRatings" +
 					"(user_id, rating) VALUES" +
-					"("+ user.getId() + ","+ rating+");";
+					"('"+ user.getId() + "','"+ rating+"');";
 				
 				
 		return DbAccessInterface.create(query);	
@@ -196,7 +196,7 @@ public class FreelancerPersistImpl {
 		
 		
 		String query = "SELECT * FROM userRatings "+
-						"WHERE user_id ="+ user.getId() +";";
+						"WHERE user_id ='"+ user.getId() +"';";
 		
 		ResultSet rs = DbAccessInterface.retrieve(query);
 		
@@ -212,7 +212,7 @@ public class FreelancerPersistImpl {
 		
 		String query ="INSERT INTO userSkills" +
 					"(user_id, skill) VALUES" +
-					"("+ user.getId() + ",'"+ skill+"');";
+					"('"+ user.getId() + "','"+ skill+"');";
 				
 				
 		return DbAccessInterface.create(query);	
@@ -223,7 +223,7 @@ public class FreelancerPersistImpl {
 		
 		
 		String query = "SELECT * FROM userSkills "+
-						"WHERE user_id ="+ user.getId() +";";
+						"WHERE user_id ='"+ user.getId() +"';";
 		
 		ResultSet rs = DbAccessInterface.retrieve(query);
 		
@@ -239,7 +239,7 @@ public class FreelancerPersistImpl {
 		
 		String query ="INSERT INTO asignee " +
 					"(task_id, performer_id) VALUES" +
-					"("+ task.getId() + ","+ user.getId()+");";
+					"('"+ task.getId() + "','"+ user.getId()+"');";
 				
 				
 		return DbAccessInterface.create(query);	
@@ -250,7 +250,7 @@ public class FreelancerPersistImpl {
 		
 		
 		String query = "SELECT * FROM asignee "+
-						"WHERE performer_id ="+ user.getId() +";";
+						"WHERE performer_id ='"+ user.getId() +"';";
 		
 		ResultSet rs = DbAccessInterface.retrieve(query);
 		
@@ -262,7 +262,7 @@ public class FreelancerPersistImpl {
 		
 		
 		String query = "SELECT * FROM asignee "+
-						"WHERE task_id ="+ task.getId() +";";
+						"WHERE task_id ='"+ task.getId() +"';";
 		
 		ResultSet rs = DbAccessInterface.retrieve(query);
 		
@@ -278,7 +278,7 @@ public class FreelancerPersistImpl {
 		
 		String query ="INSERT INTO completedTasks " +
 					"(task_id) VALUES" +
-					"("+ task.getId()+");";
+					"('"+ task.getId()+"');";
 				
 				
 		return DbAccessInterface.create(query);	
@@ -291,7 +291,7 @@ public class FreelancerPersistImpl {
 		
 		String query ="INSERT INTO transactions " +
 					"(creator_id, performer_id ,task_id, amount) VALUES" +
-					"("+ creator.getId()+ ","+ performer.getId()+ task.getId() + ","+ amount +");";
+					"('"+ creator.getId()+ "','"+ performer.getId()+"','"+ task.getId() + "','"+ amount +"');";
 				
 				
 		return DbAccessInterface.create(query);	
@@ -302,9 +302,9 @@ public class FreelancerPersistImpl {
 	{
 		
 		String query ="DELETE FROM transactions" +
-					" WHERE creator_id = "+ creator.getId()+
-					" and task_id = "+ task.getId() +
-					 " and amount = "+ amount +";";
+					" WHERE creator_id = '"+ creator.getId()+
+					"' and task_id = '"+ task.getId() +
+					 "' and amount = '"+ amount +"';";
 				
 				
 		return DbAccessInterface.create(query);	
@@ -318,7 +318,7 @@ public class FreelancerPersistImpl {
 		
 		
 		String query = "SELECT * FROM accountBalance "+
-						"WHERE user_id ="+ user.getId() +";";
+						"WHERE user_id ='"+ user.getId() +"';";
 		
 		ResultSet rs = DbAccessInterface.retrieve(query);
 		
@@ -330,8 +330,8 @@ public class FreelancerPersistImpl {
 	{
 		
 		String query ="UPDATE accountBalance " +
-					"SET balance = " + balance +
-					" WHERE user_id = "+ user.getId()+";";
+					"SET balance = '" + balance +
+					"' WHERE user_id = '"+ user.getId()+"';";
 					
 								
 		return DbAccessInterface.create(query);
