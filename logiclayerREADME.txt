@@ -51,7 +51,6 @@ Methods Needed:
 	// Assign Task
 	
 	// Complete Task
-	public int completeTask(Task task)
 	
 	//Transactions
 	

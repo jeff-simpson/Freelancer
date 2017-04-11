@@ -353,4 +353,10 @@ public class FreelancerLogicImpl {
 		return persist.deleteTransaction(creator, task, amount);
 	}
 	
+
+	public int completeTask(Task task) throws SQLException
+	{
+		FreelancerPersistImpl persist = new FreelancerPersistImpl();
+		return persist.completeTask(task);
+	}
 }
