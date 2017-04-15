@@ -42,6 +42,29 @@ public class FreelancerPersistImpl {
 	}
 	
 	
+	public static int updateTaskStatus(Task task, String status) throws SQLException
+	{
+		
+		String query ="UPDATE taskStatus " +
+					"SET status = '" +status  + 
+					"' WHERE task_id = '"+ task.getId()+"';";
+					
+								
+		return DbAccessInterface.create(query);
+		
+	}
+	
+	public static int createTaskStatusEntry(Task task) throws SQLException
+	{
+		
+		String query ="INSERT INTO tasksStatus" +
+				"(task_id, status) VALUES" +
+				"('"+ task.getId() + "','open');";
+								
+		return DbAccessInterface.create(query);
+		
+	}
+	
 	public static int deleteTask(Task task) throws SQLException
 	{
 		
@@ -86,6 +109,18 @@ public class FreelancerPersistImpl {
 		
 		String query = "SELECT * FROM tasks "+
 						"WHERE description = '"+ description +"';";
+		
+		ResultSet rs = DbAccessInterface.retrieve(query);
+		
+		return rs;
+		
+	}
+	
+	public static ResultSet returnAvailableTasks() throws SQLException
+	{
+		
+		String query = "SELECT * FROM tasks, taskStatus "+
+						"WHERE tasks.id = taskStatus.task_id and taskStatus.status = 'open';";
 		
 		ResultSet rs = DbAccessInterface.retrieve(query);
 		
@@ -286,7 +321,7 @@ public class FreelancerPersistImpl {
 	
 	//Transactions
 	
-	public int addTransaction(User creator, User performer, Task task, double amount) throws SQLException
+	public static int addTransaction(User creator, User performer, Task task, double amount) throws SQLException
 	{
 		
 		String query ="INSERT INTO transactions " +
@@ -298,7 +333,7 @@ public class FreelancerPersistImpl {
 	}
 	
 	
-	public int deleteTransaction(User creator, Task task, double amount) throws SQLException
+	public static int deleteTransaction(User creator, Task task, double amount) throws SQLException
 	{
 		
 		String query ="DELETE FROM transactions" +

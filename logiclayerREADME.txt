@@ -40,8 +40,12 @@ Methods Needed:
 	// Tasks
 	
 	
+
 	//// User 
-		
+		public static ArrayList getTasksGiven(User u)
+		public static  ArrayList<Task> returnAllTasksViaUser(User user)
+		public static User returnTaskPerformer(Task task)
+		public static User returnUser(User user)
 	
 	/// Ratings
 
@@ -53,6 +57,8 @@ Methods Needed:
 	// Complete Task
 	
 	//Transactions
+	
+	public static double returnAccountBalance(User user)
 	
 	
 	

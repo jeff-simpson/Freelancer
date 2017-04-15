@@ -33,6 +33,9 @@ public class FreelancerLogicImpl {
 	            }
 	        }
 		  finally{}
+		  
+		  Task newTask = returnTaskByID(id);
+		  FreelancerPersistImpl.createTaskStatusEntry(newTask);
 		return id; 
 	 }
 	 
@@ -45,6 +48,50 @@ public class FreelancerLogicImpl {
 	 {
 		 FreelancerPersistImpl.deleteTask(task);
 	 }
+	 
+	 public static void updateTaskStatus(Task task, String status) throws SQLException
+	 {
+		 FreelancerPersistImpl.updateTaskStatus(task, status);
+	 }
+	 
+
+		public static ArrayList<Task> returnAvailableTasks() throws SQLException {
+			// TODO Auto-generated method stub
+			ResultSet rs = FreelancerPersistImpl.returnAvailableTasks(); 
+			ArrayList<Task> tasks = new ArrayList<Task>();
+			 try
+		        {
+		            while (rs.next())
+		            {
+		            	Task task = new Task(); 
+		            	int id = rs.getInt("id");
+		                String description = rs.getString("description");
+		                String time = rs.getString("time");
+		                double price = rs.getDouble("price");
+		                int difficulty = rs.getInt("difficulty");
+		                int user_id = rs.getInt("user_id");
+		                String location = rs.getString("location");
+		                
+		                
+		                task.setId(id);
+		                task.setDescription(description);
+		                task.setTime(time);
+		                task.setPrice(price);
+		                task.setDifficulty(difficulty);
+		                task.setUserID(user_id);
+		                task.setLocation(location);
+		                
+		                tasks.add(task); 
+		            }
+		        }
+		        catch (SQLException e)
+		        {
+		            e.printStackTrace();
+		        }
+			return tasks;
+		}
+	 
+	 
 	 
 	 public static  Task returnTaskByID(int task_id) throws SQLException
 	    {
@@ -84,6 +131,29 @@ public class FreelancerLogicImpl {
 	        return task;
 
 	    }
+	 
+	 
+
+		public int assignTask(User user, Task task) throws SQLException
+		{
+			FreelancerPersistImpl persist = new FreelancerPersistImpl();
+			return persist.assignTask(user, task);
+		}
+		
+		public static  ArrayList<Task> returnAllTasksViaUser(User user) throws SQLException
+		{
+			//needs to return task object, see above in returnAvailableTasks
+			return FreelancerPersistImpl.returnAllTasksViaUser(user);
+		}
+		
+		public int completeTask(Task task) throws SQLException
+		{
+			FreelancerPersistImpl persist = new FreelancerPersistImpl();
+			return persist.completeTask(task);
+		}
+	 
+	 
+	 
 	
 	//Users
 	 
@@ -145,6 +215,16 @@ public class FreelancerLogicImpl {
 	        }
 	        return user;
 	 }
+	 
+	 public static  User returnTaskPerformer(Task task) throws SQLException
+		{
+			//needs to user
+			return FreelancerPersistImpl.returnTaskPerformer(task);
+		}
+	 public static ArrayList<Task> getTasksGiven(User u) {
+			///needs to return task object, see above in returnAvailableTasks
+			return null;
+		}
 	 
 	 public static User returnUserByID(int user_id) throws SQLException
 	    {
@@ -254,10 +334,10 @@ public class FreelancerLogicImpl {
 		 return true;
 	 }
 
-	public static ArrayList getTasksTaken(User u) throws SQLException {
+	public static ArrayList<Task> getTasksTaken(User u) throws SQLException {
 		// TODO Auto-generated method stub
 		ResultSet rs = FreelancerPersistImpl.returnAllTasks(); 
-		ArrayList tasks = new ArrayList();
+		ArrayList<Task> tasks = new ArrayList<Task>();
 		 try
 	        {
 	            while (rs.next())
@@ -290,18 +370,12 @@ public class FreelancerLogicImpl {
 		return tasks;
 	}
 
-	public static ArrayList getTasksAvailable(User u) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public static ArrayList getTasksGiven(User u) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
-	public static ResultSet returnAccountBalance(User user) throws SQLException
+	
+	public static double returnAccountBalance(User user) throws SQLException
 	{
+		
+		//needs to return a double 
 		return FreelancerPersistImpl.returnAccountBalance(user);
 	}
 	
@@ -311,8 +385,9 @@ public class FreelancerLogicImpl {
 		return FreelancerPersistImpl.updateAccountBalance(user, balance);
 	}
 	
-	public static ResultSet returnUser(User user) throws SQLException
+	public static User returnUser(User user) throws SQLException
 	{
+		// needs to return User
 		return FreelancerPersistImpl.returnUserByID(user.getId());
 	}
 	
@@ -327,36 +402,20 @@ public class FreelancerLogicImpl {
 		return returned;
 	}
 	
-	public int assignTask(User user, Task task) throws SQLException
-	{
-		FreelancerPersistImpl persist = new FreelancerPersistImpl();
-		return persist.assignTask(user, task);
-	}
+
+
 	
-	public static ResultSet returnAllTasksViaUser(User user) throws SQLException
+	public static void addTransaction(User creator, User performer, Task task, double amount) throws SQLException
 	{
-		return FreelancerPersistImpl.returnAllTasksViaUser(user);
-	}
-	public static ResultSet returnTaskPerformer(Task task) throws SQLException
-	{
-		return FreelancerPersistImpl.returnTaskPerformer(task);
-	}
 	
-	public int addTransaction(User creator, User performer, Task task, double amount) throws SQLException
-	{
-		FreelancerPersistImpl persist = new FreelancerPersistImpl();
-		return persist.addTransaction(creator, performer, task, amount);
+		FreelancerPersistImpl.addTransaction(creator, performer, task, amount);
 	}
-	public int deleteTransaction(User creator, Task task, double amount) throws SQLException
+	public static void deleteTransaction(User creator, Task task, double amount) throws SQLException
 	{
-		FreelancerPersistImpl persist = new FreelancerPersistImpl();
-		return persist.deleteTransaction(creator, task, amount);
+		
+		 FreelancerPersistImpl.deleteTransaction(creator, task, amount);
 	}
 	
 
-	public int completeTask(Task task) throws SQLException
-	{
-		FreelancerPersistImpl persist = new FreelancerPersistImpl();
-		return persist.completeTask(task);
-	}
+
 }
