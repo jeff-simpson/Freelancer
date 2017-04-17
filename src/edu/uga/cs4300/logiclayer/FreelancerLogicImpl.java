@@ -218,12 +218,47 @@ public class FreelancerLogicImpl {
 	 
 	 public static  User returnTaskPerformer(Task task) throws SQLException
 		{
-			//needs to user
-			return FreelancerPersistImpl.returnTaskPerformer(task);
+			ResultSet rs = FreelancerPersistImpl.returnTaskPerformer(task);
+			if (!rs.next())
+				return null;
+			else
+			{
+				rs = FreelancerPersistImpl.returnUserByID(rs.getInt(3));
+				if (!rs.next())
+					return null;
+				else
+				{
+					User user = new User();
+					user.setId(rs.getInt(1));
+					user.setFirstName(rs.getString(2));
+					user.setLastName(rs.getString(3));
+					user.setEmail(rs.getString(4));
+					user.setPassword(rs.getString(5));
+					user.setAdmin(rs.getBoolean(6));
+					user.setRating(rs.getInt(7));
+					return user;
+				}
+			}
 		}
-	 public static ArrayList<Task> getTasksGiven(User u) {
-			///needs to return task object, see above in returnAvailableTasks
-			return null;
+	 public static ArrayList<Task> getTasksGiven(User u) throws SQLException {
+			ResultSet rs = FreelancerPersistImpl.returnAvailableTasks();
+			ArrayList<Task> tasks = new ArrayList<Task>();
+			while (rs.next())
+			{
+				if (rs.getInt(6) == u.getId())
+				{
+					Task task = new Task();
+					task.setId(rs.getInt(1));
+					task.setDescription(rs.getString(2));
+					task.setTime(rs.getString(3));
+					task.setPrice(rs.getDouble(4));
+					task.setDifficulty(rs.getInt(5));
+					task.setId(u.getId());
+					task.setLocation(rs.getString(6));
+					tasks.add(task);
+				}
+			}
+			return tasks;
 		}
 	 
 	 public static User returnUserByID(int user_id) throws SQLException
@@ -329,9 +364,18 @@ public class FreelancerLogicImpl {
 	 }
 	 
 	 //IVANO ADDED THESE TO BE FILLED OUT <3
-	 public static boolean verifyUser(String username, String password){ 
-		 //check if the password is good or not
-		 return true;
+	 public static boolean verifyUser(String username, String password) throws SQLException{ 
+		 User user = new User();
+		 user.setUsername(username);
+		 ResultSet rs = FreelancerPersistImpl.returnUser(user);
+		 if (!rs.next())
+			 return false;
+		 else
+		 {
+			 if (rs.getString(5).equals(password))
+				 return true;
+		 }
+		 return false;
 	 }
 
 	public static ArrayList<Task> getTasksTaken(User u) throws SQLException {
@@ -374,9 +418,8 @@ public class FreelancerLogicImpl {
 	
 	public static double returnAccountBalance(User user) throws SQLException
 	{
-		
-		//needs to return a double 
-		return FreelancerPersistImpl.returnAccountBalance(user);
+		ResultSet rs = FreelancerPersistImpl.returnAccountBalance(user);
+		return rs.getDouble(1);
 	}
 	
 	
@@ -387,8 +430,20 @@ public class FreelancerLogicImpl {
 	
 	public static User returnUser(User user) throws SQLException
 	{
-		// needs to return User
-		return FreelancerPersistImpl.returnUserByID(user.getId());
+		ResultSet rs = FreelancerPersistImpl.returnUserByID(user.getId());
+		if (rs.next())
+		{
+			User returned = new User();
+			user.setId(rs.getInt(1));
+			user.setFirstName(rs.getString(2));
+			user.setLastName(rs.getString(3));
+			user.setEmail(rs.getString(4));
+			user.setPassword(rs.getString(5));
+			user.setRating(rs.getDouble(7));
+			user.setAdmin(rs.getBoolean(6));
+			return returned;
+		}
+		else return null;
 	}
 	
 	public static ArrayList<String> returnAllSkills(User user) throws SQLException
@@ -416,6 +471,4 @@ public class FreelancerLogicImpl {
 		 FreelancerPersistImpl.deleteTransaction(creator, task, amount);
 	}
 	
-
-
 }
