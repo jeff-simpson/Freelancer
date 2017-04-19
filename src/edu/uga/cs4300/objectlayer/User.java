@@ -8,7 +8,7 @@ public class User {
 	private String lastName;
 	private String email;
 	private String password;
-	private boolean isAdmin;
+	private int isAdmin = 0;
 	private double rating;
 	private double balancePayable;
 	private double balanceReceivable;
@@ -33,7 +33,7 @@ public class User {
 		return id;
 	}
 
-	public User(int id, String firstName, String lastName, String email, String password, boolean isAdmin, double rating,
+	public User(int id, String firstName, String lastName, String email, String password, int isAdmin, double rating,
 		double balancePayable, double balanceReceivable, double balance, ArrayList<Task> tasksGivenOpen,
 		ArrayList<Task> tasksGivenClosed, ArrayList<Task> tasksTakenOpen, ArrayList<Task> tasksTakenClosed) {
 	super();
@@ -89,11 +89,11 @@ public class User {
 		this.password = password;
 	}
 
-	public boolean isAdmin() {
+	public int isAdmin() {
 		return isAdmin;
 	}
 
-	public void setAdmin(boolean isAdmin) {
+	public void setAdmin(int isAdmin) {
 		this.isAdmin = isAdmin;
 	}
 

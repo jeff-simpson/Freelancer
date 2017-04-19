@@ -218,9 +218,9 @@ public class FreelancerBoundary extends HttpServlet
 	private void myProfile(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		System.out.println("running my profile");
 		User u = (User) request.getSession().getAttribute("user");
-		ArrayList tasks_available = FreelancerLogicImpl.getTasksAvailable(u); 
-		ArrayList tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
-		ArrayList tasks_given = FreelancerLogicImpl.getTasksGiven(u); 
+		ArrayList<Task> tasks_available = FreelancerLogicImpl.returnAvailableTasks(); 
+		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
+		ArrayList<Task> tasks_given = FreelancerLogicImpl.getTasksGiven(u); 
 		
 		root.put("tasks_available", tasks_available);
 		root.put("tasks_taken", tasks_taken);
@@ -232,11 +232,8 @@ public class FreelancerBoundary extends HttpServlet
 
 	private void signOut(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		request.changeSessionId(); 
-		
 		try { response.sendRedirect("index.html"); }
 		catch (IOException e) { e.printStackTrace(); }
-		      
-		
 	}
 
 	private void signUp(HttpServletRequest request, HttpServletResponse response) throws SQLException {
