@@ -20,7 +20,7 @@ public class FreelancerLogicImpl {
 
 	public static int addTask(Task task) throws SQLException
 	 {
-		 FreelancerPersistImpl.addTask(task);
+		FreelancerPersistImpl.addTask(task);
 		ResultSet rs = FreelancerPersistImpl.returnTaskByDescription(task.getDescription()); 
 		int id = 0; 
 		  try
@@ -51,6 +51,29 @@ public class FreelancerLogicImpl {
 	public static void updateTaskStatus(Task task, String status) throws SQLException
 	 {
 		 FreelancerPersistImpl.updateTaskStatus(task, status);
+	 }
+	
+	public static String returnTaskStatus(Task task) throws SQLException
+	 {
+		 String status= "";
+		 
+		 ResultSet rs = FreelancerPersistImpl.returnTaskStatus(task);
+		 
+		 try
+	        {
+	            while (rs.next())
+	            {
+
+	            	status = rs.getString("status");
+
+	            }
+	        }
+	        catch (SQLException e)
+	        {
+	            e.printStackTrace();
+	        }
+		return status;
+		 
 	 }
 	
 	public static ArrayList<Task> returnAvailableTasks() throws SQLException {

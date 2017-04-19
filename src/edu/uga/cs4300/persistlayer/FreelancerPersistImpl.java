@@ -65,6 +65,19 @@ public class FreelancerPersistImpl {
 		
 	}
 	
+	
+	public static ResultSet returnTaskStatus(Task task) throws SQLException
+	{
+		
+		String query = "SELECT * FROM taskStatus "+
+						"WHERE tasks.id ='"+task.getId()+"';";
+		
+		ResultSet rs = DbAccessInterface.retrieve(query);
+		
+		return rs;
+		
+	}
+	
 	public static int deleteTask(Task task) throws SQLException
 	{
 		
