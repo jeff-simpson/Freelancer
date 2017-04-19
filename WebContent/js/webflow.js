@@ -576,14 +576,7 @@
     window.location = url;
   };
 
-  // Webflow.app - Designer-specific methods
-  Webflow.app = Webflow.env() ? {} : null;
-  if (Webflow.app) {
-
-    // Trigger redraw for specific elements
-    var redraw = new Event('__wf_redraw');
-    Webflow.app.redrawElement = function(i, el) { el.dispatchEvent(redraw); };
-
+  if (Webflow.env()) {
     // Webflow.location - Re-route location change to trigger an event
     Webflow.location = function(url) {
       window.dispatchEvent(new CustomEvent('__wf_location', { detail: url }));
