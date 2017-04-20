@@ -225,6 +225,20 @@ public class FreelancerPersistImpl {
 	}
 		
 	
+	public static ResultSet returnFreelancerIDByTask(Task task) throws SQLException
+	{
+		
+		
+		String query = "SELECT * FROM assignee "+
+						"WHERE task_id = '"+ task.getId() +"';";
+//		System.out.println(query);
+		ResultSet rs = DbAccessInterface.retrieve(query);
+		
+		return rs;
+		
+	}
+	
+
 	/// Ratings
 	
 	

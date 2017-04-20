@@ -502,6 +502,33 @@ public class FreelancerLogicImpl {
 		}
 		else return null;
 	}
+	 
+	 
+	 
+	 public static User returnFreelancerByTask(Task task) throws SQLException
+	 {
+		 int id = 0;
+		 
+		 	ResultSet rs = FreelancerPersistImpl.returnFreelancerIDByTask(task);
+	        
+
+	        try
+	        {
+	            while (rs.next())
+	            {
+	            	 id = rs.getInt("performer_id");
+	                
+	              
+	            }
+	        }
+	        catch (SQLException e)
+	        {
+	            e.printStackTrace();
+	        }
+	        
+	        User user = returnUserByID(id);
+	        return user;
+	 }
 	
 	 public static ArrayList<String> returnAllSkills(User user) throws SQLException
 	{
