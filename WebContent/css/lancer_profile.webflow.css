@@ -209,7 +209,7 @@
 
 .div-block-6 {
   width: 100%;
-  height: 500px;
+  height: 400px;
   margin-top: 21px;
   margin-right: 0px;
   margin-left: 0px;
@@ -259,6 +259,9 @@
 
 .unordered-list {
   width: 1200px;
+  margin-top: 68px;
+  margin-right: 0px;
+  margin-left: -141px;
   float: left;
   box-shadow: 1px 1px 3px 0 #000;
 }
@@ -389,10 +392,47 @@
   background-image: linear-gradient(180deg, rgba(9, 14, 170, .5), rgba(9, 14, 170, .5));
 }
 
+.submit-button-6 {
+  width: 50%;
+  height: 50px;
+  margin-top: 39px;
+  float: right;
+  background-image: -webkit-linear-gradient(270deg, rgba(253, 0, 0, .5), rgba(253, 0, 0, .5));
+  background-image: linear-gradient(180deg, rgba(253, 0, 0, .5), rgba(253, 0, 0, .5));
+}
+
+.submit-button-6:hover {
+  background-image: -webkit-linear-gradient(270deg, rgba(230, 8, 8, .5), rgba(230, 8, 8, .5)), -webkit-linear-gradient(270deg, rgba(253, 0, 0, .5), rgba(253, 0, 0, .5));
+  background-image: linear-gradient(180deg, rgba(230, 8, 8, .5), rgba(230, 8, 8, .5)), linear-gradient(180deg, rgba(253, 0, 0, .5), rgba(253, 0, 0, .5));
+}
+
+.submit-button-7 {
+  width: 50%;
+  height: 50px;
+  margin-top: 39px;
+  float: left;
+  background-image: -webkit-linear-gradient(270deg, rgba(14, 197, 116, .5), rgba(14, 197, 116, .5));
+  background-image: linear-gradient(180deg, rgba(14, 197, 116, .5), rgba(14, 197, 116, .5));
+}
+
+.submit-button-7:hover {
+  background-image: -webkit-linear-gradient(270deg, #03bd6a, #03bd6a);
+  background-image: linear-gradient(180deg, #03bd6a, #03bd6a);
+}
+
+.form-4 {
+  margin-bottom: 23px;
+  padding-top: 0px;
+}
+
 html.w-mod-js *[data-ix="new-interaction-3"] {
   opacity: 0;
 }
 
 html.w-mod-js *[data-ix="new-interaction-6"] {
+  opacity: 0;
+}
+
+html.w-mod-js *[data-ix="new-interaction-7"] {
   opacity: 0;
 }
