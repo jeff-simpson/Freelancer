@@ -455,7 +455,29 @@ public class FreelancerLogicImpl {
 	 public static double returnAccountBalance(User user) throws SQLException
 	{
 		ResultSet rs = FreelancerPersistImpl.returnAccountBalance(user);
-		return rs.getDouble(1);
+		
+		
+		double balance = 0.0;
+		 try
+	        {
+	            while (rs.next())
+	            {
+	   
+	            	balance = rs.getDouble("balance");
+	            
+	                
+	  
+	            }
+	        }
+	        catch (SQLException e)
+	        {
+	            e.printStackTrace();
+	        }
+		
+		
+		return balance;
+		
+		
 	}
 	
 	 public static int updateAccountBalance(User user, double balance) throws SQLException 
