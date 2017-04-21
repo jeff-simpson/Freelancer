@@ -94,6 +94,7 @@ public class AjaxBoundary extends HttpServlet
     		
     		 int taskID = Integer.parseInt(request.getParameter("taskID"));
     		 double amount = Integer.parseInt(request.getParameter("payAmount"));
+    		 double rating = Integer.parseInt(request.getParameter("rating"));
     		 
     		User creator = FreelancerLogicImpl.returnUserByID(creatorID);
     		User freelancer = FreelancerLogicImpl.returnUserByID(freelancerID);
@@ -103,6 +104,8 @@ public class AjaxBoundary extends HttpServlet
     		
     			int success = FreelancerLogicImpl.addTransaction( creator,  freelancer,  task,  amount);
     			double accountBalance =FreelancerLogicImpl.returnAccountBalance(creator);
+    			
+    			FreelancerLogicImpl.addRating(creator, rating);
          	    String json = new Gson().toJson(success);
 
          	   //If the above success method works, you can try updating with this new account balance!

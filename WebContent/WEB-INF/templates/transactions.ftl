@@ -56,13 +56,12 @@
 	   	 <input id="payAmount" type="text" name="payAmount" />
 	    <h1 class="heading-10">Current Balance:</h1>
 	    <h1 id= "currentBalance" class="heading-11">$$$$</h1>
-	     <input 
-      
-      
-      
       
         <label class="field-label-2" for="rating">Rating:</label>
         <input class="text-field w-input" data-name="rating" id="rating" maxlength="256" name="rating" placeholder="Required Rating From 1-5" required="required" type="email">
+      
+       <input id ="payButton" class="submit-button-3 w-button" data-ix="new-interaction" data-wait="Please wait..." type="submit" value="Pay">
+      
       </form>
       <div class="w-form-done">
         <div>Thank you! Your submission has been received!</div>
@@ -73,9 +72,9 @@
     </div>
   </div>
   <div class="w-form">
-    <form data-name="Email Form 2" id="email-form-2" name="email-form-2">
-      <input id ="payButton" class="submit-button-3 w-button" data-ix="new-interaction" data-wait="Please wait..." type="submit" value="Pay">
-    </form>
+    <!--<form data-name="Email Form 2" id="email-form-2" name="email-form-2">
+     
+    </form> -->
     <div class="w-form-done" id="successDiv">
       <div>Thank you! Your submission has been received!</div>
     </div>
@@ -99,7 +98,7 @@
 	data: form.serialize(),
 	success: function (data) {
 	var result=data;
-	$('#sucess').attr("value",result);
+	$('#success').attr("value",result);
 	 
 	}
 	});
