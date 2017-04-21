@@ -43,6 +43,8 @@
   </div>
   <div class="div-block w-clearfix">
    
+   
+  <!--- IVANO UPDATE THESE TO BE CORRECT FOR MEEEEEE -!>
     <div class="w-form">
       <form class="form w-clearfix" data-name="Email Form 3" id="email-form-3" name="email-form-3" method="GET" action="AjaxBoundary">
 	       <h1 class="heading-5">Pay To:</h1>
