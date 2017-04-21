@@ -541,12 +541,20 @@ public class FreelancerLogicImpl {
 		return returned;
 	}
 	
-	 public static void addTransaction(User creator, User performer, Task task, double amount) throws SQLException
-	{
+//	 public static void addTransaction(User creator, User performer, Task task, double amount) throws SQLException
+//	{
+//	
+//		FreelancerPersistImpl.addTransaction(creator, performer, task, amount);
+//	}
 	
-		FreelancerPersistImpl.addTransaction(creator, performer, task, amount);
-	}
-	
+	 public static int addTransaction(User creator, User performer, Task task, double amount) throws SQLException
+		{
+		
+			int success = FreelancerPersistImpl.addTransaction(creator, performer, task, amount);
+			return success;
+		}
+	 
+	 
 	 public static void deleteTransaction(User creator, Task task, double amount) throws SQLException
 	{
 		
