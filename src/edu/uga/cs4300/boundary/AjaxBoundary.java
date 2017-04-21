@@ -100,10 +100,14 @@ public class AjaxBoundary extends HttpServlet
     		Task task =FreelancerLogicImpl.returnTaskByID(taskID); 
     		
     		 
-    		 
+    		double accountBalance =FreelancerLogicImpl.returnAccountBalance(creator);
     			int success = FreelancerLogicImpl.addTransaction( creator,  freelancer,  task,  amount);
          	    String json = new Gson().toJson(success);
 
+         	   //If the above success method works, you can try updating with this new account balance!
+//         	   double accountBalance =FreelancerLogicImpl.returnAccountBalance(creator);
+//         	   String json = new Gson().toJson(accountBalance);
+         	    
          	    response.setContentType("application/json");
          	    response.setCharacterEncoding("UTF-8");
          	    response.getWriter().write(json);
