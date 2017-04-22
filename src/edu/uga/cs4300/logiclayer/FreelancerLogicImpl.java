@@ -112,6 +112,46 @@ public class FreelancerLogicImpl {
 			return tasks;
 		}
 	 
+	
+
+	
+	
+	public static ArrayList<Task> returnPastTaskByUser(User user) throws SQLException {
+		// TODO Auto-generated method stub
+		ResultSet rs = FreelancerPersistImpl.returnAvailableTasks(); 
+		ArrayList<Task> tasks = new ArrayList<Task>();
+		 try
+	        {
+	            while (rs.next())
+	            {
+	            	Task task = new Task(); 
+	            	int id = rs.getInt("id");
+	                String description = rs.getString("description");
+	                String time = rs.getString("time");
+	                double price = rs.getDouble("price");
+	                int difficulty = rs.getInt("difficulty");
+	                int user_id = rs.getInt("user_id");
+	                String location = rs.getString("location");
+	                
+	                
+	                task.setId(id);
+	                task.setDescription(description);
+	                task.setTime(time);
+	                task.setPrice(price);
+	                task.setDifficulty(difficulty);
+	                task.setUserID(user_id);
+	                task.setLocation(location);
+	                
+	                tasks.add(task); 
+	            }
+	        }
+	        catch (SQLException e)
+	        {
+	            e.printStackTrace();
+	        }
+		return tasks;
+	}
+	
 	public static  Task returnTaskByID(int task_id) throws SQLException
 	    {
 	       
@@ -541,12 +581,20 @@ public class FreelancerLogicImpl {
 		return returned;
 	}
 	
-	 public static void addTransaction(User creator, User performer, Task task, double amount) throws SQLException
-	{
+//	 public static void addTransaction(User creator, User performer, Task task, double amount) throws SQLException
+//	{
+//	
+//		FreelancerPersistImpl.addTransaction(creator, performer, task, amount);
+//	}
 	
-		FreelancerPersistImpl.addTransaction(creator, performer, task, amount);
-	}
-	
+	 public static int addTransaction(User creator, User performer, Task task, double amount) throws SQLException
+		{
+		
+			int success = FreelancerPersistImpl.addTransaction(creator, performer, task, amount);
+			return success;
+		}
+	 
+	 
 	 public static void deleteTransaction(User creator, Task task, double amount) throws SQLException
 	{
 		

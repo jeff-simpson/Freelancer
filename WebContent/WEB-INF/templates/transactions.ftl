@@ -42,16 +42,26 @@
     <h1 class="heading-4"><strong class="important-text">PAY</strong></h1>
   </div>
   <div class="div-block w-clearfix">
-    <h1 class="heading-5">Pay To:</h1>
-    <h1 class="heading-6">FreelancerName</h1>
-    <h1 class="heading-7">Amount:</h1>
-    <h1 class="heading-9">$$$$</h1>
-    <h1 class="heading-10">Current Balance:</h1>
-    <h1 class="heading-11">$$$$</h1>
+   
+   
+  <!--- IVANO UPDATE THESE TO BE CORRECT FOR MEEEEEE -!>
     <div class="w-form">
-      <form class="form w-clearfix" data-name="Email Form 3" id="email-form-3" name="email-form-3">
+      <form class="form w-clearfix" data-name="Email Form 3" id="email-form-3" name="email-form-3" method="GET" action="AjaxBoundary">
+	       <h1 class="heading-5">Pay To:</h1>
+	   	 <h1 class="heading-6">FreelancerName</h1>
+	   	 <input id="freeLancerID" type="hidden" name="freeLancerID" value ={$freelancerID} />
+	   	 <input id="creatorID" type="hidden" name="creatorID" value ={$creatorID} />
+	   	 <input id="taskID" type="hidden" name="taskID" value ={$taskID} />
+	   	 <label for="payAmount">Amount to Pay:</label><br />
+	   	 <input id="payAmount" type="text" name="payAmount" />
+	    <h1 class="heading-10">Current Balance:</h1>
+	    <h1 id= "currentBalance" class="heading-11">$$$$</h1>
+      
         <label class="field-label-2" for="rating">Rating:</label>
         <input class="text-field w-input" data-name="rating" id="rating" maxlength="256" name="rating" placeholder="Required Rating From 1-5" required="required" type="email">
+      
+       <input id ="payButton" class="submit-button-3 w-button" data-ix="new-interaction" data-wait="Please wait..." type="submit" value="Pay">
+      
       </form>
       <div class="w-form-done">
         <div>Thank you! Your submission has been received!</div>
@@ -62,10 +72,10 @@
     </div>
   </div>
   <div class="w-form">
-    <form data-name="Email Form 2" id="email-form-2" name="email-form-2">
-      <input class="submit-button-3 w-button" data-ix="new-interaction" data-wait="Please wait..." type="submit" value="Pay">
-    </form>
-    <div class="w-form-done">
+    <!--<form data-name="Email Form 2" id="email-form-2" name="email-form-2">
+     
+    </form> -->
+    <div class="w-form-done" id="successDiv">
       <div>Thank you! Your submission has been received!</div>
     </div>
     <div class="w-form-fail">
@@ -76,4 +86,26 @@
   <script src="js/transactions.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
 </body>
+
+<script type="text/javascript">
+ 
+	var form = $('#email-form-3');
+	form.submit(function () {
+	 
+	$.ajax({
+	type: form.attr('method'),
+	url: form.attr('action'),
+	data: form.serialize(),
+	success: function (data) {
+	var result=data;
+	$('#success').attr("value",result);
+	 
+	}
+	});
+	 
+return false;
+});
+</script>
+
+
 </html>
