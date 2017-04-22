@@ -70,8 +70,8 @@ public class FreelancerPersistImpl {
 	{
 		
 		String query = "SELECT * FROM taskStatus "+
-						"WHERE tasks.id ='"+task.getId()+"';";
-		
+						"WHERE task_id ='"+task.getId()+"';";
+		System.out.println(query);
 		ResultSet rs = DbAccessInterface.retrieve(query);
 		
 		return rs;

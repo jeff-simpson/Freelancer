@@ -101,7 +101,14 @@ public class FreelancerLogicImpl {
 		                task.setDifficulty(difficulty);
 		                task.setUserID(user_id);
 		                task.setLocation(location);
+		               
 		                
+		            	ResultSet status = FreelancerPersistImpl.returnTaskStatus(task); 
+						while(status.next()){
+		                String taskStatus = status.getString("taskStatus"); 
+						
+		                task.setTaskStatus(taskStatus);
+						}
 		                tasks.add(task); 
 		            }
 		        }
@@ -132,7 +139,7 @@ public class FreelancerLogicImpl {
 	                int difficulty = rs.getInt("difficulty");
 	                int user_id = rs.getInt("user_id");
 	                String location = rs.getString("location");
-	                
+	                String taskStatus = rs.getString("taskStatus"); 
 	                
 	                task.setId(id);
 	                task.setDescription(description);
@@ -141,7 +148,7 @@ public class FreelancerLogicImpl {
 	                task.setDifficulty(difficulty);
 	                task.setUserID(user_id);
 	                task.setLocation(location);
-	                
+	                task.setTaskStatus(taskStatus);
 	                tasks.add(task); 
 	            }
 	        }
@@ -169,7 +176,7 @@ public class FreelancerLogicImpl {
 	                int difficulty = rs.getInt("difficulty");
 	                int user_id = rs.getInt("user_id");
 	                String location = rs.getString("location");
-	                
+	                String taskStatus = rs.getString("taskStatus");
 	                
 	                task.setId(id);
 	                task.setDescription(description);
@@ -178,8 +185,6 @@ public class FreelancerLogicImpl {
 	                task.setDifficulty(difficulty);
 	                task.setUserID(user_id);
 	                task.setLocation(location);
-
-	                
 	              
 	            }
 	        }
@@ -216,8 +221,9 @@ public class FreelancerLogicImpl {
 	                int difficulty = rs.getInt("difficulty");
 	                int user_id = rs.getInt("user_id");
 	                String location = rs.getString("location");
+	               
 	                
-	                
+	               
 	                task.setId(id);
 	                task.setDescription(description);
 	                task.setTime(time);
@@ -225,6 +231,14 @@ public class FreelancerLogicImpl {
 	                task.setDifficulty(difficulty);
 	                task.setUserID(user_id);
 	                task.setLocation(location);
+	                
+	            	ResultSet status = FreelancerPersistImpl.returnTaskStatus(task); 
+					while(status.next()){
+	                String taskStatus = status.getString("taskStatus"); 
+					
+	                task.setTaskStatus(taskStatus);
+					}
+					
 	                tasks.add(task);
 	                
 	              
@@ -340,6 +354,13 @@ public class FreelancerLogicImpl {
 					task.setId(u.getId());
 					task.setLocation(rs.getString(6));
 					tasks.add(task);
+					
+					ResultSet status = FreelancerPersistImpl.returnTaskStatus(task); 
+					while(status.next()){
+	                String taskStatus = status.getString("taskStatus"); 
+					
+	                task.setTaskStatus(taskStatus);
+					}
 				}
 			}
 			return tasks;
@@ -472,7 +493,7 @@ public class FreelancerLogicImpl {
 	                int difficulty = rs.getInt("difficulty");
 	                int user_id = rs.getInt("user_id");
 	                String location = rs.getString("location");
-	                
+	          
 	                
 	                task.setId(id);
 	                task.setDescription(description);
@@ -481,7 +502,14 @@ public class FreelancerLogicImpl {
 	                task.setDifficulty(difficulty);
 	                task.setUserID(user_id);
 	                task.setLocation(location);
-	                
+	               
+	            	ResultSet status = FreelancerPersistImpl.returnTaskStatus(task); 
+					while(status.next()){
+	                String taskStatus = status.getString("taskStatus"); 
+					
+	                task.setTaskStatus(taskStatus);
+					}
+	              
 	                tasks.add(task); 
 	            }
 	        }

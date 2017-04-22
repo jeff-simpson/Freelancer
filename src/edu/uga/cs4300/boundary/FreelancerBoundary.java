@@ -99,7 +99,7 @@ public class FreelancerBoundary extends HttpServlet
 		}
         else if(button.equals("Sign In!")){ 
         	try {
-        		
+        		System.out.println("Sign in");
 				runLogin(request,response);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -144,7 +144,7 @@ public class FreelancerBoundary extends HttpServlet
 				e.printStackTrace();
 			} 
         }
-        else if(button.equals("Create A Task")){
+        else if(button.equals("Create Task")){
         	try {
 				runTemplate(request,response,"submittask"); 
 			} catch (SQLException e) {
@@ -160,9 +160,132 @@ public class FreelancerBoundary extends HttpServlet
 				e.printStackTrace();
 			} 
         }
+        else if(button.equals("Home")){ 
+        	try {
+				runWelcome(request,response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+        }
+        else if(button.equals("In Progress")|| button.equals("Completed") || button.equals("Not Started")){ 
+        	try {
+				theirProfile(request,response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+        }
+        
+        else if(button.equals("Accept")){ 
+        	try {
+				acceptPerformerOffer(request,response); 
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+        }
+        else if(button.equals("Decline")){ 
+        	
+        	try {
+				declinePerformerOffer(request,response); 
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+        }
+        
+        else if(button.equals("Pay")){ 
+        	
+        	try {
+				payUser(request,response); 
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+        }
+        
+        else if(button.equals("Decline")){ 
+        	
+        	try {
+				declinePerformerOffer(request,response); 
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+        }
+        
+        else if(button.equals("Offer Your Services")){ 
+        	
+        	try {
+				offerServices(request,response); 
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+        }	
+        
     }
+    
 
-    private void runLogin(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+    private void payUser(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+    	int taskID = Integer.parseInt(request.getParameter("taskID")); 
+    	
+    	Task t = FreelancerLogicImpl.returnTaskByID(taskID); 
+    	User b = FreelancerLogicImpl.returnTaskPerformer(t); 
+    	User a = (User) request.getSession().getAttribute("user");
+		
+    	FreelancerLogicImpl.addTransaction(a, b, t, t.getPrice()); 
+		runWelcome(request,response);
+	}
+
+	private void offerServices(HttpServletRequest request, HttpServletResponse response) {
+		int taskID = Integer.parseInt(request.getParameter("taskID")); 
+		Task t = FreelancerLogicImpl.returnTaskByID(taskID);
+		User offerer = (User) request.getSession().getAttribute("user");
+		FreelancerLogicImpl.offerServices(offerer, t);
+		
+	}
+
+	private void declinePerformerOffer(HttpServletRequest request, HttpServletResponse response) {
+		int taskID = Integer.parseInt(request.getParameter("taskID")); 
+		int userID = Integer.parseInt(request.getParameter("performerID")); 
+		User u = FreelancerLogicImpl.returnUserByID(userID);
+		Task t = FreelancerLogicImpl.returnTaskByID(taskID);
+		FreelancerLogicImpl.updateOfferStatus(t,u, "decline" ); 
+		
+	}
+
+	private void acceptPerformerOffer(HttpServletRequest request, HttpServletResponse response) {
+		int taskID = Integer.parseInt(request.getParameter("taskID")); 
+		int userID = Integer.parseInt(request.getParameter("performerID")); 
+		User u = FreelancerLogicImpl.returnUserByID(userID);
+		Task t = FreelancerLogicImpl.returnTaskByID(taskID);
+		FreelancerLogicImpl.updateOfferStatus(t,u, "accept" ); 
+		
+	}
+
+	private void theirProfile(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+    	System.out.println("running my profile");
+		User u = (User) request.getSession().getAttribute("user");
+		System.out.println(u.getEmail());
+		
+		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
+		ArrayList<Task> tasks_given = FreelancerLogicImpl.getTasksGiven(u); 
+		ArrayList<String> skills = FreelancerLogicImpl.returnAllSkills(u);
+		
+		root.put("skills", skills);
+		root.put("tasks_taken", tasks_taken);
+		root.put("tasks_given", tasks_given);
+		root.put("user", u);
+		root.put("NAME", u.getFirstName()); 
+		root.put("RANK", FreelancerLogicImpl.returnAverageRating(u));
+		root.put("EMAIL", u.getEmail());
+		
+		runTemplate(request,response,"theirprofile"); 
+	}
+
+	private void runLogin(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		String username = request.getParameter("username"); 
 		String password = request.getParameter("password");
 		boolean verified = FreelancerLogicImpl.verifyUser(username, password);
@@ -218,6 +341,7 @@ public class FreelancerBoundary extends HttpServlet
 	private void myProfile(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		System.out.println("running my profile");
 		User u = (User) request.getSession().getAttribute("user");
+		System.out.println(u.getEmail());
 		ArrayList<Task> tasks_available = FreelancerLogicImpl.returnAvailableTasks(); 
 		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
 		ArrayList<Task> tasks_given = FreelancerLogicImpl.getTasksGiven(u); 
@@ -226,7 +350,11 @@ public class FreelancerBoundary extends HttpServlet
 		root.put("tasks_taken", tasks_taken);
 		root.put("tasks_given", tasks_given);
 		root.put("user", u);
-		runTemplate(request,response,"myprofile"); 
+		root.put("NAME", u.getFirstName()); 
+		root.put("RANK", FreelancerLogicImpl.returnAverageRating(u));
+		root.put("EMAIL", u.getEmail());
+		
+		runTemplate(request,response,"profile"); 
 		
 	}
 

@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 import com.mysql.jdbc.Connection;
 
-import edu.uga.cs.servlet.Actor;
+
 import edu.uga.cs4300.logiclayer.FreelancerLogicImpl;
 import edu.uga.cs4300.objectlayer.Task;
 import edu.uga.cs4300.objectlayer.User;
@@ -31,7 +31,7 @@ import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 
 
-@WebServlet("/FreelancerBoundary")
+@WebServlet("/AjaxBoundary")
 public class AjaxBoundary extends HttpServlet
 {
     private static final long serialVersionUID = 1L;
@@ -86,6 +86,7 @@ public class AjaxBoundary extends HttpServlet
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+    	/**
     	 try
          {
     		 
@@ -123,6 +124,7 @@ public class AjaxBoundary extends HttpServlet
          {
              e.printStackTrace();
          }
+         */
     }
 
    

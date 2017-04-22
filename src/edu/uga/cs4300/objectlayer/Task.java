@@ -9,7 +9,7 @@ public class Task {
 	private int difficulty;
 	private String location;
 	private int userID;
-
+	private String taskStatus; 
 	public Task ()
 	{
 		
@@ -98,6 +98,18 @@ public class Task {
 
 	public void setLocation(String location) {
 		this.location = location;
+	}
+
+
+
+	public String getTaskStatus() {
+		return taskStatus;
+	}
+
+
+
+	public void setTaskStatus(String taskStatus) {
+		this.taskStatus = taskStatus;
 	}
 	
 	
