@@ -109,7 +109,7 @@ public class FreelancerBoundary extends HttpServlet
      
         else if(button.equals("Sign Up!")){ 
         	try {
-        		
+        		System.out.println("Sign up!");
 				signUp(request,response);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -179,7 +179,7 @@ public class FreelancerBoundary extends HttpServlet
         
         else if(button.equals("Accept")){ 
         	try {
-				acceptPerformerOffer(request,response); 
+				acceptPerformerOffer(request,response);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -188,7 +188,7 @@ public class FreelancerBoundary extends HttpServlet
         else if(button.equals("Decline")){ 
         	
         	try {
-				declinePerformerOffer(request,response); 
+				declinePerformerOffer(request,response);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -208,7 +208,7 @@ public class FreelancerBoundary extends HttpServlet
         else if(button.equals("Decline")){ 
         	
         	try {
-				declinePerformerOffer(request,response); 
+				declinePerformerOffer(request,response);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -218,7 +218,7 @@ public class FreelancerBoundary extends HttpServlet
         else if(button.equals("Offer Your Services")){ 
         	
         	try {
-				offerServices(request,response); 
+				offerServices(request,response);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -239,29 +239,29 @@ public class FreelancerBoundary extends HttpServlet
 		runWelcome(request,response);
 	}
 
-	private void offerServices(HttpServletRequest request, HttpServletResponse response) {
+	private void offerServices(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		int taskID = Integer.parseInt(request.getParameter("taskID")); 
 		Task t = FreelancerLogicImpl.returnTaskByID(taskID);
 		User offerer = (User) request.getSession().getAttribute("user");
-		FreelancerLogicImpl.offerServices(offerer, t);
+	//	FreelancerLogicImpl.offerServices(offerer, t);
 		
 	}
 
-	private void declinePerformerOffer(HttpServletRequest request, HttpServletResponse response) {
+	private void declinePerformerOffer(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		int taskID = Integer.parseInt(request.getParameter("taskID")); 
 		int userID = Integer.parseInt(request.getParameter("performerID")); 
 		User u = FreelancerLogicImpl.returnUserByID(userID);
 		Task t = FreelancerLogicImpl.returnTaskByID(taskID);
-		FreelancerLogicImpl.updateOfferStatus(t,u, "decline" ); 
+	//	FreelancerLogicImpl.updateOfferStatus(t,u, "decline" ); 
 		
 	}
 
-	private void acceptPerformerOffer(HttpServletRequest request, HttpServletResponse response) {
+	private void acceptPerformerOffer(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		int taskID = Integer.parseInt(request.getParameter("taskID")); 
 		int userID = Integer.parseInt(request.getParameter("performerID")); 
 		User u = FreelancerLogicImpl.returnUserByID(userID);
 		Task t = FreelancerLogicImpl.returnTaskByID(taskID);
-		FreelancerLogicImpl.updateOfferStatus(t,u, "accept" ); 
+		//FreelancerLogicImpl.updateOfferStatus(t,u, "accept" ); 
 		
 	}
 
@@ -374,6 +374,8 @@ public class FreelancerBoundary extends HttpServlet
 		 u.setPassword(password);
 		 u.setFirstName(firstName);
 		 u.setLastName(lastName);
+		 
+		 System.out.println(u.getEmail());
 		 FreelancerLogicImpl.addUser(u);
 		 request.getSession().setAttribute("user", u);
 		 runWelcome(request,response); 
@@ -399,10 +401,12 @@ public class FreelancerBoundary extends HttpServlet
     	runTemplate(request, response,"welcome");
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+ protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-		System.out.println("POSTPOST"); 
+	 System.out.println("POSTPOST"); 
         doGet(request, response);
     }
+	
+	
 
 }
