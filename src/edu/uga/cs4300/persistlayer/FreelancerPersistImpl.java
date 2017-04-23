@@ -57,7 +57,7 @@ public class FreelancerPersistImpl {
 	public static int createTaskStatusEntry(Task task) throws SQLException
 	{
 		
-		String query ="INSERT INTO tasksStatus" +
+		String query ="INSERT INTO taskStatus" +
 				"(task_id, status) VALUES" +
 				"('"+ task.getId() + "','open');";
 								

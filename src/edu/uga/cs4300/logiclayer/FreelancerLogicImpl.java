@@ -31,10 +31,14 @@ public class FreelancerLogicImpl {
 	              
 	            }
 	        }
-		  finally{}
+		  	catch (SQLException e)
+	        {
+	            e.printStackTrace();
+	        }
 		  
 		  Task newTask = returnTaskByID(id);
 		  FreelancerPersistImpl.createTaskStatusEntry(newTask);
+		  System.out.println("New Task Added");
 		return id; 
 	 }
 	 
@@ -105,7 +109,7 @@ public class FreelancerLogicImpl {
 		                
 		            	ResultSet status = FreelancerPersistImpl.returnTaskStatus(task); 
 						while(status.next()){
-		                String taskStatus = status.getString("taskStatus"); 
+		                String taskStatus = status.getString("status"); 
 						
 		                task.setTaskStatus(taskStatus);
 						}
@@ -139,7 +143,7 @@ public class FreelancerLogicImpl {
 	                int difficulty = rs.getInt("difficulty");
 	                int user_id = rs.getInt("user_id");
 	                String location = rs.getString("location");
-	                String taskStatus = rs.getString("taskStatus"); 
+	                String taskStatus = rs.getString("status"); 
 	                
 	                task.setId(id);
 	                task.setDescription(description);
@@ -159,7 +163,7 @@ public class FreelancerLogicImpl {
 		return tasks;
 	}
 	
-	public static  Task returnTaskByID(int task_id) throws SQLException
+	public static Task returnTaskByID(int task_id) throws SQLException
 	    {
 	       
 	        ResultSet rs = FreelancerPersistImpl.returnTaskByID(task_id);
@@ -176,7 +180,7 @@ public class FreelancerLogicImpl {
 	                int difficulty = rs.getInt("difficulty");
 	                int user_id = rs.getInt("user_id");
 	                String location = rs.getString("location");
-	                String taskStatus = rs.getString("taskStatus");
+	               // String taskStatus = rs.getString("taskStatus");
 	                
 	                task.setId(id);
 	                task.setDescription(description);
@@ -234,7 +238,7 @@ public class FreelancerLogicImpl {
 	                
 	            	ResultSet status = FreelancerPersistImpl.returnTaskStatus(task); 
 					while(status.next()){
-	                String taskStatus = status.getString("taskStatus"); 
+	                String taskStatus = status.getString("status"); 
 					
 	                task.setTaskStatus(taskStatus);
 					}
@@ -357,7 +361,7 @@ public class FreelancerLogicImpl {
 					
 					ResultSet status = FreelancerPersistImpl.returnTaskStatus(task); 
 					while(status.next()){
-	                String taskStatus = status.getString("taskStatus"); 
+	                String taskStatus = status.getString("status"); 
 					
 	                task.setTaskStatus(taskStatus);
 					}
@@ -505,7 +509,7 @@ public class FreelancerLogicImpl {
 	               
 	            	ResultSet status = FreelancerPersistImpl.returnTaskStatus(task); 
 					while(status.next()){
-	                String taskStatus = status.getString("taskStatus"); 
+	                String taskStatus = status.getString("status"); 
 					
 	                task.setTaskStatus(taskStatus);
 					}

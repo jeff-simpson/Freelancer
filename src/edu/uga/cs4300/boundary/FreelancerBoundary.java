@@ -309,6 +309,7 @@ public class FreelancerBoundary extends HttpServlet
 		
 		String description = request.getParameter("description");
 		t.setDescription(description);
+		System.out.println(description);
 		
 		LocalDateTime dateTime = LocalDateTime.now();
 		String time = dateTime.getHour() +":" + dateTime.getMinute() + " "+ dateTime.getDayOfMonth() + "/" + dateTime.getDayOfMonth() + "/" + dateTime.getYear(); 
