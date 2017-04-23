@@ -520,6 +520,9 @@ public class FreelancerLogicImpl {
 		return tasks;
 	}
 
+	 
+	 
+	 
 	 public static double returnAccountBalance(User user) throws SQLException
 	{
 		ResultSet rs = FreelancerPersistImpl.returnAccountBalance(user);

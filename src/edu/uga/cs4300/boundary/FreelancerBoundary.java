@@ -388,7 +388,7 @@ public class FreelancerBoundary extends HttpServlet
 		System.out.println("inside welcome!");
 		User u = (User) request.getSession().getAttribute("user") ;
 		System.out.println("TRYING TO GET TASKS");
-		ArrayList<Task> tasks_available = FreelancerLogicImpl.getTasksTaken(u); 
+		ArrayList<Task> tasks_available = FreelancerLogicImpl.returnAvailableTasks(); 
 		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
 		ArrayList<Task> tasks_given = FreelancerLogicImpl.getTasksTaken(u);
 		User user = FreelancerLogicImpl.returnUserByEmail(u.getEmail());
