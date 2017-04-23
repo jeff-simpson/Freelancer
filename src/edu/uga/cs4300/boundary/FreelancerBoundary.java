@@ -146,6 +146,7 @@ public class FreelancerBoundary extends HttpServlet
         }
         else if(button.equals("Create Task")){
         	try {
+        		System.out.println("Here we are jeff");
 				runTemplate(request,response,"submittask"); 
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -386,9 +387,9 @@ public class FreelancerBoundary extends HttpServlet
 		System.out.println("inside welcome!");
 		User u = (User) request.getSession().getAttribute("user") ;
 		System.out.println("TRYING TO GET TASKS");
-		ArrayList tasks_available = FreelancerLogicImpl.getTasksTaken(u); 
-		ArrayList tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
-		ArrayList tasks_given = FreelancerLogicImpl.getTasksTaken(u);
+		ArrayList<Task> tasks_available = FreelancerLogicImpl.getTasksTaken(u); 
+		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
+		ArrayList<Task> tasks_given = FreelancerLogicImpl.getTasksTaken(u);
 		User user = FreelancerLogicImpl.returnUserByEmail(u.getEmail());
 		for(Object e : tasks_available){ 
 			System.out.println(((Task) e).getDescription());

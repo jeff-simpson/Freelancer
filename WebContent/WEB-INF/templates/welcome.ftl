@@ -22,20 +22,14 @@
 </head>
 <body class="body">
   <div class="section w-clearfix">
-    <h1 class="heading">Welcome bla bla</h1>
+    <h1 class="heading">Welcome ${user.firstName}</h1>
     <div class="w-form">
-      <form class="form w-clearfix" data-name="Email Form" id="email-form" name="email-form">
-        <input class="submit-button-5 w-button" data-wait="Please wait..." type="submit" value="My Profile">
-        <input class="submit-button-5 w-button" data-wait="Please wait..." type="submit" value="Create Task">
-        <input class="submit-button-5 w-button" data-wait="Please wait..." type="submit" value="Sign Out">
-        <input class="submit-button-7 w-button" data-wait="Please wait..." type="submit" value="Home">
+      <form method="POST" action="FreelancerBoundary" class="form w-clearfix" data-name="Email Form" id="email-form" name="email-form">
+        <input class="submit-button-5 w-button" data-wait="Please wait..." type="submit" name = "button" id ="My Profile" value="My Profile">
+        <input class="submit-button-5 w-button" data-wait="Please wait..." type="submit" name = "button" id ="Create Task" value="Create Task">
+        <input class="submit-button-5 w-button" data-wait="Please wait..." type="submit" name = "button" id ="Sign Out" value="Sign Out">
+        <input class="submit-button-7 w-button" data-wait="Please wait..." type="submit" name = "button" id ="Home" value="Home">
       </form>
-      <div class="w-form-done">
-        <div>Thank you! Your submission has been received!</div>
-      </div>
-      <div class="w-form-fail">
-        <div>Oops! Something went wrong while submitting the form</div>
-      </div>
     </div>
   </div>
   <div class="div-block w-clearfix">
@@ -45,7 +39,7 @@
     </div>
   </div>
   <ul class="unordered-list-2">
-    <#assign m = task_taken>
+    <#assign m = tasks_taken>
     <#list m as taken>
     <li class="list-item-4 w-clearfix">
       <h3 class="heading-36">Description:</h3>
@@ -74,7 +68,7 @@
     </#list>
   </ul>
   <ul class="unordered-list">
-    <#assign m = task_given>
+    <#assign m = tasks_given>
     <#list m as task>
     <li class="list-item w-clearfix">
       <h2 class="heading-19">Description:</h2>
@@ -120,7 +114,7 @@
     </div>
   </div>
   <ul class="unordered-list-3">
-    <#assign m = task_available>
+    <#assign m = tasks_available>
     <#list m as task>
     <li class="list-item-7 w-clearfix">
       <div class="form-wrapper-3 w-clearfix w-form">
