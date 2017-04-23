@@ -328,6 +328,7 @@ public class FreelancerBoundary extends HttpServlet
 		
 		int taskID = FreelancerLogicImpl.addTask(t);
 		Task p = FreelancerLogicImpl.returnTaskByID(taskID); 
+		System.out.println(p.getDescription());
 		root.put("task", p);
 		root.put("user", u);
 		
