@@ -118,7 +118,7 @@
     <li class="list-item-7 w-clearfix">
       <div class="form-wrapper-3 w-clearfix w-form">
         <form class="form-5 w-clearfix" data-name="Email Form 5" id="email-form-5" name="email-form-5">
-          <input class="submit-button-10 w-button" data-wait="Please wait..." type="submit" value="Accept">
+          <input class="submit-button-10 w-button" data-wait="Please wait..." type="submit" value="Request">
         </form>
       </div>
       <h3 class="heading-47">Description:</h3>
