@@ -342,8 +342,9 @@ public class FreelancerLogicImpl {
 			}
 		}
 	
+	 
 	 public static ArrayList<Task> getTasksGiven(User u) throws SQLException {
-			ResultSet rs = FreelancerPersistImpl.returnAvailableTasks();
+			ResultSet rs = FreelancerPersistImpl.returnCurrentTasksGivenByUser(u);
 			ArrayList<Task> tasks = new ArrayList<Task>();
 			while (rs.next())
 			{
