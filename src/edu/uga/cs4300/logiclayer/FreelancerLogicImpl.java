@@ -479,7 +479,7 @@ public class FreelancerLogicImpl {
 
 	 public static ArrayList<Task> getTasksTaken(User u) throws SQLException {
 		// TODO Auto-generated method stub
-		ResultSet rs = FreelancerPersistImpl.returnAllTasks(); 
+		ResultSet rs = FreelancerPersistImpl.returnTaskTakenByUser(u); 
 		ArrayList<Task> tasks = new ArrayList<Task>();
 		 try
 	        {

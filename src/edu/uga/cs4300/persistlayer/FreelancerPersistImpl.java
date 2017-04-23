@@ -153,6 +153,18 @@ public class FreelancerPersistImpl {
 		
 	}
 	
+	public static ResultSet returnTaskTakenByUser(User user) throws SQLException
+	{
+		
+		String query = "SELECT * FROM tasks, taskStatus "+
+						"WHERE tasks.id = taskStatus.task_id and taskStatus.status = 'pending' and user_id ='"+user.getId()+"';";
+		
+		ResultSet rs = DbAccessInterface.retrieve(query);
+		
+		return rs;
+		
+	}
+	
 	//// User 
 	
 	public static int addUser(User user) throws SQLException
