@@ -129,6 +129,7 @@
 .heading-8 {
   display: block;
   margin: -126px auto 160px;
+  opacity: 0;
   font-size: 210px;
   text-align: center;
 }
@@ -208,12 +209,15 @@
 }
 
 .div-block-6 {
-  width: 100%;
   height: 500px;
-  margin-top: 5px;
+  margin: 1px 4px 6px -8px;
+  background-image: -webkit-linear-gradient(270deg, rgba(198, 197, 211, .5), rgba(198, 197, 211, .5));
+  background-image: linear-gradient(180deg, rgba(198, 197, 211, .5), rgba(198, 197, 211, .5));
+  box-shadow: 1px 1px 3px 0 #000;
 }
 
 .heading-12 {
+  margin-left: 20px;
   float: left;
   font-family: Exo, sans-serif;
   color: #220cbb;
@@ -234,16 +238,18 @@
 
 .text-field {
   width: 25%;
-  margin-top: -44px;
-  float: right;
+  margin-top: 18px;
+  margin-right: 0px;
+  margin-left: -22px;
+  float: left;
 }
 
 .submit-button-3 {
-  margin-top: -43px;
-  margin-right: 8px;
+  margin: -46px 8px 13px 34px;
   padding-top: 8px;
   padding-bottom: 7px;
-  float: right;
+  float: left;
+  clear: left;
 }
 
 .submit-button-3:hover {
@@ -263,19 +269,29 @@
 
 .div-block-7 {
   height: 500px;
+  margin-top: -6px;
+  margin-bottom: 59px;
+  margin-left: -8px;
+  padding-top: 1px;
+  background-image: -webkit-linear-gradient(270deg, rgba(98, 115, 169, .5), rgba(98, 115, 169, .5));
+  background-image: linear-gradient(180deg, rgba(98, 115, 169, .5), rgba(98, 115, 169, .5));
+  box-shadow: 1px 1px 3px 0 #000;
 }
 
 .heading-13 {
-  margin-top: 62px;
+  margin-top: 87px;
+  margin-left: 15px;
+  padding-top: 0px;
+  padding-bottom: 11px;
   font-family: Exo, sans-serif;
   color: #220cbb;
   font-size: 50px;
 }
 
 .button-3 {
-  margin-top: -118px;
-  margin-right: 504px;
-  margin-left: 416px;
+  margin-top: -121px;
+  margin-right: 518px;
+  margin-left: 290px;
   padding-top: 7px;
   float: left;
 }
@@ -287,17 +303,17 @@
 
 .text-field-2 {
   width: 200px;
-  margin-top: -50px;
-  margin-right: 20px;
-  margin-bottom: 13px;
-  padding-top: 11px;
-  float: right;
+  margin: 32px 20px -66px 126px;
+  padding-top: 10px;
+  float: left;
 }
 
 .submit-button-4 {
-  margin-top: -50px;
+  margin-top: 27px;
   margin-right: 14px;
-  float: right;
+  margin-left: 19px;
+  float: left;
+  clear: left;
 }
 
 .submit-button-4:hover {
@@ -306,7 +322,7 @@
 }
 
 .heading-14 {
-  margin-left: 6px;
+  margin-left: 20px;
   float: left;
   font-family: Exo, sans-serif;
   color: #220cbb;
@@ -314,7 +330,7 @@
 
 .text-block {
   margin-top: 33px;
-  margin-left: 28px;
+  margin-left: 68px;
   float: left;
   font-family: Exo, sans-serif;
   font-size: 50px;
@@ -327,6 +343,7 @@
 }
 
 .heading-15 {
+  margin-top: -20px;
   font-family: Exo, sans-serif;
   color: #220cbb;
   font-size: 50px;
@@ -336,6 +353,65 @@
   box-shadow: 1px 1px 3px 0 #000;
 }
 
+.button-4 {
+  margin-top: 143px;
+  margin-right: -2px;
+  margin-left: -148px;
+  float: left;
+}
+
+.button-4:hover {
+  background-image: -webkit-linear-gradient(270deg, rgba(9, 14, 170, .5), rgba(9, 14, 170, .5));
+  background-image: linear-gradient(180deg, rgba(9, 14, 170, .5), rgba(9, 14, 170, .5));
+}
+
+.form-3 {
+  margin-top: 0px;
+  margin-bottom: -305px;
+  margin-left: 1px;
+  padding-top: 142px;
+  padding-bottom: 0px;
+}
+
+.text-field-3 {
+  width: 200px;
+  margin-top: 90px;
+  margin-right: 18px;
+  float: right;
+}
+
+.submit-button-5 {
+  margin-top: 0px;
+  margin-right: 14px;
+  margin-left: -124px;
+  float: right;
+}
+
+.text-field-4 {
+  width: 200px;
+  margin-top: 0px;
+  margin-right: 21px;
+  margin-left: 0px;
+  float: right;
+}
+
+.button_addmoney {
+  margin-left: 18px;
+}
+
+.button_addmoney:hover {
+  background-image: -webkit-linear-gradient(270deg, rgba(9, 14, 170, .5), rgba(9, 14, 170, .5));
+  background-image: linear-gradient(180deg, rgba(9, 14, 170, .5), rgba(9, 14, 170, .5));
+}
+
 html.w-mod-js *[data-ix="new-interaction-3"] {
+  opacity: 0;
+}
+
+html.w-mod-js *[data-ix="new-interaction-6"] {
+  opacity: 0;
+}
+
+html.w-mod-js *[data-ix="new-interaction-7"] {
   opacity: 0;
 }
