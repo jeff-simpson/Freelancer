@@ -341,32 +341,41 @@ public class FreelancerLogicImpl {
 				}
 			}
 		}
-	
+	 
 	 
 	 public static ArrayList<Task> getTasksGiven(User u) throws SQLException {
 			ResultSet rs = FreelancerPersistImpl.returnCurrentTasksGivenByUser(u);
 			ArrayList<Task> tasks = new ArrayList<Task>();
 			while (rs.next())
 			{
-				if (rs.getInt(6) == u.getId())
-				{
+				
+				
+				                
+	                int id = rs.getInt("id");
+	                String description = rs.getString("description");
+	                String time = rs.getString("time");
+	                double price = rs.getDouble("price");
+	                int difficulty = rs.getInt("difficulty");
+	                int user_id = rs.getInt("user_id");
+	                String location = rs.getString("location");
+	                String status = rs.getString("status");
+	               
+	                
 					Task task = new Task();
-					task.setId(rs.getInt(1));
-					task.setDescription(rs.getString(2));
-					task.setTime(rs.getString(3));
-					task.setPrice(rs.getDouble(4));
-					task.setDifficulty(rs.getInt(5));
-					task.setId(u.getId());
-					task.setLocation(rs.getString(6));
+					task.setId(id);
+					task.setDescription(description);
+					task.setTime(time);
+					task.setPrice(price);
+					task.setDifficulty(difficulty);
+					task.setId(user_id);
+					task.setLocation(location);
+					task.setTaskStatus(status);
+					
+	            //    task.setTaskStatus(taskStatus);
+	                System.out.println("here!!");
+	                System.out.println(status);
 					tasks.add(task);
-					
-					ResultSet status = FreelancerPersistImpl.returnTaskStatus(task); 
-					while(status.next()){
-	                String taskStatus = status.getString("status"); 
-					
-	                task.setTaskStatus(taskStatus);
-					}
-				}
+				
 			}
 			return tasks;
 		}
@@ -389,9 +398,7 @@ public class FreelancerLogicImpl {
 	                int isAdmin = rs.getInt("isAdmin");
 	                double rating = rs.getDouble("rating");
 
-	               
-	                
-	                
+	  	             
 	                user.setId(id);
 	                user.setFirstName(firstName);
 	                user.setLastName(lastName);
