@@ -48,8 +48,10 @@
       </div>
       <div class="w-form">
         <form method="POST" action="FreelancerBoundary" class="form-4 w-clearfix" data-name="Email Form 2" id="email-form-2" name="email-form-2">
-          <input class="submit-button-6 w-button"  type="submit" value="Decline Offer">
-          <input class="submit-button-7 w-button"  type="submit" value="Accept Offer">
+          <input class="submit-button-6 w-button" name = "button"  type="submit" value="Decline Offer">
+          <input class="submit-button-7 w-button" name = "button" type="submit" value="Accept Offer">
+          <input type=hidden name="taskID" value =${taskid}>
+          <input type=hidden name="performerID" value =${userofferer.id}>
         </form>
         
       </div>

@@ -194,7 +194,7 @@ public class FreelancerBoundary extends HttpServlet
 			} 
         }
         
-        else if(button.equals("Accept")){ 
+        else if(button.equals("Accept Offer")){ 
         	try {
 				acceptPerformerOffer(request,response);
 			} catch (SQLException e) {
@@ -202,7 +202,7 @@ public class FreelancerBoundary extends HttpServlet
 				e.printStackTrace();
 			} 
         }
-        else if(button.equals("Decline")){ 
+        else if(button.equals("Decline Offer")){ 
         	
         	try {
 				declinePerformerOffer(request,response);
@@ -330,27 +330,27 @@ public class FreelancerBoundary extends HttpServlet
 		
 		Task t = FreelancerLogicImpl.returnTaskByID(Integer.parseInt(taskid));
 		System.out.println("Task id: "+ t.getId());
-		User u = FreelancerLogicImpl.returnOfferer(t); 
+		User offerer = FreelancerLogicImpl.returnOfferer(t); 
 		
-		System.out.println("GOING TO USER'S ACCOUNT: " + u.getEmail());
+		System.out.println("GOING TO USER'S ACCOUNT: " + offerer.getEmail());
 		
-		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
-		ArrayList<Task> tasks_given = FreelancerLogicImpl.getTasksGiven(u); 
+		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(offerer); 
+		ArrayList<Task> tasks_given = FreelancerLogicImpl.getTasksGiven(offerer); 
 		
 		ArrayList<Task> task_history = new ArrayList<Task>(); 
 		task_history.addAll(tasks_taken); 
 		task_history.addAll(tasks_given); 
 		
-		ArrayList<String> skills = FreelancerLogicImpl.returnAllSkills(u);
-		
+		ArrayList<String> skills = FreelancerLogicImpl.returnAllSkills(offerer);
+		root.put("taskid", taskid);
 		root.put("skills", skills);
 		root.put("tasks_taken", tasks_taken);
 		root.put("tasks_given", tasks_given);
 		root.put("task_history", task_history);
-		root.put("user", u);
-		root.put("NAME", u.getFirstName()); 
-		root.put("RANK", FreelancerLogicImpl.returnAverageRating(u));
-		root.put("EMAIL", u.getEmail());
+		root.put("userofferer", offerer);
+		root.put("NAME", offerer.getFirstName()); 
+		root.put("RANK", FreelancerLogicImpl.returnAverageRating(offerer));
+		root.put("EMAIL", offerer.getEmail());
 		
 		runTemplate(request,response,"profile"); 
 	}

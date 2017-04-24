@@ -38,7 +38,7 @@
   </div>
   <ul class="unordered-list-2">
     <#assign m = tasks_taken>
-    <#list m as taken>
+    <#list m as task>
     <li class="list-item-4 w-clearfix">
       <h3 class="heading-36">Description:</h3>
       <h3 class="heading-37">${task.description}</h3>
