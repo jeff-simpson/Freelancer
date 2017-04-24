@@ -8,6 +8,7 @@
   <link href="css/welcome.css" rel="stylesheet" type="text/css">
   <link href="css/welcome.webflow.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+  <script src="js/jeff.js"></script>
   <script type="text/javascript">
     WebFont.load({
       google: {
@@ -21,7 +22,7 @@
 <body class="body">
   <div class="section w-clearfix">
     <h1 class="heading">Welcome ${user.firstName}</h1>
-    <div class="w-form">
+       <div class="w-form">
       <form method="POST" action="FreelancerBoundary" class="form w-clearfix" data-name="Email Form" id="email-form" name="email-form">
       <input class="submit-button-5 w-button" data-wait="Please wait..." type="submit" name = "button" id ="Sign Out" value="Sign Out">
         <input class="submit-button-5 w-button" data-wait="Please wait..." type="submit" name = "button" id ="My Profile" value="My Profile">

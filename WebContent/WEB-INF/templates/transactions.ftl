@@ -5,7 +5,6 @@
   <title>Transactions Page</title>
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
-  <link href="css/normalize_transactions.css" rel="stylesheet" type="text/css">
   <link href="css/transactions.css" rel="stylesheet" type="text/css">
   <link href="css/transactions-page.webflow.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
@@ -16,7 +15,6 @@
       }
     });
   </script>
-  <script src="js/modernizr_transactions.js" type="text/javascript"></script>
   <link href="https://daks2k3a4ib2z.cloudfront.net/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
   <link href="https://daks2k3a4ib2z.cloudfront.net/img/webclip.png" rel="apple-touch-icon">
 </head>
@@ -43,8 +41,7 @@
   </div>
   <div class="div-block w-clearfix">
    
-   
-  <!--- IVANO UPDATE THESE TO BE CORRECT FOR MEEEEEE -!>
+  
     <div class="w-form">
       <form class="form w-clearfix" data-name="Email Form 3" id="email-form-3" name="email-form-3" method="GET" action="AjaxBoundary">
 	       <h1 class="heading-5">Pay To:</h1>

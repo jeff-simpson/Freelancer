@@ -215,7 +215,8 @@ public class FreelancerBoundary extends HttpServlet
         else if(button.equals("Pay")){ 
         	
         	try {
-				payUser(request,response); 
+//				payUser(request,response); 
+        		runTemplate(request,response,"transactions"); 
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
