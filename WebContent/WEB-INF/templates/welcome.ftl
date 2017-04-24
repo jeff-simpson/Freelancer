@@ -76,13 +76,9 @@
       <h3 class="heading-32">${task.difficulty}</h3>
       <h3 class="heading-33">Location:</h3>
       <h3 class="heading-34">${task.location}</h3>
-      <h3 class="heading-35">Status:</h3>
       
-      <#if task.taskStatus == 'pending request'>
-      	<h4> Pending Request </h4>
-      </#if>
-      pending request
-      <!--<h3 class="heading-34">${task.taskStatus}</h3>-->
+     
+     
       
 	  <div class="w-form">
         <form method="POST" action="FreelancerBoundary" class="w-clearfix" data-name="Email Form 6" id="email-form-6" name="email-form-6">
