@@ -477,20 +477,21 @@ public class FreelancerBoundary extends HttpServlet
 		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
 		ArrayList<Task> tasks_given = FreelancerLogicImpl.getTasksGiven(u);
 		User user = FreelancerLogicImpl.returnUserByEmail(u.getEmail());
-		System.out.println("User On Welcome Page Do this: " + u.getId());
-		for(Object e : tasks_available){ 
-			System.out.println(((Task) e).getDescription());
-		}
+		//System.out.println("User On Welcome Page Do this: " + user.getId());
+//		for(Object e : tasks_available){ 
+//			System.out.println(((Task) e).getDescription());
+//		}
+//		
+//		System.out.println("task given");
+//		for(Object d : tasks_given){ 
+//			System.out.println(((Task) d).getDescription());
+//		}
 		
-		System.out.println("task given");
-		for(Object d : tasks_given){ 
-			System.out.println(((Task) d).getDescription());
-		}
-		request.getSession().setAttribute("user", user);
-		root.put("User",user); 
+		root.put("user",user); 
 		root.put("tasks_available", tasks_available);
 		root.put("tasks_taken", tasks_taken);
 		root.put("tasks_given", tasks_given);
+		request.getSession().setAttribute("user", user);
     	runTemplate(request, response,"welcome");
 	}
 
