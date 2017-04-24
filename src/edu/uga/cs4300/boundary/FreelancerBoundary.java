@@ -462,7 +462,9 @@ public class FreelancerBoundary extends HttpServlet
 		 
 		 System.out.println(u.getEmail());
 		 FreelancerLogicImpl.addUser(u);
-		 request.getSession().setAttribute("user", u);
+		 User u2 = FreelancerLogicImpl.returnUserByEmail(u.getEmail());
+//		 System.out.println("Session First Name" + u2.getFirstName());
+		 request.getSession().setAttribute("user", u2);
 		 runWelcome(request,response); 
 		
 	}
@@ -475,6 +477,7 @@ public class FreelancerBoundary extends HttpServlet
 		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
 		ArrayList<Task> tasks_given = FreelancerLogicImpl.getTasksGiven(u);
 		User user = FreelancerLogicImpl.returnUserByEmail(u.getEmail());
+		System.out.println("User On Welcome Page Do this: " + u.getId());
 		for(Object e : tasks_available){ 
 			System.out.println(((Task) e).getDescription());
 		}

@@ -297,6 +297,8 @@ public class FreelancerLogicImpl {
 	 public static void addUser(User user) throws SQLException
 	 {
 		 FreelancerPersistImpl.addUser(user);
+		 User user2 = returnUserByEmail(user.getEmail());
+		 FreelancerPersistImpl.createNewAccountBalance(user2);
 	 }
 	 
 	 public static void updateUser(User user)throws SQLException
