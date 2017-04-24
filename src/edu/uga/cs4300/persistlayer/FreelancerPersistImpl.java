@@ -470,11 +470,27 @@ public class FreelancerPersistImpl {
 		String query ="UPDATE accountBalance " +
 					"SET balance = '" + balance +
 					"' WHERE user_id = '"+ user.getId()+"';";
-		System.out.println("query");
+		
+		System.out.println(query);
 								
 		return DbAccessInterface.create(query);
 		
 	}
+	
+	public static int createNewAccountBalance(User user) throws SQLException
+	{
+		
+		String query ="INSERT INTO accountBalance " +
+					" (user_id, balance) VALUES " +
+					"("+ user.getId()+ ","+100.00+");";
+		
+		System.out.println(query);
+								
+		return DbAccessInterface.create(query);
+		
+	
+	}
+	
 	
 
 }
