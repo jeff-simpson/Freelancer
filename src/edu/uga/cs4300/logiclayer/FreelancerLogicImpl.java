@@ -635,7 +635,9 @@ public class FreelancerLogicImpl {
 	
 	 public static int updateAccountBalance(User user, double balance) throws SQLException 
 	{
-		return FreelancerPersistImpl.updateAccountBalance(user, balance);
+		 double currentBalance = returnAccountBalance(user);
+		 double newBalance = currentBalance + balance;
+		return FreelancerPersistImpl.updateAccountBalance(user, newBalance);
 	}
 	
 	 public static User returnUser(User user) throws SQLException
