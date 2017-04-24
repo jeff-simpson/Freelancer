@@ -110,7 +110,7 @@
 .heading-6 {
   display: block;
   margin-top: 0px;
-  margin-left: 20%;
+  margin-left: 9%;
   float: left;
   font-family: Bitter, serif;
 }
@@ -118,8 +118,8 @@
 .heading-7 {
   display: block;
   margin-top: 2px;
-  margin-right: 33%;
-  margin-left: auto;
+  margin-right: 45%;
+  margin-left: 0px;
   padding-right: 0px;
   float: right;
   font-family: Bitter, serif;
@@ -222,6 +222,7 @@
   font-family: Exo, sans-serif;
   color: #220cbb;
   font-size: 50px;
+  text-shadow: 0 1px 0 #000;
 }
 
 .button-2 {
@@ -263,6 +264,7 @@
 
 .unordered-list {
   width: 1200px;
+  margin-top: 19px;
   float: left;
   box-shadow: 1px 1px 3px 0 #000;
 }
@@ -286,6 +288,7 @@
   font-family: Exo, sans-serif;
   color: #220cbb;
   font-size: 50px;
+  text-shadow: 0 1px 0 #000;
 }
 
 .button-3 {
@@ -303,7 +306,7 @@
 
 .text-field-2 {
   width: 200px;
-  margin: 32px 20px -66px 126px;
+  margin: 32px 20px -66px 136px;
   padding-top: 10px;
   float: left;
 }
@@ -322,14 +325,16 @@
 }
 
 .heading-14 {
+  margin-top: 39px;
   margin-left: 20px;
   float: left;
   font-family: Exo, sans-serif;
   color: #220cbb;
+  text-shadow: 0 1px 0 #000;
 }
 
 .text-block {
-  margin-top: 33px;
+  margin-top: 54px;
   margin-left: 68px;
   float: left;
   font-family: Exo, sans-serif;
@@ -347,6 +352,7 @@
   font-family: Exo, sans-serif;
   color: #220cbb;
   font-size: 50px;
+  text-shadow: 0 1px 0 #000;
 }
 
 .unordered-list-2 {
@@ -402,6 +408,102 @@
 .button_addmoney:hover {
   background-image: -webkit-linear-gradient(270deg, rgba(9, 14, 170, .5), rgba(9, 14, 170, .5));
   background-image: linear-gradient(180deg, rgba(9, 14, 170, .5), rgba(9, 14, 170, .5));
+}
+
+.list-item {
+  height: 260px;
+}
+
+.heading-16 {
+  margin-top: -18px;
+  margin-left: 2px;
+  float: left;
+  clear: left;
+  font-family: Exo, sans-serif;
+  font-size: 28px;
+  font-style: italic;
+}
+
+.heading-17 {
+  margin-top: -18px;
+  margin-left: 11px;
+  float: left;
+  font-size: 28px;
+}
+
+.heading-18 {
+  margin-top: 4px;
+  margin-left: 2px;
+  float: left;
+  clear: left;
+  font-size: 28px;
+  font-style: italic;
+}
+
+.heading-19 {
+  margin-top: 4px;
+  margin-left: 10px;
+  float: left;
+  font-size: 28px;
+}
+
+.heading-20 {
+  margin-top: 4px;
+  margin-left: 2px;
+  float: left;
+  clear: left;
+  font-size: 28px;
+  font-style: italic;
+}
+
+.heading-21 {
+  margin-top: 4px;
+  margin-left: 10px;
+  float: left;
+  font-size: 28px;
+}
+
+.heading-22 {
+  margin-top: 4px;
+  margin-left: 2px;
+  float: left;
+  clear: left;
+  font-size: 28px;
+  font-style: italic;
+}
+
+.heading-23 {
+  float: left;
+}
+
+.heading-24 {
+  margin-top: 4px;
+  margin-left: 9px;
+  float: left;
+  font-size: 28px;
+}
+
+.heading-25 {
+  margin-top: 4px;
+  margin-left: 2px;
+  float: left;
+  clear: left;
+  font-family: Bitter, serif;
+  font-size: 28px;
+  font-style: italic;
+}
+
+.heading-26 {
+  margin-top: 4px;
+  margin-left: 14px;
+  float: left;
+  font-size: 28px;
+}
+
+.heading-27 {
+  margin-top: 4px;
+  margin-left: 7px;
+  float: left;
 }
 
 html.w-mod-js *[data-ix="new-interaction-3"] {
