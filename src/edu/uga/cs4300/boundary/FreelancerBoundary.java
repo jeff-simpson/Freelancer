@@ -251,10 +251,26 @@ public class FreelancerBoundary extends HttpServlet
 				e.printStackTrace();
 			} 
         }	
+        else if(button.equals("Add to Balance")){ 
+        	
+        	try {
+				updateBalance(request,response); 
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+        }
     }
     
 
-    private void addSkill(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+    private void updateBalance(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+		Double balance = (Double) request.getAttribute("balance"); 
+		User u = (User) request.getSession().getAttribute("user"); 
+		FreelancerLogicImpl.updateAccountBalance(u,balance); 
+		myProfile(request,response);
+	}
+
+	private void addSkill(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		String skill = request.getParameter("skill"); 
 		User u = (User) request.getSession().getAttribute("user"); 
 		FreelancerLogicImpl.addSkills(u, skill);
@@ -389,11 +405,12 @@ public class FreelancerBoundary extends HttpServlet
 		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
 		ArrayList<Task> tasks_given = FreelancerLogicImpl.getTasksGiven(u); 
 		ArrayList<String> skills = FreelancerLogicImpl.returnAllSkills(u);
+		double balance = FreelancerLogicImpl.returnAccountBalance(u);
 		for(String e: skills){ 
 			System.out.println(e);
 		}
 		root.put("skills", skills);
-		
+		root.put("balance", balance);
 		root.put("tasks_available", tasks_available);
 		root.put("tasks_taken", tasks_taken);
 		root.put("tasks_given", tasks_given);

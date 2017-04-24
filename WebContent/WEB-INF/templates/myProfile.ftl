@@ -55,22 +55,18 @@
         <input class="submit-button-3 w-button" data-ix="new-interaction-3" data-wait="Please wait..." type="submit" name= "button" value="Add Skill">
       </form>
     </div>
-    <ul class="unordered-list">
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
+   
   </div>
   <div class="div-block-7 w-clearfix">
     <h1 class="heading-13">Bank Information:</h1><a class="button_addmoney w-button" data-ix="new-interaction-4" href="#">Add Money</a>
     <div class="w-form">
-      <form class="w-clearfix" data-name="Email Form 3" id="email-form-3" name="email-form-3">
-        <input class="text-field-2 w-input" data-ix="new-interaction-3" data-name="Email" id="email" maxlength="256" name="email" placeholder="Enter Amount" required="required" type="text">
-        <input class="submit-button-4 w-button" data-ix="new-interaction-3" data-wait="Please wait..." type="submit" value="Submit">
+      <form method="POST" action="FreelancerBoundary" class="w-clearfix" data-name="Email Form 3" id="email-form-3" name="email-form-3">
+        <input class="text-field-2 w-input" data-ix="new-interaction-3" data-name="Email" id="email" maxlength="256" name="balance" placeholder="Enter Amount" required="required" type="text">
+        <input class="submit-button-4 w-button" data-ix="new-interaction-3" data-wait="Please wait..." type="submit" name = "button" value="Add to Balance">
       </form>
     </div>
     <h1 class="heading-14">Balance:</h1>
-    <div class="text-block">$$$</div>
+    <div class="text-block">${balance}</div>
   </div>
   <div class="div-block-8">
     <h1 class="heading-15">Task History:</h1>

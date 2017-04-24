@@ -512,12 +512,19 @@ public class FreelancerLogicImpl {
 		 
 		 User user = returnUserByEmail(username);
 		 System.out.println("verifying user:" + username+ " systempass: " + user.getPassword() + " entered pass: " + password + " ");
+		 try{ 
 		 if(user.getPassword().equals(password)){
 			 return true;
 		 }
 		 else{
-		 return false;
+			 return false;
+			 }
+		 } 
+		 catch(Exception e){ 
+			 return false; 
 		 }
+		 
+		 
 	 }
 
 	 public static ArrayList<Task> getTasksTaken(User u) throws SQLException {
@@ -675,15 +682,17 @@ public class FreelancerLogicImpl {
 	 }
 	
 	 public static ArrayList<String> returnAllSkills(User user) throws SQLException
-	{
-		ArrayList<String> returned = new ArrayList<String>();
-		ResultSet skills = FreelancerPersistImpl.returnAllSkills(user);
-		while (skills.next())
-		{
-			returned.add(skills.getString(1));
-		}
-		return returned;
-	}
+	 {
+	 ArrayList<String> skills = new ArrayList<String>();
+	 ResultSet rs = FreelancerPersistImpl.returnAllSkills(user);
+	 while (rs.next())
+	 {
+	 String skill = rs.getString("skill");
+	 skills.add(skill);
+	 }
+	 return skills;
+	 }
+
 	
 //	 public static void addTransaction(User creator, User performer, Task task, double amount) throws SQLException
 //	{
