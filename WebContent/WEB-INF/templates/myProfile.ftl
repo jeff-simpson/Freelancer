@@ -45,7 +45,7 @@
     <div class="w-form">
       <form method="POST" action="FreelancerBoundary" class="form-2 w-clearfix" data-name="Email Form 2" id="email-form-2" name="email-form-2">
         <input class="text-field w-input" data-ix="new-interaction-3" data-name="Name" id="name" maxlength="256" name="name" placeholder="Enter your skill" required="required" type="text">
-        <input class="submit-button-3 w-button" data-ix="new-interaction-3" data-wait="Please wait..." type="submit" value="Submit">
+        <input class="submit-button-3 w-button" name="button" data-ix="new-interaction-3" data-wait="Please wait..." type="submit" value="Submit">
       </form>
     </div>
     <ul class="unordered-list">
@@ -60,7 +60,7 @@
     <div class="w-form">
       <form method="POST" action="FreelancerBoundary" class="w-clearfix" data-name="Email Form 3" id="email-form-3" name="email-form-3">
         <input class="text-field-2 w-input" data-ix="new-interaction-3" data-name="Email" id="email" maxlength="256" name="email" placeholder="Enter Amount" required="required" type="text">
-        <input class="submit-button-4 w-button" data-ix="new-interaction-3" data-wait="Please wait..." type="submit" value="Submit">
+        <input class="submit-button-4 w-button" name="button" data-ix="new-interaction-3" data-wait="Please wait..." type="submit" value="Submit">
       </form>
     </div>
     <h1 class="heading-14">Balance:</h1>
