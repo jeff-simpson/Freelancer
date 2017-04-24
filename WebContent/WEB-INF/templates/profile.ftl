@@ -26,9 +26,10 @@
       <h1 class="heading-10">Freelanc</h1>
       <h1 class="heading-11" data-ix="new-interaction">r</h1>
       <div class="w-form">
-        <form form method="POST" action="FreelancerBoundary" class="form w-clearfix" data-name="Email Form" id="email-form" name="email-form">
-          <input class="submit-button-2 w-button"  type="submit" value="Sign Out">
-          <input class="submit-button w-button"  type="submit" value="Home">
+       <form method="POST" action="FreelancerBoundary" class="form w-clearfix" data-name="Email Form" id="email-form" name="email-form">
+          <input class="submit-button-2 w-button" name = "button" type="submit" value="Sign Out">
+          <input class="submit-button w-button"  name = "button" type="submit" value="Create Task">
+          <input class="submit-button w-button"  name = "button" type="submit" value="Home">
         </form>
         <div class="w-form-done">
           <div>Thank you! Your submission has been received!</div>
@@ -46,35 +47,43 @@
         <h1 class="heading-7">${EMAIL}</h1>
       </div>
       <div class="w-form">
-        <form class="form-4 w-clearfix" data-name="Email Form 2" id="email-form-2" name="email-form-2">
-          <input class="submit-button-6 w-button" data-wait="Please wait..." type="submit" value="Decline">
-          <input class="submit-button-7 w-button" data-wait="Please wait..." type="submit" value="Accept">
+        <form method="POST" action="FreelancerBoundary" class="form-4 w-clearfix" data-name="Email Form 2" id="email-form-2" name="email-form-2">
+          <input class="submit-button-6 w-button"  type="submit" value="Decline Offer">
+          <input class="submit-button-7 w-button"  type="submit" value="Accept Offer">
         </form>
-        <div class="w-form-done">
-          <div>Thank you! Your submission has been received!</div>
-        </div>
-        <div class="w-form-fail">
-          <div>Oops! Something went wrong while submitting the form</div>
-        </div>
+        
       </div>
     </div>
   </div>
   <div class="div-block-6 w-clearfix">
     <!--SKILLS LIST FROM DATABASE-->
     <h1 class="heading-12">Skills:</h1>
-    <ul class="unordered-list">
-      <li></li>
-      <li></li>
-      <li></li>
+   <ul>
+    <#assign m = skills>
+    <#list m as skill>
+    <li> ${skill} <li>
+    </#list>
     </ul>
   </div>
   <div class="div-block-8">
     <!--TASK HISTORY LIST FROM DATABASE-->
     <h1 class="heading-15">Task History:</h1>
-    <ul class="unordered-list-2">
-      <li></li>
-      <li></li>
-      <li></li>
+    <ul>
+   <#assign m = task_history>
+    <#list m as task>
+    <li class="list-item-7 w-clearfix">
+      <h3 class="heading-47">Description:</h3>
+      <h3 class="heading-48">${task.description}</h3>
+      <h3 class="heading-49">Time:</h3>
+      <h3 class="heading-50">${task.time}</h3>
+      <h3 class="heading-51">Price:</h3>
+      <h3 class="heading-52">${task.price}</h3>
+      <h3 class="heading-53">Difficulty:</h3>
+      <h3 class="heading-54">${task.difficulty}</h3>
+      <h3 class="heading-55">Location:</h3>
+      <h3 class="heading-56">${task.location}</h3>
+    </li>
+    </#list>
     </ul>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>

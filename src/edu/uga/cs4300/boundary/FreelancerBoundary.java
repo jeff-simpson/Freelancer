@@ -336,11 +336,17 @@ public class FreelancerBoundary extends HttpServlet
 		
 		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
 		ArrayList<Task> tasks_given = FreelancerLogicImpl.getTasksGiven(u); 
+		
+		ArrayList<Task> task_history = new ArrayList<Task>(); 
+		task_history.addAll(tasks_taken); 
+		task_history.addAll(tasks_given); 
+		
 		ArrayList<String> skills = FreelancerLogicImpl.returnAllSkills(u);
 		
 		root.put("skills", skills);
 		root.put("tasks_taken", tasks_taken);
 		root.put("tasks_given", tasks_given);
+		root.put("task_history", task_history);
 		root.put("user", u);
 		root.put("NAME", u.getFirstName()); 
 		root.put("RANK", FreelancerLogicImpl.returnAverageRating(u));
