@@ -124,6 +124,50 @@ public class FreelancerLogicImpl {
 		}
 	 
 	
+	public static ArrayList<Task> returnAvailableTasksNotYours(User user) throws SQLException {
+		// TODO Auto-generated method stub
+		ResultSet rs = FreelancerPersistImpl.returnAvailableTasksNotYours(user); 
+		ArrayList<Task> tasks = new ArrayList<Task>();
+		 try
+	        {
+	            while (rs.next())
+	            {
+	            	Task task = new Task(); 
+	            	int id = rs.getInt("id");
+	                String description = rs.getString("description");
+	                String time = rs.getString("time");
+	                double price = rs.getDouble("price");
+	                int difficulty = rs.getInt("difficulty");
+	                int user_id = rs.getInt("user_id");
+	                String location = rs.getString("location");
+	                
+	                
+	                task.setId(id);
+	                task.setDescription(description);
+	                task.setTime(time);
+	                task.setPrice(price);
+	                task.setDifficulty(difficulty);
+	                task.setUserID(user_id);
+	                task.setLocation(location);
+	               
+	                
+	            	ResultSet status = FreelancerPersistImpl.returnTaskStatus(task); 
+					while(status.next()){
+	                String taskStatus = status.getString("status"); 
+					
+	                task.setTaskStatus(taskStatus);
+					}
+	                tasks.add(task); 
+	            }
+	        }
+	        catch (SQLException e)
+	        {
+	            e.printStackTrace();
+	        }
+		return tasks;
+	}
+	
+	
 
 	
 	
@@ -224,7 +268,7 @@ public class FreelancerLogicImpl {
 		
 		if(status =="accept")
 		{
-			String taskStatus ="pending";
+			String taskStatus ="in progress";
 			updateTaskStatus(task, taskStatus);
 		}
 		

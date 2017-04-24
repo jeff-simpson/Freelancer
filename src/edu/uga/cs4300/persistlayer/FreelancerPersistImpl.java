@@ -141,6 +141,19 @@ public class FreelancerPersistImpl {
 		
 	}
 	
+	
+	public static ResultSet returnAvailableTasksNotYours(User user) throws SQLException
+	{
+		
+		String query = "SELECT * FROM tasks, taskStatus "+
+						"WHERE tasks.id = taskStatus.task_id and taskStatus.status = 'open' and user_id !='"+user.getId()+"' ;";
+		
+		ResultSet rs = DbAccessInterface.retrieve(query);
+		
+		return rs;
+		
+	}
+	
 	public static ResultSet returnPastTaskByUser(User user) throws SQLException
 	{
 		
@@ -157,7 +170,7 @@ public class FreelancerPersistImpl {
 	{
 		
 		String query = "SELECT tasks.id, tasks.description, tasks.time, tasks.price, tasks.difficulty, tasks.user_id, tasks.location, taskStatus.status FROM tasks, taskStatus "+
-						"WHERE tasks.id = taskStatus.task_id and taskStatus.status = 'pending' and user_id ='"+user.getId()+"';";
+						"WHERE tasks.id = taskStatus.task_id and taskStatus.status = 'pending' and performer_id ='"+user.getId()+"';";
 		
 		ResultSet rs = DbAccessInterface.retrieve(query);
 		
