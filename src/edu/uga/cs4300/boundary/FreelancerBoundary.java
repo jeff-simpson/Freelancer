@@ -183,7 +183,7 @@ public class FreelancerBoundary extends HttpServlet
 				e.printStackTrace();
 			} 
         }
-        else if(button.equals("In Progress")|| button.equals("Open")|| button.equals("Completed") || button.equals("Not Started")|| button.equals("pending")){ 
+        else if(button.equals("In Progress")|| button.equals("Completed") || button.equals("Not Started")|| button.equals("pending")){ 
         	try {
         		System.out.println("hit pending");
         		
@@ -193,7 +193,14 @@ public class FreelancerBoundary extends HttpServlet
 				e.printStackTrace();
 			} 
         }
-        
+        else if(button.equals("Open")){ 
+        	try {
+				runWelcome(request,response); 
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+        }
         else if(button.equals("Accept Offer")){ 
         	try {
 				acceptPerformerOffer(request,response);
@@ -274,11 +281,11 @@ public class FreelancerBoundary extends HttpServlet
     
 
     private void markComplete(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-		
-    	
+	
     	int taskID = Integer.parseInt(request.getParameter("taskID")); 
 		Task t = FreelancerLogicImpl.returnTaskByID(taskID);
-		FreelancerLogicImpl.updateTaskStatus(t, "Completed");
+		FreelancerLogicImpl.updateTaskStatus(t, "Awaiting Payment");
+		runWelcome(request,response); 
     }
 
 	private void updateBalance(HttpServletRequest request, HttpServletResponse response) throws SQLException {
