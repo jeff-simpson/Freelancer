@@ -56,7 +56,7 @@
 		<form class="w-clearfix" method="POST" action="FreelancerBoundary" data-name="Email Form 7" id="email-form-7" name="email-form-7">
 		  <input type=hidden name="taskID" value =${task.id}>
 		  
-          <input class="submit-button-13 w-button" name = "button" type="submit" value="${task.taskStatus}">
+          <input class="submit-button-13 w-button" name = "button" type="submit" value="Mark Complete">
         </form>
       </div>
     </li>
@@ -76,8 +76,6 @@
       <h3 class="heading-32">${task.difficulty}</h3>
       <h3 class="heading-33">Location:</h3>
       <h3 class="heading-34">${task.location}</h3>
-      
-     
      
       
 	  <div class="w-form">
@@ -92,16 +90,6 @@
     </#list>
   </ul>
   <div class="text-block-3">TASKS AVAILABLE:</div>
-  <div class="form-wrapper w-clearfix w-form">
-    <form method="POST" action="FreelancerBoundary" class="form-2" data-name="Email Form 2" id="email-form-2" name="email-form-2">
-      <select class="filter-by w-select" data-name="filterBy" id="filterBy" name="filterBy">
-        <option value="">Filter By: Price</option>
-        <option value="Second">Filter By: A-Z</option>
-        <option value="Third">Filter By: Z-A</option>
-      </select>
-    </form>
-  
-  </div>
   <ul class="unordered-list-3">
     <#assign m = tasks_available>
     <#list m as task>
