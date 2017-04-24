@@ -5,7 +5,6 @@
   <title>Final Proj Freemarkers</title>
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
-  <link href="css/normalize_welcome.css" rel="stylesheet" type="text/css">
   <link href="css/welcome.css" rel="stylesheet" type="text/css">
   <link href="css/welcome.webflow.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
@@ -52,9 +51,10 @@
       <h3 class="heading-44">Location:</h3>
       <h3 class="heading-45">${task.location}</h3>
       <h3 class="heading-46">Status:</h3>
+      <h3 class="heading-45">${task.taskStatus}</h3>
       <div class="w-form">
-        <form class="w-clearfix" data-name="Email Form 7" id="email-form-7" name="email-form-7">
-          <input class="submit-button-13 w-button" data-wait="Please wait..." type="submit" value="${task.status}">
+   <!--     <form class="w-clearfix" data-name="Email Form 7" id="email-form-7" name="email-form-7">
+          <input class="submit-button-13 w-button" data-wait="Please wait..." type="submit" value="${task.taskStatus}">
         </form>
         <div class="w-form-done">
           <div>Thank you! Your submission has been received!</div>
@@ -81,9 +81,11 @@
       <h3 class="heading-33">Location:</h3>
       <h3 class="heading-34">${task.location}</h3>
       <h3 class="heading-35">Status:</h3>
-      <div class="w-form">
+      <h3 class="heading-34">${task.taskStatus}</h3>
+      
+   <!--   <div class="w-form">
         <form class="w-clearfix" data-name="Email Form 6" id="email-form-6" name="email-form-6">
-          <input class="submit-button-11 w-button" data-wait="Please wait..." type="submit" value="${task.location}">
+          <input class="submit-button-11 w-button" data-wait="Please wait..." type="submit" value="${task.taskStatus}">
           <input class="submit-button-12 w-button" data-wait="Please wait..." type="submit" value="Pay">
         </form>
         <div class="w-form-done">
@@ -92,7 +94,7 @@
         <div class="w-form-fail">
           <div>Oops! Something went wrong while submitting the form</div>
         </div>
-      </div>
+      </div>-->
     </li>
     </#list>
   </ul>
