@@ -81,7 +81,7 @@
       
 	  <div class="w-form">
         <form method="POST" action="FreelancerBoundary" class="w-clearfix" data-name="Email Form 6" id="email-form-6" name="email-form-6">
-          <input class="submit-button-11 w-button" name = "button" type="submit" value=${task.taskStatus}>
+          <input class="submit-button-11 w-button" name = "button" type="submit" value="${task.taskStatus}">
           <input type=hidden name="gtaskID" value =${task.id}>
           <input class="submit-button-12 w-button" name = "button" type="submit" value="Pay">
         </form>
