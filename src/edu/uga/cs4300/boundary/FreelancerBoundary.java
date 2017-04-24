@@ -22,6 +22,7 @@ import edu.uga.cs4300.logiclayer.FreelancerLogicImpl;
 import edu.uga.cs4300.objectlayer.Task;
 import edu.uga.cs4300.objectlayer.User;
 import edu.uga.cs4300.persistlayer.DatabaseAccess;
+import edu.uga.cs4300.persistlayer.FreelancerPersistImpl;
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapperBuilder;
 import freemarker.template.SimpleHash;
@@ -182,8 +183,10 @@ public class FreelancerBoundary extends HttpServlet
 				e.printStackTrace();
 			} 
         }
-        else if(button.equals("In Progress")|| button.equals("Open")|| button.equals("Completed") || button.equals("Not Started")){ 
+        else if(button.equals("In Progress")|| button.equals("Open")|| button.equals("Completed") || button.equals("Not Started")|| button.equals("pending")){ 
         	try {
+        		System.out.println("hit pending");
+        		
 				theirProfile(request,response);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -229,7 +232,7 @@ public class FreelancerBoundary extends HttpServlet
 			} 
         }
         
-        else if(button.equals("Request")){ 
+        else if(button.equals("Offer Your Services")){ 
         	
         	try {
 				offerServices(request,response);
@@ -286,7 +289,9 @@ public class FreelancerBoundary extends HttpServlet
 
 	private void theirProfile(HttpServletRequest request, HttpServletResponse response) throws SQLException {
     	System.out.println("running my profile");
-		User u = (User) request.getSession().getAttribute("user");
+		int taskid = Integer.parseInt(request.getParameter("taskAcceptRequest")); 
+		Task t = FreelancerLogicImpl.returnTaskByID(taskid);
+		User u = FreelancerLogicImpl.returnTaskPerformer(t);
 		System.out.println(u.getEmail());
 		
 		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
@@ -317,7 +322,7 @@ public class FreelancerBoundary extends HttpServlet
 		runWelcome(request,response); 
 		}
 		else{
-			runTemplate(request,response,"login");
+			runTemplate(request,response,"loginError");
 		}
 	}
 
@@ -351,7 +356,7 @@ public class FreelancerBoundary extends HttpServlet
 		root.put("task", p);
 		root.put("user", u);
 		
-		viewTask(request,response,p.getId()+""); 
+		runWelcome(request,response); 
 
 	}
 	

@@ -399,7 +399,7 @@ public class FreelancerPersistImpl {
 	{
 		
 		
-		String query = "SELECT * FROM asignee "+
+		String query = "SELECT * FROM assignee "+
 						"WHERE task_id ='"+ task.getId() +"';";
 		
 		ResultSet rs = DbAccessInterface.retrieve(query);

@@ -23,9 +23,9 @@
     <h1 class="heading">Welcome ${user.firstName}</h1>
     <div class="w-form">
       <form method="POST" action="FreelancerBoundary" class="form w-clearfix" data-name="Email Form" id="email-form" name="email-form">
+      <input class="submit-button-5 w-button" data-wait="Please wait..." type="submit" name = "button" id ="Sign Out" value="Sign Out">
         <input class="submit-button-5 w-button" data-wait="Please wait..." type="submit" name = "button" id ="My Profile" value="My Profile">
         <input class="submit-button-5 w-button" data-wait="Please wait..." type="submit" name = "button" id ="Create Task" value="Create Task">
-        <input class="submit-button-5 w-button" data-wait="Please wait..." type="submit" name = "button" id ="Sign Out" value="Sign Out">
         <input class="submit-button-7 w-button" data-wait="Please wait..." type="submit" name = "button" id ="Home" value="Home">
       </form>
     </div>
@@ -53,10 +53,10 @@
       <h3 class="heading-46">Status:</h3>
       <h3 class="heading-45">${task.taskStatus}</h3>
       <div class="w-form">
-		<form class="w-clearfix" method="post" action="FreelancerBoundary" data-name="Email Form 7" id="email-form-7" name="email-form-7">
+		<form class="w-clearfix" method="POST" action="FreelancerBoundary" data-name="Email Form 7" id="email-form-7" name="email-form-7">
 		  <input type=hidden name="taskID" value =${task.id}>
 		  <input type=hidden id = "welcomeTakeTaskID" name ="welcomeTakeTaskID" value=${task.id} >
-          <input class="submit-button-13 w-button" data-wait="Please wait..." type="submit" value="${task.taskStatus}">
+          <input class="submit-button-13 w-button" name = "button" type="submit" value="${task.taskStatus}">
         </form>
       </div>
     </li>
@@ -78,30 +78,26 @@
       <h3 class="heading-34">${task.location}</h3>
       <h3 class="heading-35">Status:</h3>
       
-      <#if ${task.taskStatus} == 'pending request'>
+      <#if task.taskStatus == 'pending request'>
       	<h4> Pending Request </h4>
       </#if>
       pending request
       <!--<h3 class="heading-34">${task.taskStatus}</h3>-->
       
 	  <div class="w-form">
-        <form class="w-clearfix" data-name="Email Form 6" id="email-form-6" name="email-form-6">
-          <input class="submit-button-11 w-button" data-wait="Please wait..." type="submit" value="${task.taskStatus}">
-          <input class="submit-button-12 w-button" data-wait="Please wait..." type="submit" value="Pay">
+        <form method="POST" action="FreelancerBoundary" class="w-clearfix" data-name="Email Form 6" id="email-form-6" name="email-form-6">
+          <input class="submit-button-11 w-button" name = "button" type="submit" value=${task.taskStatus}>
+          <input type=hidden id = "welcomeTakeTaskID" name ="taskAcceptRequest" value=${task.id} >
+          <input class="submit-button-12 w-button" name = "button" type="submit" value="Pay">
         </form>
-        <div class="w-form-done">
-          <div>Thank you! Your submission has been received!</div>
-        </div>
-        <div class="w-form-fail">
-          <div>Oops! Something went wrong while submitting the form</div>
-        </div>
+       
       </div>
     </li>
     </#list>
   </ul>
   <div class="text-block-3">TASKS AVAILABLE:</div>
   <div class="form-wrapper w-clearfix w-form">
-    <form class="form-2" data-name="Email Form 2" id="email-form-2" name="email-form-2">
+    <form method="POST" action="FreelancerBoundary" class="form-2" data-name="Email Form 2" id="email-form-2" name="email-form-2">
       <select class="filter-by w-select" data-name="filterBy" id="filterBy" name="filterBy">
         <option value="">Filter By: Price</option>
         <option value="Second">Filter By: A-Z</option>
@@ -114,11 +110,7 @@
     <#assign m = tasks_available>
     <#list m as task>
     <li class="list-item-7 w-clearfix">
-      <div class="form-wrapper-3 w-clearfix w-form">
-        <form class="form-5 w-clearfix" data-name="Email Form 5" id="email-form-5" name="email-form-5">
-          <input class="submit-button-10 w-button" data-wait="Please wait..." name = "button" type="submit" value="Request">
-        </form>
-      </div>
+      
       <h3 class="heading-47">Description:</h3>
       <h3 class="heading-48">${task.description}</h3>
       <h3 class="heading-49">Time:</h3>
@@ -129,13 +121,14 @@
       <h3 class="heading-54">${task.difficulty}</h3>
       <h3 class="heading-55">Location:</h3>
       <h3 class="heading-56">${task.location}</h3>
-    </li>
+  
     <form class="w-clearfix" method="post" action="FreelancerBoundary" data-name="Email Form 7" id="email-form-7" name="email-form-7">
 		  <input type=hidden name="taskID" value =${task.id}>
 		  <input type=hidden name="userID" value =${user.id}>
 		  <input type=hidden id = "welcomeTakeTaskID" name ="offerToTakeTask" value=${task.id} >
           <input class="submit-button-13 w-button" name ="button" data-wait="Please wait..." type="submit" value="Offer Your Services">
         </form>
+    </li>
     </#list>
   </ul>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>

@@ -348,7 +348,7 @@ public class FreelancerLogicImpl {
 	        return user;
 	 }
 	 
-	 public static  User returnTaskPerformer(Task task) throws SQLException
+	 public static User returnTaskPerformer(Task task) throws SQLException
 		{
 			ResultSet rs = FreelancerPersistImpl.returnTaskPerformer(task);
 			if (!rs.next())

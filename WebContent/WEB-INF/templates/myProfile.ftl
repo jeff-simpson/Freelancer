@@ -25,18 +25,19 @@
       <h1 class="heading-10">Freelanc</h1>
       <h1 class="heading-11" data-ix="new-interaction">r</h1>
       <div class="w-form">
-        <form class="form w-clearfix" data-name="Email Form" id="email-form" name="email-form">
-          <input class="submit-button-2 w-button" data-wait="Please wait..." type="submit" value="Sign Out">
-          <input class="submit-button w-button" data-wait="Please wait..." type="submit" value="Dashboard">
+        <form method="POST" action="FreelancerBoundary" class="form w-clearfix" data-name="Email Form" id="email-form" name="email-form">
+          <input class="submit-button-2 w-button" name = "button" type="submit" value="Sign Out">
+          <input class="submit-button w-button"  name = "button" type="submit" value="Create Task">
+          <input class="submit-button w-button"  name = "button" type="submit" value="Home">
         </form>
       </div>
     </div>
     <div class="div-block-4">
-      <h1 class="heading">(Name)</h1><img class="image" data-ix="new-interaction-7" src="img/star.png" width="224">
-      <h1 class="heading-8">5</h1>
+      <h1 class="heading">${NAME}</h1><img class="image" src="images/star.png" width="224">
+      <h1 class="heading-8" data-ix="new-interaction-7">${RANK}</h1>
       <div class="div-block-5 w-clearfix">
         <h1 class="heading-6">Contact Information:</h1>
-        <h1 class="heading-7">(EMAIL)</h1>
+        <h1 class="heading-7">${EMAIL}</h1>
       </div>
     </div>
   </div>
