@@ -205,6 +205,37 @@ public class FreelancerLogicImpl {
 			FreelancerPersistImpl persist = new FreelancerPersistImpl();
 			return persist.assignTask(user, task);
 		}
+	
+	
+	public static void offerServices(User user, Task task) throws SQLException
+	{
+		FreelancerPersistImpl persist = new FreelancerPersistImpl();
+		persist.offerServices(user, task);
+		String taskStatus ="pending request";
+		updateTaskStatus(task, taskStatus);
+	}
+	
+	// make a method to return users who have applied for a job
+	
+	public static void updateOfferStatus(User user, Task task, String status) throws SQLException
+	{
+		FreelancerPersistImpl persist = new FreelancerPersistImpl();
+		persist.updateOfferStatus(user, task, status);
+		
+		if(status =="accept")
+		{
+			String taskStatus ="pending";
+			updateTaskStatus(task, taskStatus);
+		}
+		
+		if(status =="decline")
+		{
+			String taskStatus ="open";
+			updateTaskStatus(task, taskStatus);
+		}
+		
+	}
+	
 		
 	public static  ArrayList<Task> returnAllTasksViaUser(User user) throws SQLException
 		{

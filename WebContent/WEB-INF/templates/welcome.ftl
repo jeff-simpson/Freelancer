@@ -77,6 +77,11 @@
       <h3 class="heading-33">Location:</h3>
       <h3 class="heading-34">${task.location}</h3>
       <h3 class="heading-35">Status:</h3>
+      
+      <#if ${task.taskStatus} == 'pending request'>
+      	<h4> Pending Request </h4>
+      </#if>
+      pending request
       <!--<h3 class="heading-34">${task.taskStatus}</h3>-->
       
 	  <div class="w-form">
@@ -130,6 +135,12 @@
       <h3 class="heading-55">Location:</h3>
       <h3 class="heading-56">${task.location}</h3>
     </li>
+    <form class="w-clearfix" method="post" action="FreelancerBoundary" data-name="Email Form 7" id="email-form-7" name="email-form-7">
+		  <input type=hidden name="taskID" value =${task.id}>
+		  <input type=hidden name="userID" value =${user.id}>
+		  <input type=hidden id = "welcomeTakeTaskID" name ="offerToTakeTask" value=${task.id} >
+          <input class="submit-button-13 w-button" name ="button" data-wait="Please wait..." type="submit" value="Offer Your Services">
+        </form>
     </#list>
   </ul>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>

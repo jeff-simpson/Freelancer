@@ -95,9 +95,10 @@ public class FreelancerBoundary extends HttpServlet
     	System.out.println(button);
     	
     	// to dynamically accept tasks
-    	if (request.getParameterMap().containsKey("welcomeTakeTaskID"))
+    	if (request.getParameterMap().containsKey("offerToTakeTask"))
     	{
-    		
+    		String taskID = request.getParameter("taskID");
+    		String userID = request.getParameter("userID");
     	}
     	
         if(button.equals("Login!")){
@@ -256,16 +257,19 @@ public class FreelancerBoundary extends HttpServlet
 		int taskID = Integer.parseInt(request.getParameter("taskID")); 
 		Task t = FreelancerLogicImpl.returnTaskByID(taskID);
 		User offerer = (User) request.getSession().getAttribute("user");
-	//	FreelancerLogicImpl.offerServices(offerer, t);
+		FreelancerLogicImpl.offerServices(offerer, t);
+		runWelcome(request,response);
 		
 	}
 
 	private void declinePerformerOffer(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		int taskID = Integer.parseInt(request.getParameter("taskID")); 
 		int userID = Integer.parseInt(request.getParameter("performerID")); 
+		String status = "decline";
 		User u = FreelancerLogicImpl.returnUserByID(userID);
 		Task t = FreelancerLogicImpl.returnTaskByID(taskID);
-	//	FreelancerLogicImpl.updateOfferStatus(t,u, "decline" ); 
+	    FreelancerLogicImpl.updateOfferStatus(u,t, status );
+	    runWelcome(request,response);
 		
 	}
 
@@ -274,7 +278,9 @@ public class FreelancerBoundary extends HttpServlet
 		int userID = Integer.parseInt(request.getParameter("performerID")); 
 		User u = FreelancerLogicImpl.returnUserByID(userID);
 		Task t = FreelancerLogicImpl.returnTaskByID(taskID);
-		//FreelancerLogicImpl.updateOfferStatus(t,u, "accept" ); 
+		String status = "accept";
+		FreelancerLogicImpl.updateOfferStatus(u,t, status ); 
+		runWelcome(request,response);
 		
 	}
 

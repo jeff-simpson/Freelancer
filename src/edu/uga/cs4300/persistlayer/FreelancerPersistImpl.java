@@ -336,12 +336,51 @@ public class FreelancerPersistImpl {
 	public int assignTask(User user, Task task) throws SQLException
 	{
 		
-		String query ="INSERT INTO asignee " +
-					"(task_id, performer_id) VALUES" +
-					"('"+ task.getId() + "','"+ user.getId()+"');";
+		String query ="INSERT INTO assignee " +
+					"(task_id, performer_id, status) VALUES" +
+					"('"+ task.getId() + "','"+ user.getId()+"','accepted');";
 				
 				
 		return DbAccessInterface.create(query);	
+	}
+	
+	
+	public int offerServices(User user, Task task) throws SQLException
+	{
+		
+		String query ="INSERT INTO assignee " +
+					"(task_id, performer_id, status) VALUES" +
+					"('"+ task.getId() + "','"+ user.getId()+"','pending approval');";
+				
+				
+		return DbAccessInterface.create(query);	
+	}
+	
+	
+	public int updateOfferStatus(User user, Task task, String status) throws SQLException
+	{
+		
+		String query ="UPDATE assignee " +
+					"SET  status ='" + status +
+					"' WHERE task_id ='"+task.getId()+"';";
+				
+				
+		return DbAccessInterface.create(query);	
+	}
+	
+	//select distinct assignee.task_id, assignee.performer_id, assignee.status from tasks, assignee Where  tasks.id = assignee.task_id and tasks.user_id  = 2 and tasks.id = 10;
+	
+	//select distinct tasks.id, tasks.description, tasks.time, tasks.price, tasks.difficulty, tasks.user_id, tasks.location, assignee.id, assignee.performer_id, assignee.status from tasks, assignee Where  tasks.id = assignee.task_id and tasks.user_id  = 2 and tasks.id = 10;
+	public static ResultSet pendingApplications(User user, Task task) throws SQLException
+	{
+		
+		String query ="SELECT distinct assignee.task_id, assignee.performer_id, assignee.status FROM tasks, assignee" +
+					"WHERE  tasks.id = assignee.task_id and tasks.user_id  ='"+user.getId()+ "and tasks.id ='"+task.getId()+"';";
+				
+				
+		ResultSet rs = DbAccessInterface.retrieve(query);
+		
+		return rs;
 	}
 	
 	public static ResultSet returnAllTasksViaUser(User user) throws SQLException

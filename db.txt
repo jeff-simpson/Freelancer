@@ -58,6 +58,7 @@ CREATE TABLE assignee (
 	id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	task_id int NOT NULL,
 	performer_id int NOT NULL,
+	status VARCHAR(255) NOT NULL,
      	FOREIGN KEY (task_id) REFERENCES tasks(id),
     	FOREIGN KEY (performer_id) REFERENCES users(id)
 );
