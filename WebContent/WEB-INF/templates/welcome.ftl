@@ -54,7 +54,7 @@
       <h3 class="heading-46">Status:</h3>
       <div class="w-form">
         <form class="w-clearfix" data-name="Email Form 7" id="email-form-7" name="email-form-7">
-          <input class="submit-button-13 w-button" data-wait="Please wait..." type="submit" value="Rejected">
+          <input class="submit-button-13 w-button" data-wait="Please wait..." type="submit" value="${task.status}">
         </form>
         <div class="w-form-done">
           <div>Thank you! Your submission has been received!</div>
@@ -83,7 +83,7 @@
       <h3 class="heading-35">Status:</h3>
       <div class="w-form">
         <form class="w-clearfix" data-name="Email Form 6" id="email-form-6" name="email-form-6">
-          <input class="submit-button-11 w-button" data-wait="Please wait..." type="submit" value="Rejected">
+          <input class="submit-button-11 w-button" data-wait="Please wait..." type="submit" value="${task.location}">
           <input class="submit-button-12 w-button" data-wait="Please wait..." type="submit" value="Pay">
         </form>
         <div class="w-form-done">

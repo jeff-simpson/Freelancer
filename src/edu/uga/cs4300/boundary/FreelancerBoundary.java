@@ -349,6 +349,7 @@ public class FreelancerBoundary extends HttpServlet
 		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
 		ArrayList<Task> tasks_given = FreelancerLogicImpl.getTasksGiven(u); 
 		
+		
 		root.put("tasks_available", tasks_available);
 		root.put("tasks_taken", tasks_taken);
 		root.put("tasks_given", tasks_given);
@@ -391,10 +392,15 @@ public class FreelancerBoundary extends HttpServlet
 		System.out.println("TRYING TO GET TASKS");
 		ArrayList<Task> tasks_available = FreelancerLogicImpl.returnAvailableTasks(); 
 		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
-		ArrayList<Task> tasks_given = FreelancerLogicImpl.getTasksTaken(u);
+		ArrayList<Task> tasks_given = FreelancerLogicImpl.getTasksGiven(u);
 		User user = FreelancerLogicImpl.returnUserByEmail(u.getEmail());
 		for(Object e : tasks_available){ 
 			System.out.println(((Task) e).getDescription());
+		}
+		
+		System.out.println("task given");
+		for(Object d : tasks_given){ 
+			System.out.println(((Task) d).getDescription());
 		}
 		request.getSession().setAttribute("user", user);
 		root.put("User",user); 
