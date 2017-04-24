@@ -264,9 +264,11 @@ public class FreelancerBoundary extends HttpServlet
     
 
     private void updateBalance(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-		Double balance = (Double) request.getAttribute("balance"); 
+		Double balance= Double.parseDouble(request.getParameter("balance")); 
+		System.out.println(balance);
 		User u = (User) request.getSession().getAttribute("user"); 
 		FreelancerLogicImpl.updateAccountBalance(u,balance); 
+		
 		myProfile(request,response);
 	}
 
@@ -409,6 +411,7 @@ public class FreelancerBoundary extends HttpServlet
 		for(String e: skills){ 
 			System.out.println(e);
 		}
+		System.out.println("blaance being pushed" + balance);
 		root.put("skills", skills);
 		root.put("balance", balance);
 		root.put("tasks_available", tasks_available);

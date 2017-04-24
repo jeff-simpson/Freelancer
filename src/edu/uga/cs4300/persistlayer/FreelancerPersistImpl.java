@@ -190,8 +190,10 @@ public class FreelancerPersistImpl {
 					+"');";
 				
 		System.out.println(query);
+		
 		return DbAccessInterface.create(query);	
 	}
+	
 	
 
 	public static int updateUser(User user) throws SQLException
@@ -470,7 +472,7 @@ public class FreelancerPersistImpl {
 		String query ="UPDATE accountBalance " +
 					"SET balance = '" + balance +
 					"' WHERE user_id = '"+ user.getId()+"';";
-					
+		System.out.println("query");
 								
 		return DbAccessInterface.create(query);
 		
