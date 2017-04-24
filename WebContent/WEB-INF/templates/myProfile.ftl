@@ -43,10 +43,16 @@
   </div>
   <div class="div-block-6 w-clearfix">
     <h1 class="heading-12">Skills:</h1><a class="button-2 w-button" data-ix="new-interaction-2" href="#">Add Skill</a>
+    <ul>
+    <#assign m = skills>
+    <#list m as skill>
+    <li> ${skill} <li>
+    </#list>
+    </ul>
     <div class="w-form">
-      <form class="form-2 w-clearfix" data-name="Email Form 2" id="email-form-2" name="email-form-2">
-        <input class="text-field w-input" data-ix="new-interaction-3" data-name="Name" id="name" maxlength="256" name="name" placeholder="Enter your skill" required="required" type="text">
-        <input class="submit-button-3 w-button" data-ix="new-interaction-3" data-wait="Please wait..." type="submit" value="Submit">
+      <form method="POST" action="FreelancerBoundary" class="form-2 w-clearfix" data-name="Email Form 2" id="email-form-2" name="email-form-2">
+        <input class="text-field w-input" data-ix="new-interaction-3" data-name="Name" id="name" maxlength="256" name="skill" placeholder="Enter your skill" required="required" type="text">
+        <input class="submit-button-3 w-button" data-ix="new-interaction-3" data-wait="Please wait..." type="submit" name= "button" value="Add Skill">
       </form>
     </div>
     <ul class="unordered-list">

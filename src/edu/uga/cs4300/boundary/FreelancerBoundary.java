@@ -242,10 +242,27 @@ public class FreelancerBoundary extends HttpServlet
 			} 
         }	
         
+        else if(button.equals("Add Skill")){ 
+        	
+        	try {
+				addSkill(request,response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+        }	
     }
     
 
-    private void payUser(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+    private void addSkill(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+		String skill = request.getParameter("skill"); 
+		User u = (User) request.getSession().getAttribute("user"); 
+		FreelancerLogicImpl.addSkills(u, skill);
+		
+		myProfile(request,response); 
+	}
+
+	private void payUser(HttpServletRequest request, HttpServletResponse response) throws SQLException {
     	int taskID = Integer.parseInt(request.getParameter("taskID")); 
     	
     	Task t = FreelancerLogicImpl.returnTaskByID(taskID); 
@@ -371,7 +388,11 @@ public class FreelancerBoundary extends HttpServlet
 		ArrayList<Task> tasks_available = FreelancerLogicImpl.returnAvailableTasks(); 
 		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
 		ArrayList<Task> tasks_given = FreelancerLogicImpl.getTasksGiven(u); 
-		
+		ArrayList<String> skills = FreelancerLogicImpl.returnAllSkills(u);
+		for(String e: skills){ 
+			System.out.println(e);
+		}
+		root.put("skills", skills);
 		
 		root.put("tasks_available", tasks_available);
 		root.put("tasks_taken", tasks_taken);
