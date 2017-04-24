@@ -181,7 +181,7 @@ public class FreelancerBoundary extends HttpServlet
 				e.printStackTrace();
 			} 
         }
-        else if(button.equals("In Progress")|| button.equals("Completed") || button.equals("Not Started")){ 
+        else if(button.equals("In Progress")|| button.equals("Open")|| button.equals("Completed") || button.equals("Not Started")){ 
         	try {
 				theirProfile(request,response);
 			} catch (SQLException e) {
@@ -295,7 +295,7 @@ public class FreelancerBoundary extends HttpServlet
 		root.put("RANK", FreelancerLogicImpl.returnAverageRating(u));
 		root.put("EMAIL", u.getEmail());
 		
-		runTemplate(request,response,"theirprofile"); 
+		runTemplate(request,response,"profile"); 
 	}
 
 	private void runLogin(HttpServletRequest request, HttpServletResponse response) throws SQLException {
@@ -370,7 +370,7 @@ public class FreelancerBoundary extends HttpServlet
 		root.put("RANK", FreelancerLogicImpl.returnAverageRating(u));
 		root.put("EMAIL", u.getEmail());
 		
-		runTemplate(request,response,"profile"); 
+		runTemplate(request,response,"myProfile"); 
 		
 	}
 
