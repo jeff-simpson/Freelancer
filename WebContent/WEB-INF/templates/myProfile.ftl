@@ -70,10 +70,22 @@
   </div>
   <div class="div-block-8">
     <h1 class="heading-15">Task History:</h1>
-    <ul class="unordered-list-2">
-      <li></li>
-      <li></li>
-      <li></li>
+    <ul>
+   <#assign m = task_history>
+    <#list m as task>
+    <li class="list-item-7 w-clearfix">
+      <h3 class="heading-47">Description:</h3>
+      <h3 class="heading-48">${task.description}</h3>
+      <h3 class="heading-49">Time:</h3>
+      <h3 class="heading-50">${task.time}</h3>
+      <h3 class="heading-51">Price:</h3>
+      <h3 class="heading-52">${task.price}</h3>
+      <h3 class="heading-53">Difficulty:</h3>
+      <h3 class="heading-54">${task.difficulty}</h3>
+      <h3 class="heading-55">Location:</h3>
+      <h3 class="heading-56">${task.location}</h3>
+    </li>
+    </#list>
     </ul>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>

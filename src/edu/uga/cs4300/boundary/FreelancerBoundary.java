@@ -324,9 +324,10 @@ public class FreelancerBoundary extends HttpServlet
 
 	private void theirProfile(HttpServletRequest request, HttpServletResponse response) throws SQLException {
     	System.out.println("running my profile");
-		int taskid = Integer.parseInt(request.getParameter("taskAcceptRequest")); 
+		int taskid = Integer.parseInt(request.getParameter("taskAcceptRequest"));
+
 		Task t = FreelancerLogicImpl.returnTaskByID(taskid);
-		User u = FreelancerLogicImpl.returnTaskPerformer(t);
+		User u = FreelancerLogicImpl.returnOfferers(t); 
 		System.out.println(u.getEmail());
 		
 		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
@@ -403,10 +404,15 @@ public class FreelancerBoundary extends HttpServlet
 		System.out.println("running my profile");
 		User u = (User) request.getSession().getAttribute("user");
 		System.out.println(u.getEmail());
-		ArrayList<Task> tasks_available = FreelancerLogicImpl.returnAvailableTasks(); 
+		
 		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
 		ArrayList<Task> tasks_given = FreelancerLogicImpl.getTasksGiven(u); 
+		ArrayList<Task> task_history = new ArrayList<Task>(); 
+		task_history.addAll(tasks_taken); 
+		task_history.addAll(tasks_given); 
+		
 		ArrayList<String> skills = FreelancerLogicImpl.returnAllSkills(u);
+		
 		double balance = FreelancerLogicImpl.returnAccountBalance(u);
 		for(String e: skills){ 
 			System.out.println(e);
@@ -414,13 +420,14 @@ public class FreelancerBoundary extends HttpServlet
 		System.out.println("blaance being pushed" + balance);
 		root.put("skills", skills);
 		root.put("balance", balance);
-		root.put("tasks_available", tasks_available);
+		root.put("tasks_available", task_history);
 		root.put("tasks_taken", tasks_taken);
 		root.put("tasks_given", tasks_given);
 		root.put("user", u);
 		root.put("NAME", u.getFirstName()); 
 		root.put("RANK", FreelancerLogicImpl.returnAverageRating(u));
 		root.put("EMAIL", u.getEmail());
+		root.put("task_history", task_history);
 		
 		runTemplate(request,response,"myProfile"); 
 		
