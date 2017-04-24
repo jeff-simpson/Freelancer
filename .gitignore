@@ -4,4 +4,4 @@
 ._README.md
 .AppleDouble
 .LSOverride
-.class
+*.class
