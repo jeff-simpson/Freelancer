@@ -714,4 +714,8 @@ public class FreelancerLogicImpl {
 		 FreelancerPersistImpl.deleteTransaction(creator, task, amount);
 	}
 	
+	 public static ResultSet returnOfferer(User u, Task t) throws SQLException
+	 {
+		 return FreelancerPersistImpl.pendingApplications(u,t);
+	 }
 }
