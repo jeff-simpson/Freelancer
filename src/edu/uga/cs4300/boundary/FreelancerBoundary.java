@@ -228,7 +228,7 @@ public class FreelancerBoundary extends HttpServlet
 			} 
         }
         
-        else if(button.equals("Offer Your Services")){ 
+        else if(button.equals("Request")){ 
         	
         	try {
 				offerServices(request,response);
