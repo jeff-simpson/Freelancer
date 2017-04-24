@@ -53,15 +53,11 @@
       <h3 class="heading-46">Status:</h3>
       <h3 class="heading-45">${task.taskStatus}</h3>
       <div class="w-form">
-   <!--     <form class="w-clearfix" data-name="Email Form 7" id="email-form-7" name="email-form-7">
+		<form class="w-clearfix" method="post" action="FreelancerBoundary" data-name="Email Form 7" id="email-form-7" name="email-form-7">
+		  <input type=hidden name="taskID" value =${task.id}>
+		  <input type=hidden id = "welcomeTakeTaskID" name ="welcomeTakeTaskID" value=${task.id} >
           <input class="submit-button-13 w-button" data-wait="Please wait..." type="submit" value="${task.taskStatus}">
         </form>
-        <div class="w-form-done">
-          <div>Thank you! Your submission has been received!</div>
-        </div>
-        <div class="w-form-fail">
-          <div>Oops! Something went wrong while submitting the form</div>
-        </div>
       </div>
     </li>
     </#list>
@@ -81,9 +77,9 @@
       <h3 class="heading-33">Location:</h3>
       <h3 class="heading-34">${task.location}</h3>
       <h3 class="heading-35">Status:</h3>
-      <h3 class="heading-34">${task.taskStatus}</h3>
+      <!--<h3 class="heading-34">${task.taskStatus}</h3>-->
       
-   <!--   <div class="w-form">
+	  <div class="w-form">
         <form class="w-clearfix" data-name="Email Form 6" id="email-form-6" name="email-form-6">
           <input class="submit-button-11 w-button" data-wait="Please wait..." type="submit" value="${task.taskStatus}">
           <input class="submit-button-12 w-button" data-wait="Please wait..." type="submit" value="Pay">
@@ -94,7 +90,7 @@
         <div class="w-form-fail">
           <div>Oops! Something went wrong while submitting the form</div>
         </div>
-      </div>-->
+      </div>
     </li>
     </#list>
   </ul>

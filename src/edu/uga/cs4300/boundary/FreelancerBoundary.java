@@ -83,11 +83,23 @@ public class FreelancerBoundary extends HttpServlet
        // DatabaseAccess.closeConnection(con);
     }
 
+    public static boolean empty( final String s )
+    {
+    	  return s == null || s.trim().isEmpty();
+    }
+    
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
     	String button = request.getParameter("button");
-    
+    	
     	System.out.println(button);
+    	
+    	// to dynamically accept tasks
+    	if (request.getParameterMap().containsKey("welcomeTakeTaskID"))
+    	{
+    		
+    	}
+    	
         if(button.equals("Login!")){
 			try {
 				runLogin(request,response);
