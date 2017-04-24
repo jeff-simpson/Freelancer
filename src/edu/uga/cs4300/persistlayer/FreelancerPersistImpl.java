@@ -373,13 +373,11 @@ public class FreelancerPersistImpl {
 	//select distinct assignee.task_id, assignee.performer_id, assignee.status from tasks, assignee Where  tasks.id = assignee.task_id and tasks.user_id  = 2 and tasks.id = 10;
 	
 	//select distinct tasks.id, tasks.description, tasks.time, tasks.price, tasks.difficulty, tasks.user_id, tasks.location, assignee.id, assignee.performer_id, assignee.status from tasks, assignee Where  tasks.id = assignee.task_id and tasks.user_id  = 2 and tasks.id = 10;
-	public static ResultSet pendingApplications(User user, Task task) throws SQLException
+	public static ResultSet pendingApplications(Task task) throws SQLException
 	{
 		
-		String query ="SELECT distinct assignee.task_id, assignee.performer_id, assignee.status FROM tasks, assignee" +
-					"WHERE  tasks.id = assignee.task_id and tasks.user_id  ='"+user.getId()+ "and tasks.id ='"+task.getId()+"';";
-				
-				
+		String query ="SELECT * FROM assignee WHERE task_id = '" + task.getId() + "';";
+		System.out.println(query);	
 		ResultSet rs = DbAccessInterface.retrieve(query);
 		
 		return rs;

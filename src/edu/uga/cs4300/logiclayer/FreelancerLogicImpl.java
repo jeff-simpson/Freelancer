@@ -398,7 +398,7 @@ public class FreelancerLogicImpl {
 					task.setTime(time);
 					task.setPrice(price);
 					task.setDifficulty(difficulty);
-					task.setId(user_id);
+					task.setUserID(user_id);
 					task.setLocation(location);
 					task.setTaskStatus(status);
 					
@@ -714,8 +714,19 @@ public class FreelancerLogicImpl {
 		 FreelancerPersistImpl.deleteTransaction(creator, task, amount);
 	}
 	
-	 public static ResultSet returnOfferer(User u, Task t) throws SQLException
+	 public static User returnOfferer(Task t) throws SQLException
 	 {
-		 return FreelancerPersistImpl.pendingApplications(u,t);
+		 
+		 ResultSet rs = FreelancerPersistImpl.pendingApplications(t);
+		 
+		 int id = 0; 
+		 while (rs.next())
+         {
+         	 id = rs.getInt("performer_id");
+          
+           
+         }
+			return FreelancerLogicImpl.returnUserByID(id);
+		 
 	 }
 }

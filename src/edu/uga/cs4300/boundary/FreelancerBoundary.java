@@ -323,12 +323,16 @@ public class FreelancerBoundary extends HttpServlet
 	}
 
 	private void theirProfile(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-    	System.out.println("running my profile");
-		int taskid = Integer.parseInt(request.getParameter("taskAcceptRequest"));
-
-		Task t = FreelancerLogicImpl.returnTaskByID(taskid);
-		User u = FreelancerLogicImpl.returnOfferers(t); 
-		System.out.println(u.getEmail());
+    	System.out.println("running their");
+		String taskid = request.getParameter("gtaskID");
+//		System.out.println("Task id: " + taskid);
+		User taskGiver = (User) request.getSession().getAttribute("user"); 
+		
+		Task t = FreelancerLogicImpl.returnTaskByID(Integer.parseInt(taskid));
+		System.out.println("Task id: "+ t.getId());
+		User u = FreelancerLogicImpl.returnOfferer(t); 
+		
+		System.out.println("GOING TO USER'S ACCOUNT: " + u.getEmail());
 		
 		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
 		ArrayList<Task> tasks_given = FreelancerLogicImpl.getTasksGiven(u); 
