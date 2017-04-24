@@ -108,12 +108,7 @@
         <option value="Third">Filter By: Z-A</option>
       </select>
     </form>
-    <div class="w-form-done">
-      <div>Thank you! Your submission has been received!</div>
-    </div>
-    <div class="w-form-fail">
-      <div>Oops! Something went wrong while submitting the form</div>
-    </div>
+  
   </div>
   <ul class="unordered-list-3">
     <#assign m = tasks_available>
@@ -121,7 +116,7 @@
     <li class="list-item-7 w-clearfix">
       <div class="form-wrapper-3 w-clearfix w-form">
         <form class="form-5 w-clearfix" data-name="Email Form 5" id="email-form-5" name="email-form-5">
-          <input class="submit-button-10 w-button" data-wait="Please wait..." type="submit" value="Request">
+          <input class="submit-button-10 w-button" data-wait="Please wait..." name = "button" type="submit" value="Request">
         </form>
       </div>
       <h3 class="heading-47">Description:</h3>
