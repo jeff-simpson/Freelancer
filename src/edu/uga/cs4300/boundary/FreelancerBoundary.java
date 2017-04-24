@@ -445,6 +445,7 @@ public class FreelancerBoundary extends HttpServlet
 
 	private void signOut(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		request.changeSessionId(); 
+		request.getSession().invalidate();
 		try { response.sendRedirect("index.html"); }
 		catch (IOException e) { e.printStackTrace(); }
 	}
@@ -463,6 +464,7 @@ public class FreelancerBoundary extends HttpServlet
 		 System.out.println(u.getEmail());
 		 FreelancerLogicImpl.addUser(u);
 		 User u2 = FreelancerLogicImpl.returnUserByEmail(u.getEmail());
+		 System.out.println(u.getEmail());
 //		 System.out.println("Session First Name" + u2.getFirstName());
 		 request.getSession().setAttribute("user", u2);
 		 runWelcome(request,response); 
