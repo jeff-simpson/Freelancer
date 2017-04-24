@@ -260,10 +260,28 @@ public class FreelancerBoundary extends HttpServlet
 				e.printStackTrace();
 			} 
         }
+        
+        else if(button.equals("Mark Complete")){ 
+        	
+        	try {
+				markComplete(request,response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+        }
     }
     
 
-    private void updateBalance(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+    private void markComplete(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+		
+    	
+    	int taskID = Integer.parseInt(request.getParameter("taskID")); 
+		Task t = FreelancerLogicImpl.returnTaskByID(taskID);
+		FreelancerLogicImpl.updateTaskStatus(t, "Completed");
+    }
+
+	private void updateBalance(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		Double balance= Double.parseDouble(request.getParameter("balance")); 
 		System.out.println(balance);
 		User u = (User) request.getSession().getAttribute("user"); 
@@ -475,10 +493,11 @@ public class FreelancerBoundary extends HttpServlet
 		System.out.println("inside welcome!");
 		User u = (User) request.getSession().getAttribute("user") ;
 		System.out.println("TRYING TO GET TASKS");
-		ArrayList<Task> tasks_available = FreelancerLogicImpl.returnAvailableTasks(); 
-		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
-		ArrayList<Task> tasks_given = FreelancerLogicImpl.getTasksGiven(u);
 		User user = FreelancerLogicImpl.returnUserByEmail(u.getEmail());
+		ArrayList<Task> tasks_available = FreelancerLogicImpl.returnAvailableTasksNotYours(user);
+		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(user); 
+		ArrayList<Task> tasks_given = FreelancerLogicImpl.getTasksGiven(user);
+		
 		//System.out.println("User On Welcome Page Do this: " + user.getId());
 //		for(Object e : tasks_available){ 
 //			System.out.println(((Task) e).getDescription());
