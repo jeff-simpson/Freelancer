@@ -40,7 +40,7 @@
       </div>
     </div>
     <div class="div-block-4">
-      <h1 class="heading">${NAME}</h1><img class="image" src="images/star.png" width="224">
+      <h1 class="heading">${NAME}</h1><img class="image" src="img/star.png" width="224">
       <h1 class="heading-8" data-ix="new-interaction-7">${RANK}</h1>
       <div class="div-block-5 w-clearfix">
         <h1 class="heading-6">Contact Information:</h1>
