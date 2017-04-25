@@ -599,7 +599,7 @@ public class FreelancerLogicImpl {
 					task.setTime(time);
 					task.setPrice(price);
 					task.setDifficulty(difficulty);
-					task.setId(user_id);
+					task.setUserID(user_id);
 					task.setLocation(location);
 					task.setTaskStatus(status);
 					

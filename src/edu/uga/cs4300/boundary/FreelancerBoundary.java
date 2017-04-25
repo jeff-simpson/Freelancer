@@ -284,8 +284,10 @@ public class FreelancerBoundary extends HttpServlet
     private void markComplete(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 	
     	int taskID = Integer.parseInt(request.getParameter("taskID")); 
+    	System.out.println("Here is my TASSK: " + taskID);
 		Task t = FreelancerLogicImpl.returnTaskByID(taskID);
 		FreelancerLogicImpl.updateTaskStatus(t, "Awaiting Payment");
+		System.out.println("Task Status for Task: "+ t.getId() + " " + t.getTaskStatus());
 		runWelcome(request,response); 
     }
 

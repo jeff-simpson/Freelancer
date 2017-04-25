@@ -24,8 +24,8 @@
     <h1 class="heading-2" data-ix="new-interaction">r</h1>
     <div class="w-form">
        <form method="POST" action="FreelancerBoundary" class="w-clearfix" data-name="Email Form" id="email-form" name="email-form">
-        <input class="submit-button w-button" data-wait="Please wait..." type="submit" value="Sign Out">
-        <input class="submit-button-2 w-button" data-wait="Please wait..." type="submit" value="Home">
+        <input class="submit-button w-button" name="Button" type="submit" value="Sign Out">
+        <input class="submit-button-2 w-button" name ="Button" type="submit" value="Home">
       </form>
     </div>
   </div>
@@ -53,7 +53,7 @@
   </div>
   <div class="w-form">
     <form method="POST" action="FreelancerBoundary" data-name="Email Form 2" id="email-form-2" name="email-form-2">
-      <input class="submit-button-3 w-button" name="button onclick="payUser(${reciever.id}, ${giver.id}, ${task.id})" value="Pay">
+      <input class="submit-button-3 w-button" name="button onclick="payUser(${receiver.id}, ${giver.id}, ${task.id})" value="Pay">
     </form>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>
