@@ -443,8 +443,8 @@ public class FreelancerBoundary extends HttpServlet
 		
 		System.out.println("GOING TO USER'S ACCOUNT: " + offerer.getEmail());
 		
-		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(offerer); 
-		ArrayList<Task> tasks_given = FreelancerLogicImpl.getTasksGiven(offerer); 
+//		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(offerer); 
+//		ArrayList<Task> tasks_given = FreelancerLogicImpl.getTasksGiven(offerer); 
 		
 		ArrayList<Task> task_history = FreelancerLogicImpl.returnPastTaskByUser(offerer);
 		
@@ -453,8 +453,6 @@ public class FreelancerBoundary extends HttpServlet
 		root.put("skills", skills);
 		System.out.println("status: " + status);
 		root.put("status", status);
-		root.put("tasks_taken", tasks_taken);
-		root.put("tasks_given", tasks_given);
 		root.put("task_history", task_history);
 		root.put("userofferer", offerer);
 		root.put("NAME", offerer.getFirstName()); 

@@ -5,7 +5,6 @@
   <title>Profile</title>
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
-  <link href="css/normalize_lancer_profile.css" rel="stylesheet" type="text/css">
   <link href="css/lancer_profile.css" rel="stylesheet" type="text/css">
   <link href="css/lancer_profile.webflow.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
@@ -16,7 +15,7 @@
       }
     });
   </script>
-  <script src="js/modernizr_lancer_profile.js" type="text/javascript"></script>
+
   <link href="https://daks2k3a4ib2z.cloudfront.net/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
   <link href="https://daks2k3a4ib2z.cloudfront.net/img/webclip.png" rel="apple-touch-icon">
 </head>
@@ -46,7 +45,7 @@
         <h1 class="heading-6">Contact Information:</h1>
         <h1 class="heading-7">${EMAIL}</h1>
       </div>
-     <#if status == "Pending Approval">
+     <#if status == "Pending Request">
     
       <div class="w-form">
         <form method="POST" action="FreelancerBoundary" class="form-4 w-clearfix" data-name="Email Form 2" id="email-form-2" name="email-form-2">
@@ -74,6 +73,7 @@
     <!--TASK HISTORY LIST FROM DATABASE-->
     <h1 class="heading-15">Task History:</h1>
     <ul>
+    
    <#assign m = task_history>
     <#list m as task>
     <li class="list-item-7 w-clearfix">
