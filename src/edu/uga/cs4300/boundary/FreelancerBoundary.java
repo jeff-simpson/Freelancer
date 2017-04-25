@@ -389,7 +389,7 @@ public class FreelancerBoundary extends HttpServlet
 		User taskGiver = (User) request.getSession().getAttribute("user"); 
 		
 		Task t = FreelancerLogicImpl.returnTaskByID(Integer.parseInt(taskid));
-		String status = t.getTaskStatus(); 
+		String status = FreelancerLogicImpl.returnTaskStatus(t);
 		System.out.println("Task id: "+ t.getId());
 		User offerer = FreelancerLogicImpl.returnOfferer(t); 
 		
