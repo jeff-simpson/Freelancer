@@ -44,8 +44,8 @@
     <h1 class="heading-12">Skills:</h1><a class="button-2 w-button" data-ix="new-interaction-2" href="#">Add Skill</a>
     <div class="w-form">
       <form method="POST" action="FreelancerBoundary" class="form-2 w-clearfix" data-name="Email Form 2" id="email-form-2" name="email-form-2">
-        <input class="text-field w-input" data-ix="new-interaction-3" data-name="Name" id="name" maxlength="256" name="name" placeholder="Enter your skill" required="required" type="text">
-        <input class="submit-button-3 w-button" name="button" data-ix="new-interaction-3" data-wait="Please wait..." type="submit" value="Submit">
+        <input class="text-field w-input" data-ix="new-interaction-3" data-name="Name" id="name" maxlength="256" name="skill" placeholder="Enter your skill" required="required" type="text">
+        <input class="submit-button-3 w-button" name="button" data-ix="new-interaction-3" data-wait="Please wait..." type="submit" value="Add Skill">
       </form>
     </div>
     <ul class="unordered-list">
@@ -59,8 +59,8 @@
     <h1 class="heading-13">Bank Information:</h1><a class="button_addmoney w-button" data-ix="new-interaction-4" href="#">Add Money</a>
     <div class="w-form">
       <form method="POST" action="FreelancerBoundary" class="w-clearfix" data-name="Email Form 3" id="email-form-3" name="email-form-3">
-        <input class="text-field-2 w-input" data-ix="new-interaction-3" data-name="Email" id="email" maxlength="256" name="email" placeholder="Enter Amount" required="required" type="text">
-        <input class="submit-button-4 w-button" name="button" data-ix="new-interaction-3" data-wait="Please wait..." type="submit" value="Submit">
+        <input class="text-field-2 w-input" data-ix="new-interaction-3" data-name="Email" id="email" maxlength="256" name="balance" placeholder="Enter Amount" required="required" type="text">
+        <input class="submit-button-4 w-button" name="button" data-ix="new-interaction-3" data-wait="Please wait..." type="submit" value="Add to Balance">
       </form>
     </div>
     <h1 class="heading-14">Balance:</h1>
