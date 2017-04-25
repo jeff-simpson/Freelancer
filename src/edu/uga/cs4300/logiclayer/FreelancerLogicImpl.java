@@ -352,6 +352,11 @@ public class FreelancerLogicImpl {
 		 FreelancerPersistImpl.addUser(user);
 		 User user2 = returnUserByEmail(user.getEmail());
 		 FreelancerPersistImpl.createNewAccountBalance(user2);
+		 double rating = 3.0;
+		 FreelancerPersistImpl.addRating(user2, rating);
+
+		
+		 
 	 }
 	 
 	 public static void updateUser(User user)throws SQLException
