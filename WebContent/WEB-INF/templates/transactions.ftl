@@ -43,7 +43,7 @@
     <h1 class="heading-6">${receiver.firstName}</h1>
     <h1 class="heading-7">Amount:</h1>
     <h1 class="heading-9">${task.price}</h1>
-    <h1 class="heading-10">Current Balance:</h1>
+    <h1 id ="accountBalance" class="heading-10">Current Balance:</h1>
     <h1 class="heading-11">${giver.balance}</h1>
     <div class="w-form">
       <form method="POST" action="FreelancerBoundary" class="form w-clearfix" data-name="Email Form 3" id="email-form-3" name="email-form-3">

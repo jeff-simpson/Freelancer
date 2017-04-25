@@ -29,7 +29,7 @@ function updateBalance(data) {
 	var table = $("#accountBalance");
 //	table.append("Account Balance:" + obj.balance);
 	$.each(data,function(index, obj){
-		table.append("Account Balance:" + obj.balance);
+		table.html("Account Balance:" + obj.balance);
 		
 	});
  }

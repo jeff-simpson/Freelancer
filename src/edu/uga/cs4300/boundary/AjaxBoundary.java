@@ -93,11 +93,14 @@ public class AjaxBoundary extends HttpServlet
 		System.out.println("I got here");
 		
 		FreelancerLogicImpl.completeFullTransaction( giver,receiver, task);
-		List<User> user = (List<User>) FreelancerLogicImpl.returnUserByID(giver.getId());
+		
+		ArrayList<User> users = new ArrayList<User>();
+		User user= FreelancerLogicImpl.returnUserByID(giver.getId());
+		users.add(user);
 		response.setContentType("application/json");
 		Gson gson = new Gson();
 		Type type = new TypeToken<List<User>>(){}.getType();
-		String json = gson.toJson(user, type);
+		String json = gson.toJson(users, type);
 		try {
 			PrintWriter out = response.getWriter();
 			out.println(json);
