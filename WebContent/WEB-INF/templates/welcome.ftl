@@ -105,7 +105,7 @@
     </li>
     </#list>
   </ul>
-  <div class="text-block-3">TASKS AVAILABLE:</div>
+  <h3 class="heading-47">TASKS AVAILABLE:</h3>
   <ul class="unordered-list-3">
     <#assign m = tasks_available>
     <#list m as task>
