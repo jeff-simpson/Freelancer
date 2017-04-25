@@ -47,7 +47,7 @@
             <form method="POST" action="FreelancerBoundary" class="form w-clearfix" data-name="Email Form 3" id="email-form-3" name="email-form-3">
                <label class="field-label-2" for="rating">Rating:</label>
                <select name="rating">
-                  <option selected value="1">1/option>
+                  <option selected value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
                   <option value="4">4</option>
