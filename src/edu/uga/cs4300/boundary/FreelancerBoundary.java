@@ -278,10 +278,60 @@ public class FreelancerBoundary extends HttpServlet
 				e.printStackTrace();
 			} 
         }
+        else if(button.equals("Rate and Pay")){ 
+        	
+        	try {
+				ratePay(request,response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+        }
     }
     
 
-    private void markComplete(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+    private void ratePay(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+		int user_id = Integer.parseInt(request.getParameter("user_id"));
+		int rating = Integer.parseInt(request.getParameter("rating")); 
+		String taskid = request.getParameter("task_id");
+		
+		User u = FreelancerLogicImpl.returnUserByID(user_id);
+		FreelancerLogicImpl.addRating(u, rating);
+		
+		System.out.println("running their");
+		
+//		
+		Task t = FreelancerLogicImpl.returnTaskByID(Integer.parseInt(taskid));
+		String status = FreelancerLogicImpl.returnTaskStatus(t);
+		System.out.println("Task id: "+ t.getId());
+		
+		
+		System.out.println("GOING TO USER'S ACCOUNT: " + u.getEmail());
+		
+		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
+		ArrayList<Task> tasks_given = FreelancerLogicImpl.getTasksGiven(u); 
+		
+		ArrayList<Task> task_history = new ArrayList<Task>(); 
+		task_history.addAll(tasks_taken); 
+		task_history.addAll(tasks_given); 
+		
+		ArrayList<String> skills = FreelancerLogicImpl.returnAllSkills(u);
+		root.put("taskid", taskid);
+		root.put("skills", skills);
+		System.out.println("status: " + status);
+		root.put("status", status);
+		root.put("tasks_taken", tasks_taken);
+		root.put("tasks_given", tasks_given);
+		root.put("task_history", task_history);
+		root.put("userofferer", u);
+		root.put("NAME", u.getFirstName()); 
+		root.put("RANK", FreelancerLogicImpl.returnAverageRating(u));
+		root.put("EMAIL", u.getEmail());
+		
+		runTemplate(request,response,"profile"); 
+	}
+
+	private void markComplete(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 	
     	int taskID = Integer.parseInt(request.getParameter("taskID")); 
     	System.out.println("Here is my TASSK: " + taskID);
