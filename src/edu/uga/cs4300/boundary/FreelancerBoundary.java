@@ -311,9 +311,7 @@ public class FreelancerBoundary extends HttpServlet
 		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(u); 
 		ArrayList<Task> tasks_given = FreelancerLogicImpl.getTasksGiven(u); 
 		
-		ArrayList<Task> task_history = new ArrayList<Task>(); 
-		task_history.addAll(tasks_taken); 
-		task_history.addAll(tasks_given); 
+		ArrayList<Task> task_history = FreelancerLogicImpl.returnPastTaskByUser(u);
 		
 		ArrayList<String> skills = FreelancerLogicImpl.returnAllSkills(u);
 		root.put("taskid", taskid);
@@ -448,9 +446,7 @@ public class FreelancerBoundary extends HttpServlet
 		ArrayList<Task> tasks_taken = FreelancerLogicImpl.getTasksTaken(offerer); 
 		ArrayList<Task> tasks_given = FreelancerLogicImpl.getTasksGiven(offerer); 
 		
-		ArrayList<Task> task_history = new ArrayList<Task>(); 
-		task_history.addAll(tasks_taken); 
-		task_history.addAll(tasks_given); 
+		ArrayList<Task> task_history = FreelancerLogicImpl.returnPastTaskByUser(offerer);
 		
 		ArrayList<String> skills = FreelancerLogicImpl.returnAllSkills(offerer);
 		root.put("taskid", taskid);
