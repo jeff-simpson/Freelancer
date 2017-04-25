@@ -26,10 +26,13 @@ function payUser(receiverID, giverID, taskID) {
 
 function updateBalance(data) {
 	$("#accountBalance").html("");
-	var table = $("#accountBalance");
+	var accountBalance = $("#accountBalance");
+	var amount = $("#amount");
 //	table.append("Account Balance:" + obj.balance);
 	$.each(data,function(index, obj){
-		table.html("Account Balance:" + obj.balance);
+//		table.html("");
+		accountBalance.text( obj.balance);
+		amount.text( "0");
 		
 	});
  }
