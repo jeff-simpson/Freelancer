@@ -80,16 +80,19 @@
       <h3 class="heading-32">${task.difficulty}</h3>
       <h3 class="heading-33">Location:</h3>
       <h3 class="heading-34">${task.location}</h3>
+      <h3 class="heading-46">Status:</h3>
+      <h3 class="heading-45">${task.taskStatus}</h3>
      
       
 	  <div class="w-form">
         <form method="POST" action="FreelancerBoundary" class="w-clearfix" data-name="Email Form 6" id="email-form-6" name="email-form-6">
-          <input class="submit-button-11 w-button" name = "button" type="submit" value="${task.taskStatus}">
-          <input type=hidden name="gtaskID" value =${task.id}>
+          
           <#if task.taskStatus == "Awaiting Payment">
-		
+		 
           <input class="submit-button-12 w-button" name = "button" type="submit" value="Pay">
          <#else>
+         <input class="submit-button-11 w-button" name = "button" type="submit" value="${task.taskStatus}">
+          <input type=hidden name="gtaskID" value =${task.id}>
          </#if>
          </form>
        
