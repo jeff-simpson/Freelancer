@@ -186,7 +186,17 @@ public class FreelancerLogicImpl {
 	                int difficulty = rs.getInt("difficulty");
 	                int user_id = rs.getInt("user_id");
 	                String location = rs.getString("location");
-	                String taskStatus = rs.getString("status"); 
+//	                String taskStatus = rs.getString("status"); 
+	                
+	                
+	                
+	                ResultSet status = FreelancerPersistImpl.returnTaskStatus(task); 
+					while(status.next()){
+	                String taskStatus = status.getString("status"); 
+					
+	                task.setTaskStatus(taskStatus);
+					}
+	                
 	                
 	                task.setId(id);
 	                task.setDescription(description);
@@ -195,7 +205,7 @@ public class FreelancerLogicImpl {
 	                task.setDifficulty(difficulty);
 	                task.setUserID(user_id);
 	                task.setLocation(location);
-	                task.setTaskStatus(taskStatus);
+//	                task.setTaskStatus(taskStatus);
 	                tasks.add(task); 
 	            }
 	        }
