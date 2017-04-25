@@ -53,7 +53,7 @@
                   <option value="4">4</option>
                   <option value="5">5</option>
                </select>
-               <input type ="hidden" name ="user_id" value ="${user.id}">
+               <input type ="hidden" name ="user_id" value ="${receiver.id}">
                <input type ="hidden" name ="task_id" value ="${task.id}">
                <input class="submit-button-2 w-button" name="button" type="submit" value="Rate">
             </form>
