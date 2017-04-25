@@ -314,7 +314,19 @@ public class FreelancerBoundary extends HttpServlet
     	User a = (User) request.getSession().getAttribute("user");
 		
     	FreelancerLogicImpl.addTransaction(a, b, t, t.getPrice()); 
-		runWelcome(request,response);
+    	
+    	root.put("giver", a);
+    	root.put("receiver", b);
+    	root.put("task", t);
+    	
+    	
+    	
+		runTransactions(request,response); 
+	}
+
+	private void runTransactions(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+		runTemplate(request,response,"transactions");
+		
 	}
 
 	private void offerServices(HttpServletRequest request, HttpServletResponse response) throws SQLException {
