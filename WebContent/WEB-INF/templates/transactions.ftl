@@ -2,7 +2,7 @@
 <html data-wf-page="58f81dacaa1ab6491f480ec1" data-wf-site="58f81dacaa1ab6491f480ec0">
    <head>
       <meta charset="utf-8">
-      <title>Transactions Page</title>
+      <title>Freelancr</title>
       <meta content="width=device-width, initial-scale=1" name="viewport">
       <meta content="Webflow" name="generator">
       <link href="css/transactions.css" rel="stylesheet" type="text/css">

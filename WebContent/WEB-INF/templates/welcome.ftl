@@ -2,7 +2,7 @@
 <html data-wf-page="58da6cb49c18796e5402b196" data-wf-site="58da6cb49c18796e5402b195">
 <head>
   <meta charset="utf-8">
-  <title>Final Proj Freemarkers</title>
+  <title>Freelancr</title>
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
   <link href="css/welcome.css" rel="stylesheet" type="text/css">

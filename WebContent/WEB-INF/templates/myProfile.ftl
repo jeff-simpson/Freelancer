@@ -2,7 +2,7 @@
 <html data-wf-page="58e25e9515fd90376605bed7" data-wf-site="58e25e9515fd90376605bed6">
 <head>
   <meta charset="utf-8">
-  <title>myProfile</title>
+  <title>Freelancr</title>
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
   <link href="css/myProfile.css" rel="stylesheet" type="text/css">
@@ -33,7 +33,9 @@
     </div>
     <div class="div-block-4">
       <h1 class="heading">${NAME}</h1><img class="image" data-ix="new-interaction-7" src="img/star.png" width="224">
-      <h1 class="heading-8" data-ix="new-interaction-7">${RANK}</h1>
+     
+       <h1 class="heading-8" data-ix="new-interaction-7">${RANK}</h1>
+      
       <div class="div-block-5 w-clearfix">
         <h1 class="heading-6">Contact Information:</h1>
         <h1 class="heading-27">${EMAIL}</h1>

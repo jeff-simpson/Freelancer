@@ -2,7 +2,7 @@
 <html data-wf-page="58e132f3ae9dd36872ccd41d" data-wf-site="58e132f3ae9dd36872ccd41c">
 <head>
   <meta charset="utf-8">
-  <title>createAccount</title>
+  <title>Freelancr</title>
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
   <link href="css/normalize_CA.css" rel="stylesheet" type="text/css">

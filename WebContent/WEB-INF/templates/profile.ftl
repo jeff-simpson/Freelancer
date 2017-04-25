@@ -2,7 +2,7 @@
 <html data-wf-page="58f64cd4f5bb8549330b66cb" data-wf-site="58f64cd4f5bb8549330b66ca">
 <head>
   <meta charset="utf-8">
-  <title>Profile</title>
+  <title>Freelancr</title>
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
   <link href="css/lancer_profile.css" rel="stylesheet" type="text/css">
