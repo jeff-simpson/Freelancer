@@ -91,7 +91,8 @@
           <#if task.taskStatus == "Awaiting Payment">
 		 
           <input class="submit-button-12 w-button" name = "button" type="submit" value="Pay">
-         <#else>
+        <input type=hidden name="gtaskID" value =${task.id}>
+          <#else>
          <input class="submit-button-11 w-button" name = "button" type="submit" value="${task.taskStatus}">
           <input type=hidden name="gtaskID" value =${task.id}>
          </#if>

@@ -278,7 +278,7 @@ public class FreelancerBoundary extends HttpServlet
 				e.printStackTrace();
 			} 
         }
-        else if(button.equals("Rate and Pay")){ 
+        else if(button.equals("Rate")){ 
         	
         	try {
 				ratePay(request,response);
