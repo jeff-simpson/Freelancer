@@ -170,7 +170,7 @@ public class FreelancerPersistImpl {
 	{
 		
 		String query = "SELECT tasks.id, tasks.description, tasks.time, tasks.price, tasks.difficulty, tasks.user_id, tasks.location, taskStatus.status FROM tasks, taskStatus, assignee "+
-						"WHERE tasks.id = taskStatus.task_id and assignee.task_id = taskStatus.task_id and taskStatus.status != 'closed' and assignee.performer_id ='"+user.getId()+"';";
+						"WHERE tasks.id = taskStatus.task_id and assignee.task_id = taskStatus.task_id and taskStatus.status != 'completed' and assignee.performer_id ='"+user.getId()+"';";
 		
 		ResultSet rs = DbAccessInterface.retrieve(query);
 		
@@ -183,7 +183,7 @@ public class FreelancerPersistImpl {
 	{
 		
 		String query = "SELECT tasks.id, tasks.description, tasks.time, tasks.price, tasks.difficulty, tasks.user_id, tasks.location, taskStatus.status FROM tasks, taskStatus "+
-						" WHERE tasks.id = taskStatus.task_id and taskStatus.status != 'closed' and tasks.user_id ='"+user.getId()+"';";
+						" WHERE tasks.id = taskStatus.task_id and taskStatus.status != 'completed' and tasks.user_id ='"+user.getId()+"';";
 		
 		ResultSet rs = DbAccessInterface.retrieve(query);
 		
