@@ -60,7 +60,7 @@
     <div class="w-form">
       <form method="POST" action="FreelancerBoundary" class="w-clearfix" data-name="Email Form 3" id="email-form-3" name="email-form-3">
         <input class="text-field-2 w-input" data-ix="new-interaction-3" data-name="Email" id="email" maxlength="256" name="balance" placeholder="Enter Amount" required="required" type="text">
-        <input class="submit-button-4 w-button" name="button" data-ix="new-interaction-3" data-wait="Please wait..." type="submit" value="Add to Balance">
+        <input class="submit-button-4 w-button" name="button" data-ix="new-interaction-3" data-wait="Please wait..." type="submit" name="button" value="Add to Balance">
       </form>
     </div>
     <h1 class="heading-14">Balance:</h1>
