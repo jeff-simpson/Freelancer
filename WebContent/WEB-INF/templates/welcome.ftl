@@ -39,9 +39,6 @@
   </div>
   <ul class="unordered-list-2">
     <#assign m = tasks_taken>
-    <#if m==null>
-     <li class="list-item w-clearfix"><h1>No Tasks Currently</h1></li>
-    </$if>
     <#list m as task>
     <li class="list-item-4 w-clearfix">
       <h3 class="heading-36">Description:</h3>
@@ -72,9 +69,6 @@
   </ul>
   <ul class="unordered-list">
     <#assign m = tasks_given>
-    <#if m==null>
-     <li class="list-item w-clearfix"><h1>No Tasks Currently</h1></li>
-    </$if>
     <#list m as task>
     <li class="list-item w-clearfix">
       <h2 class="heading-19">Description:</h2>
