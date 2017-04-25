@@ -63,7 +63,7 @@
   <div class="div-block-6 w-clearfix">
     <!--SKILLS LIST FROM DATABASE-->
     <h1 class="heading-12">Skills:</h1>
-   <ul>
+   <ul class="unordered-list">
     <#assign m = skills>
     <#list m as skill>
     <li> ${skill} </li>
