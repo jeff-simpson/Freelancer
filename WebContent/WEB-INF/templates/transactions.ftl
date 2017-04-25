@@ -8,6 +8,7 @@
   <link href="css/transactions.css" rel="stylesheet" type="text/css">
   <link href="css/transactions-page.webflow.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+  <script src ="js/jeff.js"> </script> 
   <script type="text/javascript">
     WebFont.load({
       google: {
@@ -53,7 +54,7 @@
   </div>
   <div class="w-form">
     <form method="POST" action="FreelancerBoundary" data-name="Email Form 2" id="email-form-2" name="email-form-2">
-      <input class="submit-button-3 w-button" name="button onclick="payUser(${receiver.id}, ${giver.id}, ${task.id})" value="Pay">
+      <input class="submit-button-3 w-button" name="button" onclick="payUser(${receiver.id}, ${giver.id}, ${task.id})" value="Pay">
     </form>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>

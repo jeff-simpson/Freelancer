@@ -56,7 +56,6 @@
       <div class="w-form">
 		<form class="w-clearfix" method="POST" action="FreelancerBoundary" data-name="Email Form 7" id="email-form-7" name="email-form-7">
 		  <input type=hidden name="taskID" value =${task.id}>
-		  
           <input class="submit-button-13 w-button" name = "button" type="submit" value="Mark Complete">
         </form>
       </div>

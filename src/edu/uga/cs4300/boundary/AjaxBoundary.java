@@ -90,7 +90,7 @@ public class AjaxBoundary extends HttpServlet
     
 	private void completeTransaction(HttpServletResponse response, User receiver, User giver, Task task) throws SQLException {
 
-		
+		System.out.println("I got here");
 		
 		FreelancerLogicImpl.completeFullTransaction( giver,receiver, task);
 		List<User> user = (List<User>) FreelancerLogicImpl.returnUserByID(giver.getId());
@@ -108,15 +108,16 @@ public class AjaxBoundary extends HttpServlet
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-  
+    	System.out.println("Jeff I am here");
     	
-    	int recieverID = Integer.parseInt(request.getParameter("recieverID"));
+    	int receiverID = Integer.parseInt(request.getParameter("receiverID"));
+    	System.out.println(receiverID);
     	int giverID = Integer.parseInt(request.getParameter("giverID"));
     	int taskID = Integer.parseInt(request.getParameter("taskID"));
     	
     	try {
     		
-			User reciever = FreelancerLogicImpl.returnUserByID(recieverID);
+			User reciever = FreelancerLogicImpl.returnUserByID(receiverID);
 			User giver = FreelancerLogicImpl.returnUserByID(giverID);
 			Task task = FreelancerLogicImpl.returnTaskByID(taskID);
 			completeTransaction( response,  reciever, giver,  task);

@@ -6,14 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 
 import edu.uga.cs4300.objectlayer.Task;
 import edu.uga.cs4300.objectlayer.User;
-import edu.uga.cs4300.persistlayer.DbAccessInterface;
+
 import edu.uga.cs4300.persistlayer.FreelancerPersistImpl;
-import freemarker.template.TemplateException;
+
 
 
 public class FreelancerLogicImpl {
@@ -359,7 +358,7 @@ public class FreelancerLogicImpl {
 	 {
 		 	ResultSet rs = FreelancerPersistImpl.returnUserByEmail(email1);
 	        User user = new User();
-
+	        double balance = 0.0;
 	        try
 	        {
 	            while (rs.next())
@@ -383,7 +382,20 @@ public class FreelancerLogicImpl {
 	                user.setAdmin(isAdmin);
 	                user.setRating(rating);
 	
-	                
+	                ResultSet rs2 = FreelancerPersistImpl.returnAccountBalance(user);
+	    	        
+
+	    	        try
+	    	        {
+	    	            while (rs2.next())
+	    	            {
+	    	            	 balance = rs2.getDouble("balance");
+	    	                
+	    	              
+	    	            }
+	    	        }
+	    	        finally{}
+	    	        user.setBalance(balance);
 	              
 	            }
 	        }
@@ -397,6 +409,7 @@ public class FreelancerLogicImpl {
 	 public static User returnTaskPerformer(Task task) throws SQLException
 		{
 			ResultSet rs = FreelancerPersistImpl.returnTaskPerformer(task);
+			double balance = 0.0;
 			if (!rs.next())
 				return null;
 			else
@@ -406,14 +419,42 @@ public class FreelancerLogicImpl {
 					return null;
 				else
 				{
+					
 					User user = new User();
-					user.setId(rs.getInt(1));
-					user.setFirstName(rs.getString(2));
-					user.setLastName(rs.getString(3));
-					user.setEmail(rs.getString(4));
-					user.setPassword(rs.getString(5));
-					user.setAdmin(rs.getInt(6));
-					user.setRating(rs.getInt(7));
+	            	int id = rs.getInt("id");
+	                String firstName = rs.getString("firstName");
+	                String lastName = rs.getString("lastName");
+	                String email = rs.getString("email");
+	                String password = rs.getString("password");
+	                int isAdmin = rs.getInt("isAdmin");
+	                double rating = rs.getDouble("rating");
+
+	                
+	                
+	                
+	                user.setId(id);
+	                user.setFirstName(firstName);
+	                user.setLastName(lastName);
+	                user.setEmail(email);
+	                user.setPassword(password);
+	                user.setAdmin(isAdmin);
+	                user.setRating(rating);
+	
+	                ResultSet rs2 = FreelancerPersistImpl.returnAccountBalance(user);
+
+	    	        try
+	    	        {
+	    	            while (rs2.next())
+	    	            {
+	    	            	 balance = rs2.getDouble("balance");
+	    	                
+	    	              
+	    	            }
+	    	        }
+	    	        finally{}
+	    	        user.setBalance(balance);
+	    	     
+					
 					return user;
 				}
 			}
@@ -462,6 +503,7 @@ public class FreelancerLogicImpl {
 	       
 	        ResultSet rs = FreelancerPersistImpl.returnUserByID(user_id);
 	        User user = new User();
+	        double balance = 0.0;
 
 	        try
 	        {
@@ -485,7 +527,19 @@ public class FreelancerLogicImpl {
 	                user.setRating(rating);
 	
 	                
-	              
+	                ResultSet rs2 = FreelancerPersistImpl.returnAccountBalance(user);
+
+	    	        try
+	    	        {
+	    	            while (rs2.next())
+	    	            {
+	    	            	 balance = rs2.getDouble("balance");
+	    	                
+	    	              
+	    	            }
+	    	        }
+	    	        finally{}
+	    	        user.setBalance(balance);
 	            }
 	        }
 	        catch (SQLException e)

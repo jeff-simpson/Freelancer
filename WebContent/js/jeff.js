@@ -9,9 +9,9 @@
 
 
 
-function payUser(reciverID, giverID, taskID) {
+function payUser(receiverID, giverID, taskID) {
     var name = "topic";
-    var obj = {reciverID : reciverID, giverID: giverID, taskID: taskID};
+    var obj = {receiverID : receiverID, giverID: giverID, taskID: taskID};
 	
 	$.ajax({
 		url: "AjaxBoundary",
