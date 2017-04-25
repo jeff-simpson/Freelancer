@@ -56,7 +56,11 @@
       <div class="w-form">
 		<form class="w-clearfix" method="POST" action="FreelancerBoundary" data-name="Email Form 7" id="email-form-7" name="email-form-7">
 		  <input type=hidden name="taskID" value =${task.id}>
+		  <#if task.taskStatus == "Awaiting Payment">
+		  <#else>
+
           <input class="submit-button-13 w-button" name = "button" type="submit" value="Mark Complete">
+          </#if>
         </form>
       </div>
     </li>
@@ -82,8 +86,12 @@
         <form method="POST" action="FreelancerBoundary" class="w-clearfix" data-name="Email Form 6" id="email-form-6" name="email-form-6">
           <input class="submit-button-11 w-button" name = "button" type="submit" value="${task.taskStatus}">
           <input type=hidden name="gtaskID" value =${task.id}>
+          <#if task.taskStatus == "Awaiting Payment">
+		
           <input class="submit-button-12 w-button" name = "button" type="submit" value="Pay">
-        </form>
+         <#else>
+         </#if>
+         </form>
        
       </div>
     </li>

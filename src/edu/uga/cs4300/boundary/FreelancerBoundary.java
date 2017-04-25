@@ -389,7 +389,7 @@ public class FreelancerBoundary extends HttpServlet
 		User taskGiver = (User) request.getSession().getAttribute("user"); 
 		
 		Task t = FreelancerLogicImpl.returnTaskByID(Integer.parseInt(taskid));
-		String status = t.getTaskStatus(); 
+		String status = FreelancerLogicImpl.returnTaskStatus(t);
 		System.out.println("Task id: "+ t.getId());
 		User offerer = FreelancerLogicImpl.returnOfferer(t); 
 		
@@ -444,7 +444,7 @@ public class FreelancerBoundary extends HttpServlet
 		System.out.println(description);
 		
 		LocalDateTime dateTime = LocalDateTime.now();
-		String time = dateTime.getHour() +":" + dateTime.getMinute() + " "+ dateTime.getDayOfMonth() + "/" + dateTime.getDayOfMonth() + "/" + dateTime.getYear(); 
+		String time = dateTime.getHour() +":" + dateTime.getMinute() + " "+ dateTime.getDayOfMonth() + "/" + dateTime.getMonth() + "/" + dateTime.getYear(); 
 		t.setTime(time);
 		
 		String price = request.getParameter("price");
