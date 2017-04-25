@@ -581,34 +581,7 @@ public class FreelancerLogicImpl {
 	        {
 	            while (rs.next())
 	            {
-//	            	Task task = new Task(); 
-//	            	int id = rs.getInt("id");
-//	                String description = rs.getString("description");
-//	                String time = rs.getString("time");
-//	                double price = rs.getDouble("price");
-//	                int difficulty = rs.getInt("difficulty");
-//	                int user_id = rs.getInt("user_id");
-//	                String location = rs.getString("location");
-//	          
-//	                
-//	                task.setId(id);
-//	                task.setDescription(description);
-//	                task.setTime(time);
-//	                task.setPrice(price);
-//	                task.setDifficulty(difficulty);
-//	                task.setUserID(user_id);
-//	                task.setLocation(location);
-//	               
-//	            	ResultSet status = FreelancerPersistImpl.returnTaskStatus(task); 
-//					while(status.next()){
-//	                String taskStatus = status.getString("status"); 
-//					
-//	                task.setTaskStatus(taskStatus);
-//	                tasks.add(task); 
-//	                
-	                
-	                
-	                
+
 	                
 	                int id = rs.getInt("id");
 	                String description = rs.getString("description");
@@ -683,6 +656,26 @@ public class FreelancerLogicImpl {
 		 double newBalance = currentBalance + balance;
 		return FreelancerPersistImpl.updateAccountBalance(user, newBalance);
 	}
+	 
+ 	public static void completeFullTransaction(User giver, User receiver, Task task) throws SQLException 
+	{
+ 		 String status = "completed";
+		 double currentBalanceGiver = returnAccountBalance(giver);
+		 double currentBalanceReciever = returnAccountBalance(receiver);
+		 
+		 double newBalanceGiver = currentBalanceGiver - task.getPrice();
+		 double newBalanceReciever = currentBalanceReciever + task.getPrice();
+		 
+		 FreelancerPersistImpl.updateAccountBalance(giver, newBalanceGiver);
+		 FreelancerPersistImpl.updateAccountBalance(receiver, newBalanceReciever);
+		
+	
+		FreelancerPersistImpl.updateTaskStatus(task, status);
+
+		
+	}
+	 
+	 
 	
 	 public static User returnUser(User user) throws SQLException
 	{
