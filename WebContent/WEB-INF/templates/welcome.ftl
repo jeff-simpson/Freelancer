@@ -65,7 +65,7 @@
       </div>
     </li>
     </#list>
-    	<li class="list-item-4 w-clearfix"> </li>
+    	
   </ul>
   <ul class="unordered-list">
     <#assign m = tasks_given>
@@ -101,7 +101,6 @@
       </div>
     </li>
     </#list>
-    <li class="list-item w-clearfix"> </li>
   </ul>
   <div class="text-block-3">TASKS AVAILABLE:</div>
   <ul class="unordered-list-3">
