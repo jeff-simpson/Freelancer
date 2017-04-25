@@ -34,12 +34,12 @@
     <h1 class="heading-4"><strong class="important-text">PAY</strong></h1>
   </div>
   <div class="div-block w-clearfix">
-    <h1 class="heading-5">Pay To:</h1>
-    <h1 class="heading-6">FreelancerName</h1>
+    <h1 class="heading-5">Pay To: ${reciever.firstName}</h1>
+    <h1 class="heading-6">${giver.firstName}</h1>
     <h1 class="heading-7">Amount:</h1>
-    <h1 class="heading-9">$$$$</h1>
+    <h1 class="heading-9">${task.price}</h1>
     <h1 class="heading-10">Current Balance:</h1>
-    <h1 class="heading-11">$$$$</h1>
+    <h1 class="heading-11">${giver.balance}</h1>
     <div class="w-form">
       <form method="POST" action="FreelancerBoundary" class="form w-clearfix" data-name="Email Form 3" id="email-form-3" name="email-form-3">
         <label class="field-label-2" for="rating">Rating:</label>
