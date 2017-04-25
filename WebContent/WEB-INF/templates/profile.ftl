@@ -46,6 +46,7 @@
         <h1 class="heading-6">Contact Information:</h1>
         <h1 class="heading-7">${EMAIL}</h1>
       </div>
+     
       <div class="w-form">
         <form method="POST" action="FreelancerBoundary" class="form-4 w-clearfix" data-name="Email Form 2" id="email-form-2" name="email-form-2">
           <input class="submit-button-6 w-button" name = "button"  type="submit" value="Decline Offer">
@@ -53,7 +54,7 @@
           <input type=hidden name="taskID" value =${taskid}>
           <input type=hidden name="performerID" value =${userofferer.id}>
         </form>
-        
+      
       </div>
     </div>
   </div>
@@ -63,7 +64,7 @@
    <ul>
     <#assign m = skills>
     <#list m as skill>
-    <li> ${skill} <li>
+    <li> ${skill} </li>
     </#list>
     </ul>
   </div>

@@ -51,7 +51,7 @@
     <ul class="unordered-list">
         <#assign m = skills>
         <#list m as skill>
-      <li><${skill}/li>
+      <li>${skill}</li>
         </#list>
     </ul>
   </div>

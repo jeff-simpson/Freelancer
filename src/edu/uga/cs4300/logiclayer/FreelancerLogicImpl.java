@@ -255,7 +255,7 @@ public class FreelancerLogicImpl {
 	{
 		FreelancerPersistImpl persist = new FreelancerPersistImpl();
 		persist.offerServices(user, task);
-		String taskStatus ="pending request";
+		String taskStatus ="Pending Request";
 		updateTaskStatus(task, taskStatus);
 	}
 	
@@ -268,7 +268,7 @@ public class FreelancerLogicImpl {
 		
 		if(status =="accept")
 		{
-			String taskStatus ="in progress";
+			String taskStatus ="In Progress";
 			updateTaskStatus(task, taskStatus);
 		}
 		

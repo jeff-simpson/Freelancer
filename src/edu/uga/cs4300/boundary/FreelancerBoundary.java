@@ -160,7 +160,7 @@ public class FreelancerBoundary extends HttpServlet
         }
         else if(button.equals("Create Task")){
         	try {
-        		System.out.println("Here we are jeff");
+        		
 				runTemplate(request,response,"submittask"); 
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -183,7 +183,7 @@ public class FreelancerBoundary extends HttpServlet
 				e.printStackTrace();
 			} 
         }
-        else if(button.equals("In Progress")|| button.equals("Completed") || button.equals("Not Started")|| button.equals("pending request")){ 
+        else if(button.equals("In Progress")|| button.equals("Completed") || button.equals("Not Started")|| button.equals("Pending Request")){ 
         	try {
         		System.out.println("hit pending");
         		
@@ -387,6 +387,7 @@ public class FreelancerBoundary extends HttpServlet
 		User taskGiver = (User) request.getSession().getAttribute("user"); 
 		
 		Task t = FreelancerLogicImpl.returnTaskByID(Integer.parseInt(taskid));
+		String status = t.getTaskStatus(); 
 		System.out.println("Task id: "+ t.getId());
 		User offerer = FreelancerLogicImpl.returnOfferer(t); 
 		
@@ -402,6 +403,8 @@ public class FreelancerBoundary extends HttpServlet
 		ArrayList<String> skills = FreelancerLogicImpl.returnAllSkills(offerer);
 		root.put("taskid", taskid);
 		root.put("skills", skills);
+		System.out.println("status: " + status);
+		root.put("status", status);
 		root.put("tasks_taken", tasks_taken);
 		root.put("tasks_given", tasks_given);
 		root.put("task_history", task_history);
