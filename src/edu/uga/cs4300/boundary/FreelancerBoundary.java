@@ -490,7 +490,7 @@ public class FreelancerBoundary extends HttpServlet
 		System.out.println(description);
 		
 		LocalDateTime dateTime = LocalDateTime.now();
-		String time = dateTime.getHour() +":" + dateTime.getMinute() + " "+ dateTime.getDayOfMonth() + "/" + dateTime.getMonth() + "/" + dateTime.getYear(); 
+		String time = dateTime.getHour() +":" + dateTime.getMinute() + " "+ dateTime.getDayOfMonth() + "/" + dateTime.getMonthValue() + "/" + dateTime.getYear(); 
 		t.setTime(time);
 		
 		String price = request.getParameter("price");
