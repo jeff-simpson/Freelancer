@@ -222,8 +222,8 @@ public class FreelancerBoundary extends HttpServlet
         else if(button.equals("Pay")){ 
         	
         	try {
-//				payUser(request,response); 
-        		runTemplate(request,response,"transactions"); 
+        		goToTransactionPage(request,response); 
+        		//runTemplate(request,response,"transactions"); 
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -313,12 +313,32 @@ public class FreelancerBoundary extends HttpServlet
     	User b = FreelancerLogicImpl.returnTaskPerformer(t); 
     	User a = (User) request.getSession().getAttribute("user");
 		
-    	FreelancerLogicImpl.addTransaction(a, b, t, t.getPrice()); 
+    	//FreelancerLogicImpl.addTransaction(a, b, t, t.getPrice()); 
     	
     	root.put("giver", a);
     	root.put("receiver", b);
     	root.put("task", t);
     	
+    	
+    	
+		runTransactions(request,response); 
+	}
+	
+	
+	private void goToTransactionPage(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+    	int taskID = Integer.parseInt(request.getParameter("gtaskID")); 
+    	
+    	Task t = FreelancerLogicImpl.returnTaskByID(taskID); 
+    	User b = FreelancerLogicImpl.returnTaskPerformer(t); 
+    	User a = (User) request.getSession().getAttribute("user");
+    	
+    	User user =FreelancerLogicImpl.returnUserByID(a.getId());
+		
+    	//FreelancerLogicImpl.addTransaction(a, b, t, t.getPrice()); 
+    	
+    	root.put("giver", a);
+    	root.put("receiver", b);
+    	root.put("task", t);
     	
     	
 		runTransactions(request,response); 
