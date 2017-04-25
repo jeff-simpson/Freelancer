@@ -2,7 +2,9 @@ package edu.uga.cs4300.boundary;
 
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Writer;
+import java.lang.reflect.Type;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.mysql.jdbc.Connection;
 
 
@@ -84,47 +87,47 @@ public class AjaxBoundary extends HttpServlet
        // DatabaseAccess.closeConnection(con);
     }
 
+    
+	private void completeTransaction(HttpServletResponse response, User receiver, User giver, Task task) throws SQLException {
+
+		
+		
+		FreelancerLogicImpl.completeFullTransaction( giver,receiver, task);
+		List<User> user = (List<User>) FreelancerLogicImpl.returnUserByID(giver.getId());
+		response.setContentType("application/json");
+		Gson gson = new Gson();
+		Type type = new TypeToken<List<User>>(){}.getType();
+		String json = gson.toJson(user, type);
+		try {
+			PrintWriter out = response.getWriter();
+			out.println(json);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+    
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-    	/**
-    	 try
-         {
-    		 
-    		 int creatorID = Integer.parseInt(request.getParameter("creatorID"));
-    		 int freelancerID = Integer.parseInt(request.getParameter("freeLancerID"));
+  
+    	
+    	int recieverID = Integer.parseInt(request.getParameter("recieverID"));
+    	int giverID = Integer.parseInt(request.getParameter("giverID"));
+    	int taskID = Integer.parseInt(request.getParameter("taskID"));
+    	
+    	try {
     		
-    		 int taskID = Integer.parseInt(request.getParameter("taskID"));
-    		 double amount = Integer.parseInt(request.getParameter("payAmount"));
-    		 double rating = Integer.parseInt(request.getParameter("rating"));
-    		 
-    		User creator = FreelancerLogicImpl.returnUserByID(creatorID);
-    		User freelancer = FreelancerLogicImpl.returnUserByID(freelancerID);
-    		Task task =FreelancerLogicImpl.returnTaskByID(taskID); 
-    		
-    		 
-    		
-    			int success = FreelancerLogicImpl.addTransaction( creator,  freelancer,  task,  amount);
-    			double accountBalance =FreelancerLogicImpl.returnAccountBalance(creator);
-    			
-    			FreelancerLogicImpl.addRating(creator, rating);
-         	    String json = new Gson().toJson(success);
-
-         	   //If the above success method works, you can try updating with this new account balance!
-//         	   double accountBalance =FreelancerLogicImpl.returnAccountBalance(creator);
-//         	   String json = new Gson().toJson(accountBalance);
-         	    
-         	    response.setContentType("application/json");
-         	    response.setCharacterEncoding("UTF-8");
-         	    response.getWriter().write(json);
-         	    System.out.println(json);
-
-//             runTemplate(request, response);
-         }
-         catch (SQLException e)
-         {
-             e.printStackTrace();
-         }
-         */
+			User reciever = FreelancerLogicImpl.returnUserByID(recieverID);
+			User giver = FreelancerLogicImpl.returnUserByID(giverID);
+			Task task = FreelancerLogicImpl.returnTaskByID(taskID);
+			completeTransaction( response,  reciever, giver,  task);
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	
     }
 
    

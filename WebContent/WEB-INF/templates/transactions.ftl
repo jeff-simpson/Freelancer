@@ -22,22 +22,24 @@
   <div class="section w-clearfix">
     <h1 class="heading">Freelanc</h1>
     <h1 class="heading-2" data-ix="new-interaction">r</h1>
-        <form method="POST" action="FreelancerBoundary" class="form w-clearfix" data-name="Email Form" id="email-form" name="email-form">
-      <input class="submit-button-5 w-button" data-wait="Please wait..." type="submit" name = "button" id ="Sign Out" value="Sign Out">
-        <input class="submit-button-5 w-button" data-wait="Please wait..." type="submit" name = "button" id ="My Profile" value="My Profile">
-        <input class="submit-button-5 w-button" data-wait="Please wait..." type="submit" name = "button" id ="Create Task" value="Create Task">
-        <input class="submit-button-7 w-button" data-wait="Please wait..." type="submit" name = "button" id ="Home" value="Home">
+    <div class="w-form">
+       <form method="POST" action="FreelancerBoundary" class="w-clearfix" data-name="Email Form" id="email-form" name="email-form">
+        <input class="submit-button w-button" data-wait="Please wait..." type="submit" value="Sign Out">
+        <input class="submit-button-2 w-button" data-wait="Please wait..." type="submit" value="Home">
       </form>
-      
     </div>
   </div>
+  
+ 
+  
+  
   <div class="container w-container"><img class="image" src="img/lock.png" width="131">
     <h1 class="heading-3">SECURE</h1>
     <h1 class="heading-4"><strong class="important-text">PAY</strong></h1>
   </div>
   <div class="div-block w-clearfix">
-    <h1 class="heading-5">Pay To:</h1>
-    <h1 class="heading-6">${giver.firstName}</h1>
+    <h1 class="heading-5">Pay To: </h1>
+    <h1 class="heading-6">${receiver.firstName}</h1>
     <h1 class="heading-7">Amount:</h1>
     <h1 class="heading-9">${task.price}</h1>
     <h1 class="heading-10">Current Balance:</h1>
@@ -51,7 +53,7 @@
   </div>
   <div class="w-form">
     <form method="POST" action="FreelancerBoundary" data-name="Email Form 2" id="email-form-2" name="email-form-2">
-      <input class="submit-button-3 w-button" name="button" data-ix="new-interaction" data-wait="Please wait..." type="submit" value="Pay">
+      <input class="submit-button-3 w-button" name="button onclick="payUser(${reciever.id}, ${giver.id}, ${task.id})" value="Pay">
     </form>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>
